@@ -32,6 +32,38 @@ test.describe("Bacheloroppgave section", () => {
   });
 });
 
+test.describe("Hero section", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(PAGE_URL);
+  });
+
+  test("has a background image using IMG_7173.JPG", async ({ page }) => {
+    const bg = await page.locator("#hjem").evaluate((el) =>
+      getComputedStyle(el).backgroundImage
+    );
+    expect(bg).toContain("IMG_7173.JPG");
+  });
+
+  test("has a dark overlay for readability", async ({ page }) => {
+    const overlay = page.locator("#hjem .hero-overlay");
+    await expect(overlay).toBeVisible();
+  });
+
+  test("has a Call to Action button that links to contact section", async ({ page }) => {
+    const cta = page.locator("#hjem .cta-button");
+    await expect(cta).toBeVisible();
+    await expect(cta).toHaveText("Ta kontakt");
+    await expect(cta).toHaveAttribute("href", "#kontakt");
+  });
+
+  test("CTA button text switches language", async ({ page }) => {
+    await page.click(".lang-toggle");
+    await expect(page.locator("#hjem .cta-button")).toHaveText("Get in touch");
+    await page.click(".lang-toggle");
+    await expect(page.locator("#hjem .cta-button")).toHaveText("Ta kontakt");
+  });
+});
+
 test.describe("i18n language switching", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(PAGE_URL);

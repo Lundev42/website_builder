@@ -122,37 +122,76 @@
 
     /* ── Hero section ── */
     #hjem {
+      position: relative;
       text-align: center;
       justify-content: center;
       flex-direction: column;
+      background: url('IMG_7173.JPG') center / cover no-repeat;
+      min-height: 100vh;
+      padding: 0;
+    }
+
+    #hjem .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(15, 17, 23, 0.65) 0%,
+        rgba(15, 17, 23, 0.80) 100%
+      );
+      z-index: 1;
     }
 
     #hjem .hero-content {
+      position: relative;
+      z-index: 2;
       max-width: 720px;
       margin: 0 auto;
+      padding: 0 24px;
     }
 
     #hjem h1 {
       font-size: 3.4rem;
       font-weight: 700;
-      color: #e8ecf4;
+      color: #ffffff;
       margin-bottom: 16px;
       line-height: 1.15;
     }
 
     #hjem .subtitle {
       font-size: 1.15rem;
-      color: #7e879e;
+      color: #d0d6e4;
       max-width: 520px;
       margin: 0 auto 32px;
       line-height: 1.7;
+    }
+
+    #hjem .cta-button {
+      display: inline-block;
+      padding: 14px 36px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: #6384ff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    #hjem .cta-button:hover,
+    #hjem .cta-button:focus-visible {
+      background: #4a6bff;
+      transform: translateY(-2px);
     }
 
     #hjem .scroll-hint {
       display: inline-block;
       margin-top: 24px;
       font-size: 0.8rem;
-      color: #4e5672;
+      color: rgba(255, 255, 255, 0.5);
       letter-spacing: 0.08em;
       text-transform: uppercase;
       animation: pulse 2s ease-in-out infinite;
@@ -247,6 +286,15 @@
         font-size: 2.2rem;
       }
 
+      #hjem .subtitle {
+        font-size: 1rem;
+      }
+
+      #hjem .cta-button {
+        padding: 12px 28px;
+        font-size: 0.9rem;
+      }
+
       .text-col h2 {
         font-size: 1.8rem;
       }
@@ -338,9 +386,12 @@
 
     <!-- Hero -->
     <section id="hjem">
+      <div class="hero-overlay"></div>
       <div class="hero-content">
         <h1 data-i18n="hero.title">Vetle Lunde</h1>
         <p class="subtitle" data-i18n="hero.subtitle">Jeg er interessert i geologi, spesielt bergartsgeologi og jordas utvikling frem til i dag. Jeg jobber for tiden med bacheloroppgaven min om Gula- og Funnsjøgruppen i Trøndelag, som en del av Merøprosjektet til NGU.</p>
+        <a href="#kontakt" class="cta-button" data-i18n="hero.cta">Ta kontakt</a>
+        <br>
         <span class="scroll-hint" data-i18n="hero.scroll">↓ Scroll ned for å lese mer</span>
       </div>
     </section>
@@ -437,6 +488,7 @@
         "hero.title": "Vetle Lunde",
         "hero.subtitle": "Jeg er interessert i geologi, spesielt bergartsgeologi og jordas utvikling frem til i dag. Jeg jobber for tiden med bacheloroppgaven min om Gula- og Funnsjøgruppen i Trøndelag, som en del av Merøprosjektet til NGU.",
         "hero.scroll": "\u2193 Scroll ned for \u00e5 lese mer",
+        "hero.cta": "Ta kontakt",
         "about.title": "Om meg",
         "about.text": "Jeg er en student fra Sogndal med stor interesse for geologi og hvordan naturkreftene former landskapet rundt oss. Gjennom studietiden har jeg f\u00e5tt utforsket alt fra fjellformasjoner til skredfare, og jeg trives best ute i felt med hammer og kompass i h\u00e5nden.",
         "study.label": "Studiet",
@@ -467,6 +519,7 @@
         "hero.title": "Vetle Lunde",
         "hero.subtitle": "I am interested in geology, especially rock geology and the evolution of the Earth until today. I am currently working on my bachelor thesis on the Gula and Funnsjø group in Trøndelag, as part of the Merø project by NGU.",
         "hero.scroll": "\u2193 Scroll down to read more",
+        "hero.cta": "Get in touch",
         "about.title": "About me",
         "about.text": "I\u2019m a student from Sogndal with a strong interest in geology and how natural forces shape the landscape around us. Throughout my studies I\u2019ve explored everything from mountain formations to avalanche hazards, and I feel most at home out in the field with a hammer and compass in hand.",
         "study.label": "Studies",
