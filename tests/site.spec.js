@@ -40,7 +40,7 @@ test.describe("i18n language switching", () => {
   test("page defaults to Norwegian Bokmål", async ({ page }) => {
     await expect(page.locator("html")).toHaveAttribute("lang", "nb");
     await expect(page.locator("[data-i18n='nav.home']")).toHaveText("Hjem");
-    await expect(page.locator("[data-i18n='hero.label']")).toHaveText("Velkommen");
+    await expect(page.locator("[data-i18n='hero.title']")).toHaveText("Vetle Lunde nettside");
     await expect(page.locator("[data-i18n='bachelor.title']")).toHaveText("Bacheloroppgaven min");
   });
 
@@ -48,7 +48,7 @@ test.describe("i18n language switching", () => {
     await page.click(".lang-toggle");
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect(page.locator("[data-i18n='nav.home']")).toHaveText("Home");
-    await expect(page.locator("[data-i18n='hero.label']")).toHaveText("Welcome");
+    await expect(page.locator("[data-i18n='hero.title']")).toHaveText("Vetle Lunde website");
     await expect(page.locator("[data-i18n='bachelor.title']")).toHaveText("My Bachelor Thesis");
     await expect(page.locator("[data-i18n='bachelor.caption1']")).toHaveText("The beautiful nature of Trøndelag");
     await expect(page.locator("[data-i18n='bachelor.caption2']")).toHaveText("Steep mountain sides");

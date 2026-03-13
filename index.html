@@ -22,8 +22,7 @@
     body {
       font-family: 'Inter', Arial, Helvetica, sans-serif;
       color: #e0e0e0;
-      background: radial-gradient(ellipse at center, #2a2a2a 0%, #1a1a1a 70%, #111111 100%);
-      background-attachment: fixed;
+      background: #d3d3d3;
     }
 
     /* ── Navigation ── */
@@ -116,13 +115,13 @@
     .media-col img {
       width: 100%;
       border-radius: 16px;
+      border: 1px solid #000;
       object-fit: cover;
       display: block;
     }
 
     /* ── Hero section ── */
     #hjem {
-      background: linear-gradient(160deg, #1a1a1a 0%, #242424 40%, #1e1e1e 100%);
       text-align: center;
       justify-content: center;
       flex-direction: column;
@@ -139,13 +138,6 @@
       color: #fff;
       margin-bottom: 16px;
       line-height: 1.15;
-    }
-
-    #hjem h1 span {
-      background: linear-gradient(135deg, #6384ff, #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
 
     #hjem .subtitle {
@@ -172,19 +164,10 @@
     }
 
     /* ── About ── */
-    #om-meg {
-      background: linear-gradient(170deg, #1e1e1e 0%, #242424 50%, #1a1a1a 100%);
-    }
 
     /* ── Study ── */
-    #studiet {
-      background: linear-gradient(170deg, #1a1a1a 0%, #222222 50%, #1e1e1e 100%);
-    }
 
     /* ── Bachelor ── */
-    #bachelor {
-      background: linear-gradient(170deg, #1e1e1e 0%, #252525 50%, #1a1a1a 100%);
-    }
 
     /* ── Gallery grid (used in media-col) ── */
     .gallery-grid {
@@ -198,16 +181,13 @@
       height: auto;
       object-fit: contain;
       border-radius: 12px;
-      border: 3px solid rgba(99, 132, 255, 0.45);
-      box-shadow: 0 0 12px rgba(99, 132, 255, 0.15);
+      border: 1px solid #000;
       display: block;
-      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      transition: transform 0.3s;
     }
 
     .gallery-grid img:hover {
       transform: scale(1.03);
-      border-color: rgba(99, 132, 255, 0.7);
-      box-shadow: 0 8px 30px rgba(99, 132, 255, 0.25);
     }
 
     .gallery-grid .tall {
@@ -218,7 +198,6 @@
     /* ── Contact / Footer ── */
     #kontakt {
       min-height: 50vh;
-      background: linear-gradient(170deg, #1a1a1a 0%, #1e1e1e 100%);
     }
 
     #kontakt .section-inner {
@@ -345,9 +324,8 @@
     <!-- Hero -->
     <section id="hjem">
       <div class="hero-content">
-        <span class="section-label" data-i18n="hero.label">Velkommen</span>
-        <h1 data-i18n-html="hero.title">Hei, jeg er <span>Vetle</span></h1>
-        <p class="subtitle" data-i18n="hero.subtitle">Geologistudent med lidenskap for fjell, stein og naturkrefter. Utforsk mine tre år med Geologi og Geofare i Sogndal.</p>
+        <h1 data-i18n="hero.title">Vetle Lunde nettside</h1>
+        <p class="subtitle" data-i18n="hero.subtitle">Jeg er interessert i geologi, spesielt bergartsgeologi og jordas utvikling frem til i dag. Jeg jobber for tiden med bacheloroppgaven min om Gula- og Funnsjøgruppen i Trøndelag, som en del av Merøprosjektet til NGU.</p>
         <span class="scroll-hint" data-i18n="hero.scroll">↓ Scroll ned for å lese mer</span>
       </div>
     </section>
@@ -359,13 +337,6 @@
           <span class="section-label" data-i18n="about.label">Om meg</span>
           <h2 data-i18n="about.title">Hvem er Vetle?</h2>
           <p data-i18n="about.text">Jeg er en student fra Sogndal med stor interesse for geologi og hvordan naturkreftene former landskapet rundt oss. Gjennom studietiden har jeg fått utforsket alt fra fjellformasjoner til skredfare, og jeg trives best ute i felt med hammer og kompass i hånden.</p>
-        </div>
-        <div class="media-col">
-          <img
-            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=540&fit=crop"
-            alt="Fjellpanorama – naturen som inspirerer"
-            data-i18n-alt="about.img.alt"
-          />
         </div>
       </div>
     </section>
@@ -380,27 +351,6 @@
         </div>
         <div class="media-col">
           <div class="gallery-grid">
-            <img
-              src="https://images.unsplash.com/photo-1529963183134-61a90db47eaf?w=600&h=400&fit=crop"
-              alt="Snødekt fjelltopp"
-              data-i18n-alt="study.img1.alt"
-            />
-            <img
-              class="tall"
-              src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=600&h=800&fit=crop"
-              alt="Rødt fjell-landskap"
-              data-i18n-alt="study.img2.alt"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=600&h=400&fit=crop"
-              alt="Blå himmel over skyer og fjell"
-              data-i18n-alt="study.img3.alt"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop"
-              alt="Steinvarde ved solnedgang"
-              data-i18n-alt="study.img4.alt"
-            />
             <figure>
               <img
                 src="standard_hvl.jpg"
@@ -470,21 +420,15 @@
         "nav.study": "Studiet",
         "nav.bachelor": "Bacheloroppgave",
         "nav.contact": "Kontakt",
-        "hero.label": "Velkommen",
-        "hero.title": "Hei, jeg er <span>Vetle</span>",
-        "hero.subtitle": "Geologistudent med lidenskap for fjell, stein og naturkrefter. Utforsk mine tre år med Geologi og Geofare i Sogndal.",
+        "hero.title": "Vetle Lunde nettside",
+        "hero.subtitle": "Jeg er interessert i geologi, spesielt bergartsgeologi og jordas utvikling frem til i dag. Jeg jobber for tiden med bacheloroppgaven min om Gula- og Funnsjøgruppen i Trøndelag, som en del av Merøprosjektet til NGU.",
         "hero.scroll": "\u2193 Scroll ned for \u00e5 lese mer",
         "about.label": "Om meg",
         "about.title": "Hvem er Vetle?",
         "about.text": "Jeg er en student fra Sogndal med stor interesse for geologi og hvordan naturkreftene former landskapet rundt oss. Gjennom studietiden har jeg f\u00e5tt utforsket alt fra fjellformasjoner til skredfare, og jeg trives best ute i felt med hammer og kompass i h\u00e5nden.",
-        "about.img.alt": "Fjellpanorama \u2013 naturen som inspirerer",
         "study.label": "Studiet",
         "study.title": "Geologi og Geofare",
         "study.text": "Bachelorgraden i Geologi og Geofare ved H\u00f8gskolen p\u00e5 Vestlandet i Sogndal gir solid kunnskap om jordas oppbygging, berggrunn, l\u00f8smasser og naturfarer. Studiet kombinerer teori med mye feltarbeid i spektakul\u00e6r vestlandsnatur, noe som gj\u00f8r det til en unik og praktisk utdanning.",
-        "study.img1.alt": "Sn\u00f8dekt fjelltopp",
-        "study.img2.alt": "R\u00f8dt fjell-landskap",
-        "study.img3.alt": "Bl\u00e5 himmel over skyer og fjell",
-        "study.img4.alt": "Steinvarde ved solnedgang",
         "study.hvl.alt": "Høgskulen på Vestlandet, Campus Sogndal",
         "study.hvl.caption": "Høgskulen på Vestlandet, Campus Sogndal",
         "bachelor.label": "Bacheloroppgave",
@@ -507,21 +451,15 @@
         "nav.study": "Studies",
         "nav.bachelor": "Bachelor Thesis",
         "nav.contact": "Contact",
-        "hero.label": "Welcome",
-        "hero.title": "Hi, I\u2019m <span>Vetle</span>",
-        "hero.subtitle": "Geology student with a passion for mountains, rocks and natural forces. Explore my three years of Geology and Geo-Hazards in Sogndal.",
+        "hero.title": "Vetle Lunde website",
+        "hero.subtitle": "I am interested in geology, especially rock geology and the evolution of the Earth until today. I am currently working on my bachelor thesis on the Gula and Funnsjø group in Trøndelag, as part of the Merø project by NGU.",
         "hero.scroll": "\u2193 Scroll down to read more",
         "about.label": "About me",
         "about.title": "Who is Vetle?",
         "about.text": "I\u2019m a student from Sogndal with a strong interest in geology and how natural forces shape the landscape around us. Throughout my studies I\u2019ve explored everything from mountain formations to avalanche hazards, and I feel most at home out in the field with a hammer and compass in hand.",
-        "about.img.alt": "Mountain panorama \u2013 nature that inspires",
         "study.label": "Studies",
         "study.title": "Geology and Geo-Hazards",
         "study.text": "The Bachelor\u2019s degree in Geology and Geo-Hazards at the Western Norway University of Applied Sciences in Sogndal provides solid knowledge about the structure of the Earth, bedrock, sediments and natural hazards. The programme combines theory with extensive fieldwork in spectacular western Norwegian nature, making it a unique and practical education.",
-        "study.img1.alt": "Snow-covered mountain peak",
-        "study.img2.alt": "Red mountain landscape",
-        "study.img3.alt": "Blue sky above clouds and mountains",
-        "study.img4.alt": "Cairn at sunset",
         "study.hvl.alt": "Western Norway University of Applied Sciences, Campus Sogndal",
         "study.hvl.caption": "Western Norway University of Applied Sciences, Campus Sogndal",
         "bachelor.label": "Bachelor Thesis",
