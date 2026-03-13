@@ -16,7 +16,7 @@ This is a **static portfolio website** for Vetle Øyvind Larsen Lunde, showcasin
 vetle-lunde-site/
 ├── index.html              # Single-page site (HTML + embedded CSS + inline JS)
 ├── tests/
-│   └── site.spec.js        # Playwright e2e tests (13 tests)
+│   └── site.spec.js        # Playwright e2e tests
 ├── playwright.config.js    # Playwright configuration (file:// base URL)
 ├── package.json            # devDependencies: @playwright/test
 ├── .github/
@@ -58,7 +58,7 @@ vetle-lunde-site/
 
 - **Framework**: Playwright (`npx playwright test`)
 - **Config**: `playwright.config.js` — Chromium only, file-based base URL
-- **Tests**: `tests/site.spec.js` — 13 e2e tests covering:
+- **Tests**: `tests/site.spec.js` — 15 e2e tests covering:
   - Bacheloroppgave section images and captions
   - Hero section background, overlay, and CTA button
   - i18n language switching (title, alt text, toggle label)
@@ -79,7 +79,7 @@ The site deploys automatically to GitHub Pages on push to `main` via `.github/wo
 
 1. **Keep it static** — do not add build tools, frameworks, or bundlers
 2. **Bilingual always** — every text change must update both `nb` and `en` translations
-3. **Test before merging** — all 13 Playwright tests must pass
+3. **Test before merging** — all Playwright tests must pass
 4. **Accessibility** — use semantic HTML, alt text for images, and keyboard-navigable links
 5. **Performance** — optimise image sizes; keep the page lightweight
 6. **No Nynorsk** — Norwegian text must be Bokmål only
