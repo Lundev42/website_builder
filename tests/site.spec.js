@@ -13,12 +13,12 @@ test.describe("Bacheloroppgave section", () => {
     await expect(images).toHaveCount(2);
   });
 
-  test("bachelor images use Unsplash sources", async ({ page }) => {
+  test("bachelor images use local sources", async ({ page }) => {
     const images = page.locator("#bachelor .gallery-grid img");
-    for (let i = 0; i < 2; i++) {
-      const src = await images.nth(i).getAttribute("src");
-      expect(src).toContain("images.unsplash.com");
-    }
+    const src1 = await images.nth(0).getAttribute("src");
+    const src2 = await images.nth(1).getAttribute("src");
+    expect(src1).toContain("IMG_3906.JPG");
+    expect(src2).toContain("IMG_7509.jpeg");
   });
 
   test("first image has caption 'Den vakre naturen i Trøndelag'", async ({ page }) => {
@@ -87,9 +87,9 @@ test.describe("Norwegian Bokmål content", () => {
     await page.goto(PAGE_URL);
     const html = await page.content();
     // These Nynorsk words should NOT be present in the rendered HTML
+    // (excluding proper nouns like "Høgskulen på Vestlandet")
     expect(html).not.toContain("Bacheloroppgåva");
     expect(html).not.toContain("korleis");
-    expect(html).not.toContain("Høgskulen");
     expect(html).not.toContain("lausmassar");
     expect(html).not.toContain("Ikkje");
   });
