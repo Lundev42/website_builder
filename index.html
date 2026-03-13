@@ -22,7 +22,8 @@
     body {
       font-family: 'Inter', Arial, Helvetica, sans-serif;
       color: #e0e0e0;
-      background: #0f1117;
+      background: radial-gradient(ellipse at center, #2a2a2a 0%, #1a1a1a 70%, #111111 100%);
+      background-attachment: fixed;
     }
 
     /* ── Navigation ── */
@@ -32,7 +33,7 @@
       left: 0;
       width: 100%;
       z-index: 100;
-      background: rgba(15, 17, 23, 0.85);
+      background: rgba(26, 26, 26, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
@@ -121,7 +122,7 @@
 
     /* ── Hero section ── */
     #hjem {
-      background: linear-gradient(160deg, #0f1117 0%, #161a2b 40%, #1c1f35 100%);
+      background: linear-gradient(160deg, #1a1a1a 0%, #242424 40%, #1e1e1e 100%);
       text-align: center;
       justify-content: center;
       flex-direction: column;
@@ -172,17 +173,17 @@
 
     /* ── About ── */
     #om-meg {
-      background: linear-gradient(170deg, #111422 0%, #151929 50%, #0f1117 100%);
+      background: linear-gradient(170deg, #1e1e1e 0%, #242424 50%, #1a1a1a 100%);
     }
 
     /* ── Study ── */
     #studiet {
-      background: linear-gradient(170deg, #0f1117 0%, #13162a 50%, #111422 100%);
+      background: linear-gradient(170deg, #1a1a1a 0%, #222222 50%, #1e1e1e 100%);
     }
 
     /* ── Bachelor ── */
     #bachelor {
-      background: linear-gradient(170deg, #111422 0%, #181c30 50%, #0f1117 100%);
+      background: linear-gradient(170deg, #1e1e1e 0%, #252525 50%, #1a1a1a 100%);
     }
 
     /* ── Gallery grid (used in media-col) ── */
@@ -197,13 +198,16 @@
       height: 200px;
       object-fit: cover;
       border-radius: 12px;
+      border: 3px solid rgba(99, 132, 255, 0.45);
+      box-shadow: 0 0 12px rgba(99, 132, 255, 0.15);
       display: block;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
     }
 
     .gallery-grid img:hover {
       transform: scale(1.03);
-      box-shadow: 0 8px 30px rgba(99, 132, 255, 0.15);
+      border-color: rgba(99, 132, 255, 0.7);
+      box-shadow: 0 8px 30px rgba(99, 132, 255, 0.25);
     }
 
     .gallery-grid .tall {
@@ -214,7 +218,7 @@
     /* ── Contact / Footer ── */
     #kontakt {
       min-height: 50vh;
-      background: linear-gradient(170deg, #0f1117 0%, #12152a 100%);
+      background: linear-gradient(170deg, #1a1a1a 0%, #1e1e1e 100%);
     }
 
     #kontakt .section-inner {
