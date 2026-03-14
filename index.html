@@ -1327,6 +1327,7 @@
 
       /* Detection strip occupies 20 %–40 % from the top of the viewport. */
       var observer = new IntersectionObserver(function (entries) {
+        if (scrollLocked) return;
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             setActive(entry.target.id);
