@@ -338,3 +338,81 @@ test.describe("Contact form modal", () => {
     await expect(page.locator("#contact-name")).toHaveValue("");
   });
 });
+
+test.describe("Theme toggle (dark/light mode)", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "dark" });
+    await page.goto(PAGE_URL);
+  });
+
+  test("theme toggle button is visible in nav", async ({ page }) => {
+    const toggle = page.locator("#theme-toggle");
+    await expect(toggle).toBeVisible();
+    await expect(toggle).toHaveAttribute("aria-label", /./);
+  });
+
+  test("defaults to dark theme", async ({ page }) => {
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  });
+
+  test("shows moon icon in dark mode", async ({ page }) => {
+    const moon = page.locator("#theme-toggle .theme-icon-moon");
+    const sun = page.locator("#theme-toggle .theme-icon-sun");
+    await expect(moon).toBeVisible();
+    await expect(sun).toBeHidden();
+  });
+
+  test("clicking toggle switches to light theme", async ({ page }) => {
+    await page.click("#theme-toggle");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  });
+
+  test("shows sun icon in light mode", async ({ page }) => {
+    await page.click("#theme-toggle");
+    const moon = page.locator("#theme-toggle .theme-icon-moon");
+    const sun = page.locator("#theme-toggle .theme-icon-sun");
+    await expect(sun).toBeVisible();
+    await expect(moon).toBeHidden();
+  });
+
+  test("clicking toggle twice returns to dark theme", async ({ page }) => {
+    await page.click("#theme-toggle");
+    await page.click("#theme-toggle");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  });
+
+  test("theme preference persists in localStorage", async ({ page }) => {
+    await page.click("#theme-toggle");
+    const stored = await page.evaluate(() => localStorage.getItem("theme"));
+    expect(stored).toBe("light");
+  });
+
+  test("saved light theme is restored on reload", async ({ page }) => {
+    await page.click("#theme-toggle");
+    await page.reload();
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  });
+
+  test("aria-label updates when switching themes", async ({ page }) => {
+    const toggle = page.locator("#theme-toggle");
+    const darkLabel = await toggle.getAttribute("aria-label");
+    await page.click("#theme-toggle");
+    const lightLabel = await toggle.getAttribute("aria-label");
+    expect(darkLabel).not.toBe(lightLabel);
+  });
+
+  test("theme toggle works alongside language toggle", async ({ page }) => {
+    await page.click("#theme-toggle");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+    await page.click(".lang-toggle");
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  });
+
+  test("respects prefers-color-scheme light when no saved preference", async ({ page }) => {
+    await page.evaluate(() => localStorage.removeItem("theme"));
+    await page.emulateMedia({ colorScheme: "light" });
+    await page.goto(PAGE_URL);
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  });
+});

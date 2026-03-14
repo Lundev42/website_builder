@@ -17,6 +17,38 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-primary: #0f1117;
+      --bg-secondary: #181a20;
+      --text-primary: #c0c8d8;
+      --text-secondary: #a0a8c0;
+      --text-muted: #9ca3b8;
+      --accent: #6384ff;
+      --accent-hover: rgba(99, 132, 255, 0.25);
+      --accent-bg: rgba(99, 132, 255, 0.15);
+      --accent-border: rgba(99, 132, 255, 0.3);
+      --nav-bg: rgba(26, 26, 26, 0.85);
+      --nav-border: rgba(255, 255, 255, 0.06);
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --overlay-bg: rgba(0, 0, 0, 0.6);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f5f6fa;
+      --bg-secondary: #e8eaf0;
+      --text-primary: #23272f;
+      --text-secondary: #4a5060;
+      --text-muted: #6b7280;
+      --accent: #4a63cc;
+      --accent-hover: rgba(74, 99, 204, 0.18);
+      --accent-bg: rgba(74, 99, 204, 0.10);
+      --accent-border: rgba(74, 99, 204, 0.3);
+      --nav-bg: rgba(245, 246, 250, 0.92);
+      --nav-border: rgba(0, 0, 0, 0.08);
+      --card-bg: rgba(0, 0, 0, 0.03);
+      --overlay-bg: rgba(0, 0, 0, 0.4);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -29,8 +61,9 @@
 
     body {
       font-family: 'Inter', Arial, Helvetica, sans-serif;
-      color: #c0c8d8;
-      background: #0f1117;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     /* ── Navigation ── */
@@ -40,9 +73,10 @@
       left: 0;
       width: 100%;
       z-index: 100;
-      background: rgba(26, 26, 26, 0.85);
+      background: var(--nav-bg);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid var(--nav-border);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
     }
 
     nav ul {
@@ -55,7 +89,7 @@
 
     nav a {
       text-decoration: none;
-      color: #a0a8c0;
+      color: var(--text-secondary);
       font-size: 0.85rem;
       font-weight: 500;
       letter-spacing: 0.04em;
@@ -68,7 +102,7 @@
     nav a:hover,
     nav a:focus-visible {
       color: #fff;
-      background: rgba(99, 132, 255, 0.15);
+      background: var(--accent-bg);
     }
 
     /* ── Sections (shared) ── */
@@ -102,7 +136,7 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #6384ff;
+      color: var(--accent);
       margin-bottom: 14px;
     }
 
@@ -126,7 +160,7 @@
     .text-col p {
       font-size: 1.05rem;
       line-height: 1.75;
-      color: #8b93a8;
+      color: var(--text-muted);
     }
 
     .media-col img {
@@ -255,12 +289,13 @@
     #om-meg .media-col figcaption {
       text-align: center;
       font-size: 0.85rem;
-      color: #9ca3b8;
+      color: var(--text-muted);
       padding: 12px 14px;
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--card-bg);
       border: 3px solid rgba(255, 255, 255, 0.12);
       border-top: none;
       border-radius: 0 0 16px 16px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     /* ── Study ── */
@@ -304,12 +339,12 @@
     }
 
     #kontakt p {
-      color: #6b738a;
+      color: var(--text-muted);
       margin-top: 12px;
     }
 
     #kontakt a {
-      color: #6384ff;
+      color: var(--accent);
       text-decoration: none;
     }
 
@@ -322,7 +357,7 @@
       padding: 24px;
       font-size: 0.75rem;
       color: #4e5672;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px solid var(--nav-border);
     }
 
     /* ── Responsive ── */
@@ -379,9 +414,9 @@
 
     /* ── Language toggle ── */
     .lang-toggle {
-      background: rgba(99, 132, 255, 0.15);
-      color: #a0a8c0;
-      border: 1px solid rgba(99, 132, 255, 0.3);
+      background: var(--accent-bg);
+      color: var(--text-secondary);
+      border: 1px solid var(--accent-border);
       font-family: inherit;
       font-size: 0.75rem;
       font-weight: 600;
@@ -395,8 +430,61 @@
     .lang-toggle:hover,
     .lang-toggle:focus-visible {
       color: #fff;
-      background: rgba(99, 132, 255, 0.25);
+      background: var(--accent-hover);
       border-color: rgba(99, 132, 255, 0.5);
+    }
+
+    /* ── Theme toggle ── */
+    .theme-toggle {
+      background: var(--accent-bg);
+      color: var(--text-secondary);
+      border: 1px solid var(--accent-border);
+      font-family: inherit;
+      font-size: 0.75rem;
+      padding: 6px 10px;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: color 0.3s, background 0.3s, border-color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .theme-toggle:hover,
+    .theme-toggle:focus-visible {
+      color: #fff;
+      background: var(--accent-hover);
+      border-color: rgba(99, 132, 255, 0.5);
+    }
+
+    .theme-toggle svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    [data-theme="light"] .theme-icon-moon { display: none; }
+    [data-theme="light"] .theme-icon-sun { display: inline !important; }
+
+    [data-theme="light"] nav a:hover,
+    [data-theme="light"] nav a:focus-visible {
+      color: var(--accent);
+      background: var(--accent-hover);
+    }
+
+    [data-theme="light"] .theme-toggle:hover,
+    [data-theme="light"] .theme-toggle:focus-visible {
+      color: var(--accent);
+    }
+
+    [data-theme="light"] .lang-toggle:hover,
+    [data-theme="light"] .lang-toggle:focus-visible {
+      color: var(--accent);
     }
 
     /* ── Figure captions inside gallery ── */
@@ -415,12 +503,13 @@
     .gallery-grid figcaption {
       text-align: center;
       font-size: 0.8rem;
-      color: #9ca3b8;
+      color: var(--text-muted);
       padding: 10px 12px;
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--card-bg);
       border: 3px solid rgba(255, 255, 255, 0.12);
       border-top: none;
       border-radius: 0 0 12px 12px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     /* ── Study section – larger image ── */
@@ -534,7 +623,7 @@
       display: block;
       font-size: 0.85rem;
       font-weight: 500;
-      color: #a0a8c0;
+      color: var(--text-secondary);
       margin-bottom: 6px;
       margin-top: 16px;
     }
@@ -561,7 +650,7 @@
     #contact-form input[type="text"]:focus,
     #contact-form input[type="email"]:focus,
     #contact-form textarea:focus {
-      border-color: #6384ff;
+      border-color: var(--accent);
     }
 
     #contact-form textarea {
@@ -590,7 +679,7 @@
 
     .privacy-label input[type="checkbox"] {
       margin-top: 3px;
-      accent-color: #6384ff;
+      accent-color: var(--accent);
       flex-shrink: 0;
     }
 
@@ -640,7 +729,7 @@
 
     .form-success p {
       font-size: 1.1rem;
-      color: #6384ff;
+      color: var(--accent);
       font-weight: 600;
     }
 
@@ -664,6 +753,10 @@
       <li><a href="#bachelor" data-i18n="nav.bachelor">Bacheloroppgave</a></li>
       <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
       <li><button class="lang-toggle" data-i18n="lang.switch" aria-label="Switch language">EN</button></li>
+      <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
+        <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button></li>
     </ul>
   </nav>
 
@@ -866,7 +959,9 @@
         "contact.form.success": "Takk! Jeg svarer deg innen 24 timer.",
         "contact.form.error.email": "Vennligst oppgi en gyldig e-postadresse.",
         "contact.form.sending": "Sender...",
-        "contact.form.error.server": "Noe gikk galt. Pr\u00f8v igjen senere."
+        "contact.form.error.server": "Noe gikk galt. Pr\u00f8v igjen senere.",
+        "theme.toggle.dark": "Bytt til lyst tema",
+        "theme.toggle.light": "Bytt til m\u00f8rkt tema"
       },
       en: {
         "nav.home": "Home",
@@ -921,7 +1016,9 @@
         "contact.form.success": "Thanks! I\u2019ll get back to you within 24 hours.",
         "contact.form.error.email": "Please enter a valid email address.",
         "contact.form.sending": "Sending...",
-        "contact.form.error.server": "Something went wrong. Please try again later."
+        "contact.form.error.server": "Something went wrong. Please try again later.",
+        "theme.toggle.dark": "Switch to light mode",
+        "theme.toggle.light": "Switch to dark mode"
       }
     };
 
@@ -980,6 +1077,45 @@
       try { saved = localStorage.getItem("lang"); } catch (e) { /* ignore */ }
       if (saved && translations[saved]) {
         setLanguage(saved);
+      }
+    })();
+
+    /* ── Theme toggle logic ── */
+    (function () {
+      var toggle = document.getElementById("theme-toggle");
+      var htmlEl = document.documentElement;
+
+      function applyTheme(theme) {
+        htmlEl.setAttribute("data-theme", theme);
+        try { localStorage.setItem("theme", theme); } catch (e) { /* ignore */ }
+
+        var moonIcon = toggle.querySelector(".theme-icon-moon");
+        var sunIcon = toggle.querySelector(".theme-icon-sun");
+        if (theme === "light") {
+          moonIcon.style.display = "none";
+          sunIcon.style.display = "inline";
+          toggle.setAttribute("aria-label", (translations[htmlEl.lang] || translations["nb"])["theme.toggle.light"] || "Switch to dark mode");
+        } else {
+          moonIcon.style.display = "inline";
+          sunIcon.style.display = "none";
+          toggle.setAttribute("aria-label", (translations[htmlEl.lang] || translations["nb"])["theme.toggle.dark"] || "Switch to light mode");
+        }
+      }
+
+      toggle.addEventListener("click", function () {
+        var current = htmlEl.getAttribute("data-theme") === "light" ? "dark" : "light";
+        applyTheme(current);
+      });
+
+      // Initialize: localStorage > system preference > default (dark)
+      var saved;
+      try { saved = localStorage.getItem("theme"); } catch (e) { /* ignore */ }
+      if (saved === "light" || saved === "dark") {
+        applyTheme(saved);
+      } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+        applyTheme("light");
+      } else {
+        applyTheme("dark");
       }
     })();
 
