@@ -62,6 +62,47 @@ test.describe("Hero section", () => {
     await page.click(".lang-toggle");
     await expect(page.locator("#hjem .cta-button")).toHaveText("Ta kontakt");
   });
+
+  test("has a caption describing the hero image", async ({ page }) => {
+    const caption = page.locator("#hjem .hero-caption");
+    await expect(caption).toBeVisible();
+    await expect(caption).toHaveText("Visdalen, med fjellet Hellstuguhøe på 2072 moh sentralt i bildet");
+  });
+
+  test("hero caption switches to English", async ({ page }) => {
+    await page.click(".lang-toggle");
+    const caption = page.locator("#hjem .hero-caption");
+    await expect(caption).toHaveText("Visdalen, with the mountain Hellstuguhøe at 2072 m a.s.l. in the centre of the image");
+  });
+
+  test("hero caption switches back to Norwegian", async ({ page }) => {
+    await page.click(".lang-toggle");
+    await page.click(".lang-toggle");
+    const caption = page.locator("#hjem .hero-caption");
+    await expect(caption).toHaveText("Visdalen, med fjellet Hellstuguhøe på 2072 moh sentralt i bildet");
+  });
+
+  test("hero caption has border styling consistent with other captions", async ({ page }) => {
+    const caption = page.locator("#hjem .hero-caption");
+    const border = await caption.evaluate((el) => getComputedStyle(el).border);
+    expect(border).toContain("3px");
+    expect(border).toContain("solid");
+  });
+
+  test("hero section has a bottom border", async ({ page }) => {
+    const borderBottom = await page.locator("#hjem").evaluate((el) =>
+      getComputedStyle(el).borderBottom
+    );
+    expect(borderBottom).toContain("3px");
+    expect(borderBottom).toContain("solid");
+  });
+
+  test("hero section has a fade transition pseudo-element", async ({ page }) => {
+    const afterBg = await page.locator("#hjem").evaluate((el) =>
+      getComputedStyle(el, "::after").backgroundImage
+    );
+    expect(afterBg).toContain("gradient");
+  });
 });
 
 test.describe("i18n language switching", () => {

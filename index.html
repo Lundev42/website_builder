@@ -278,6 +278,49 @@
       50% { opacity: 1; }
     }
 
+    /* ── Hero caption ── */
+    .hero-caption {
+      position: absolute;
+      bottom: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding: 12px 14px;
+      background: var(--card-bg);
+      border: 3px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      max-width: 600px;
+      width: max-content;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* ── Hero-to-section fade transition ── */
+    #hjem::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 160px;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(15, 17, 23, 0.25) 25%,
+        rgba(15, 17, 23, 0.6) 50%,
+        var(--bg-primary) 100%
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* ── Hero image border ── */
+    #hjem {
+      border-bottom: 3px solid rgba(255, 255, 255, 0.12);
+    }
+
     /* ── About ── */
     #om-meg .media-col figure {
       margin: 0;
@@ -828,6 +871,7 @@
         <a href="#kontakt" class="cta-button" data-i18n="hero.cta">Ta kontakt</a>
         <span class="scroll-hint" data-i18n="hero.scroll">↓ Scroll ned for å lese mer</span>
       </div>
+      <div class="hero-caption" data-i18n="hero.caption">Visdalen, med fjellet Hellstuguhøe på 2072 moh sentralt i bildet</div>
     </section>
 
     <!-- About me -->
@@ -973,6 +1017,7 @@
         "hero.subtitle": "Jeg er interessert i geologi, spesielt bergartsgeologi og jordas utvikling frem til i dag. Jeg jobber for tiden med bacheloroppgaven min om Gula- og Funnsjøgruppen i Trøndelag, som en del av Merøprosjektet til NGU.",
         "hero.scroll": "\u2193 Scroll ned for \u00e5 lese mer",
         "hero.cta": "Ta kontakt",
+        "hero.caption": "Visdalen, med fjellet Hellstuguh\u00f8e p\u00e5 2072 moh sentralt i bildet",
         "about.title": "Om meg",
         "about.text": "Jeg er en student fra Sogndal med stor interesse for geologi og hvordan naturkreftene former landskapet rundt oss. Gjennom studietiden har jeg f\u00e5tt utforsket alt fra fjellformasjoner til skredfare, og jeg trives best ute i felt med hammer og kompass i h\u00e5nden.",
         "about.img.alt": "Vetle \u00d8yvind Larsen Lunde",
@@ -1030,6 +1075,7 @@
         "hero.subtitle": "I am interested in geology, especially rock geology and the evolution of the Earth until today. I am currently working on my bachelor thesis on the Gula and Funnsjø group in Trøndelag, as part of the Merø project by NGU.",
         "hero.scroll": "\u2193 Scroll down to read more",
         "hero.cta": "Get in touch",
+        "hero.caption": "Visdalen, with the mountain Hellstuguh\u00f8e at 2072 m a.s.l. in the centre of the image",
         "about.title": "About me",
         "about.text": "I\u2019m a student from Sogndal with a strong interest in geology and how natural forces shape the landscape around us. Throughout my studies I\u2019ve explored everything from mountain formations to avalanche hazards, and I feel most at home out in the field with a hammer and compass in hand.",
         "about.img.alt": "Vetle \u00d8yvind Larsen Lunde",
