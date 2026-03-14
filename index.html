@@ -167,7 +167,8 @@
       margin-top: 28px;
       margin-bottom: 12px;
     }
-    .text-col h4.job-title {
+    .text-col h4.job-title,
+    .timeline-content h4.job-title {
       font-size: 1.2rem;
       font-weight: 600;
       color: var(--accent);
@@ -188,7 +189,7 @@
       position: absolute;
       left: -6px;
       top: 12px;
-      bottom: -12px;
+      bottom: -18px;
       width: 2px;
       background: var(--accent);
       opacity: 0.4;
@@ -232,7 +233,8 @@
       margin-top: 0;
     }
 
-    .text-col p {
+    .text-col p,
+    .timeline-content p {
       font-size: 1.05rem;
       line-height: 1.75;
       color: var(--text-muted);
@@ -363,8 +365,17 @@
     }
 
     /* ── About ── */
+    #om-meg .section-inner {
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
     #om-meg .text-col {
       max-width: 960px;
+    }
+
+    #om-meg .timeline {
+      flex: 0 0 100%;
     }
 
     #om-meg .media-col figure {
@@ -949,24 +960,6 @@
           <p data-i18n="about.background.text">I 2023 startet jeg på den treårige bachelorgraden Geologi og Geofare ved Høgskulen på Vestlandet i Sogndal. Studiet har gitt meg stor kunnskap og lærerike opplevelser gjennom både teoretisk undervisning og feltarbeid/ekskursjoner. Nå bygger jeg videre på kunnskapen jeg har opparbeidet meg ved å skrive en bacheloroppgave som avslutning på studiet.</p>
           <h3 data-i18n="about.background.title">Min bakgrunn</h3>
           <p data-i18n="about.background.intro">Fra perioden 2023–2025 har jeg hatt to sommerjobber i firmaet ConocoPhillips, hvor jeg har jobbet med oljerelatert geologi og geofysikk.</p>
-          <div class="timeline">
-            <div class="timeline-entry">
-              <div class="timeline-date">2023–2024</div>
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <h4 data-i18n="about.job1.title" class="job-title">ConocoPhillips 2023–2024</h4>
-                <p data-i18n="about.job1.text">Arbeidet mitt besto av å hjelpe reservoarkarakteriserings teamet med å lage en brukbar biostratigrafisk database. Dette arbeidet støtter den geologiske tolkningen etter borekampanjen på gasskondensatfeltet Tommeliten A, og bidro til den fullstendige modelloppdateringen for 2024/2025. Arbeidsflyten bestod av databehandling i Excel etterfulgt av analysearbeid i Spotfire.</p>
-              </div>
-            </div>
-            <div class="timeline-entry">
-              <div class="timeline-date">2024–2025</div>
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <h4 data-i18n="about.job2.title" class="job-title">ConocoPhillips 2024–2025</h4>
-                <p data-i18n-html="about.job2.text"><em>Foreløpig under arbeid</em></p>
-              </div>
-            </div>
-          </div>
         </div>
         <div class="media-col">
           <figure>
@@ -977,6 +970,24 @@
             />
             <figcaption data-i18n="about.caption">Solen går ned, men kartleggingen fortsetter</figcaption>
           </figure>
+        </div>
+        <div class="timeline">
+          <div class="timeline-entry">
+            <div class="timeline-date">2023–2024</div>
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4 data-i18n="about.job1.title" class="job-title">ConocoPhillips 2023–2024</h4>
+              <p data-i18n="about.job1.text">Arbeidet mitt besto av å hjelpe reservoarkarakteriserings teamet med å lage en brukbar biostratigrafisk database. Dette arbeidet støtter den geologiske tolkningen etter borekampanjen på gasskondensatfeltet Tommeliten A, og bidro til den fullstendige modelloppdateringen for 2024/2025. Arbeidsflyten bestod av databehandling i Excel etterfulgt av analysearbeid i Spotfire.</p>
+            </div>
+          </div>
+          <div class="timeline-entry">
+            <div class="timeline-date">2024–2025</div>
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4 data-i18n="about.job2.title" class="job-title">ConocoPhillips 2024–2025</h4>
+              <p data-i18n-html="about.job2.text"><em>Foreløpig under arbeid</em></p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
