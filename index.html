@@ -454,6 +454,23 @@
     /* ── Contact button ── */
     .contact-btn {
       margin-top: 24px;
+      display: inline-block;
+      padding: 18px 48px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: #6384ff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .contact-btn:hover,
+    .contact-btn:focus-visible {
+      background: #4a6bff;
+      transform: translateY(-2px);
     }
 
     /* ── Contact Modal ── */
@@ -492,7 +509,7 @@
       background: none;
       border: none;
       color: #8b93a8;
-      font-size: 1.6rem;
+      font-size: 1.2rem;
       cursor: pointer;
       line-height: 1;
       padding: 4px 8px;
@@ -594,6 +611,18 @@
       border: none;
       cursor: pointer;
       font-family: inherit;
+      padding: 16px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: #6384ff;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .form-submit:hover,
+    .form-submit:focus-visible {
+      background: #4a6bff;
     }
 
     .form-success {
@@ -741,9 +770,7 @@
       <div class="modal-content">
         <button id="contact-close-btn" class="modal-close" aria-label="Lukk" data-i18n="contact.modal.close.aria">&times;</button>
         <h2 id="contact-modal-title" data-i18n="contact.modal.title">Kontaktskjema</h2>
-        <!-- SETUP: Replace YOUR_FORM_ID with your Formspree form ID.
-             Sign up at https://formspree.io, create a form, and paste the ID below. -->
-        <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <form id="contact-form" novalidate>
           <!-- Honeypot anti-spam field -->
           <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
 
@@ -982,7 +1009,9 @@
         if (e.key === "Escape" && !modal.hidden) closeModal();
       });
 
-      /* Form validation & submit */
+      /* Form validation & submit via mailto */
+      var CONTACT_EMAIL = "vetleoyvind@yahoo.com";
+
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         errorMsg.hidden = true;
@@ -993,27 +1022,19 @@
           return;
         }
 
-        /* NOTE: Replace YOUR_FORM_ID in the form action attribute.
-           See the HTML comment above the <form> element for setup steps. */
+        var name = document.getElementById("contact-name").value;
+        var subject = document.getElementById("contact-subject").value;
+        var message = document.getElementById("contact-message").value;
 
-        var formData = new FormData(form);
+        var body = "Navn / Name: " + name + "\nE-post / Email: " + email + "\n\n" + message;
+        var mailto = "mailto:" + CONTACT_EMAIL +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(body);
 
-        fetch(form.action, {
-          method: "POST",
-          body: formData,
-          headers: { "Accept": "application/json" }
-        }).then(function (response) {
-          if (response.ok) {
-            form.hidden = true;
-            successDiv.hidden = false;
-          }
-        }).catch(function () {
-          /* Fetch throws on file:// protocol – show success for local preview only */
-          if (window.location.protocol === "file:") {
-            form.hidden = true;
-            successDiv.hidden = false;
-          }
-        });
+        window.location.href = mailto;
+
+        form.hidden = true;
+        successDiv.hidden = false;
       });
     })();
   </script>
