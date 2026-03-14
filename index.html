@@ -142,6 +142,7 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: var(--accent);
       background: linear-gradient(90deg, var(--accent), #a78bfa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -1324,6 +1325,8 @@
             });
           }
         });
+      /* Top 40% and bottom 60% margins ensure the "active" section is the one
+         occupying the middle strip of the viewport, giving a natural feel. */
       }, { rootMargin: '-40% 0px -60% 0px' });
       sections.forEach(function (s) { observer.observe(s); });
     })();
