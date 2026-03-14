@@ -140,21 +140,21 @@ test.describe("i18n language switching", () => {
   });
 });
 
-test.describe("About section – background subheading", () => {
+test.describe("About section – content", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(PAGE_URL);
   });
 
-  test("displays 'Min bakgrunn' subheading in Om meg section", async ({ page }) => {
-    const heading = page.locator("#om-meg h3");
-    await expect(heading).toBeVisible();
-    await expect(heading).toHaveText("Min bakgrunn");
+  test("displays updated about text in Om meg section", async ({ page }) => {
+    const text = page.locator('#om-meg [data-i18n="about.text"]');
+    await expect(text).toBeVisible();
+    await expect(text).toContainText("Hei, mitt navn er Vetle!");
   });
 
-  test("subheading switches to 'My background' in English", async ({ page }) => {
+  test("about text switches to English", async ({ page }) => {
     await page.click(".lang-toggle");
-    const heading = page.locator("#om-meg h3");
-    await expect(heading).toHaveText("My background");
+    const text = page.locator('#om-meg [data-i18n="about.text"]');
+    await expect(text).toContainText("Hi, my name is Vetle!");
   });
 });
 
