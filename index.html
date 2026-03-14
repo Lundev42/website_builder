@@ -801,7 +801,6 @@
         </form>
         <div id="contact-success" class="form-success" hidden>
           <p data-i18n="contact.form.success">Takk! Jeg svarer deg innen 24 timer.</p>
-          <button id="contact-new-btn" class="cta-button form-submit" data-i18n="contact.form.new">Send ny melding</button>
         </div>
       </div>
     </div>
@@ -865,7 +864,6 @@
         "contact.form.privacy": "Jeg godtar at opplysningene mine blir behandlet for \u00e5 svare p\u00e5 henvendelsen.",
         "contact.form.submit": "Send melding",
         "contact.form.success": "Takk! Jeg svarer deg innen 24 timer.",
-        "contact.form.new": "Send ny melding",
         "contact.form.error.email": "Vennligst oppgi en gyldig e-postadresse."
       },
       en: {
@@ -919,7 +917,6 @@
         "contact.form.privacy": "I agree that my information will be processed to respond to my inquiry.",
         "contact.form.submit": "Send Message",
         "contact.form.success": "Thanks! I\u2019ll get back to you within 24 hours.",
-        "contact.form.new": "Send Another Message",
         "contact.form.error.email": "Please enter a valid email address."
       }
     };
@@ -1052,8 +1049,6 @@
         successDiv.hidden = false;
       });
 
-      /* ── Send-another button ── */
-      document.getElementById("contact-new-btn").addEventListener("click", resetFormState);
     })();
   </script>
 
