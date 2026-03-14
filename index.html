@@ -1312,6 +1312,8 @@
       var navLinks = document.querySelectorAll('nav a[href^="#"]');
       if (!('IntersectionObserver' in window)) return;
 
+      var scrollLocked = false;
+
       function setActive(id) {
         navLinks.forEach(function (link) {
           link.classList.remove('nav-active');
@@ -1323,21 +1325,31 @@
 
       var lastSection = sections[sections.length - 1];
 
-      /* Top 40% and bottom 60% margins ensure the "active" section is the one
-         occupying the middle strip of the viewport, giving a natural feel. */
+      /* Detection strip occupies 20 %–40 % from the top of the viewport. */
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             setActive(entry.target.id);
           }
         });
-      }, { rootMargin: '-40% 0px -60% 0px' });
+      }, { rootMargin: '-20% 0px -60% 0px' });
       sections.forEach(function (s) { observer.observe(s); });
+
+      /* When a nav link is clicked, immediately highlight it and suppress
+         the scroll-to-bottom override during the smooth-scroll animation. */
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          var id = link.getAttribute('href').substring(1);
+          setActive(id);
+          scrollLocked = true;
+          setTimeout(function () { scrollLocked = false; }, 800);
+        });
+      });
 
       /* When scrolled to the bottom of the page, activate the last section
          even if it is too short to reach the observer's detection zone. */
       window.addEventListener('scroll', function () {
-        if ((window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 2)) { /* 2px tolerance for sub-pixel rounding */
+        if (!scrollLocked && (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 2)) {
           setActive(lastSection.id);
         }
       });

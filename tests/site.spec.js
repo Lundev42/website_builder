@@ -416,3 +416,49 @@ test.describe("Theme toggle (dark/light mode)", () => {
     await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
   });
 });
+
+test.describe("Navigation active highlighting", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(PAGE_URL);
+  });
+
+  test("clicking bachelor nav link highlights it and not kontakt", async ({ page }) => {
+    // Scroll to kontakt first so it becomes active
+    await page.locator('nav a[href="#kontakt"]').click();
+    await page.waitForTimeout(500);
+
+    // Now click bachelor
+    await page.locator('nav a[href="#bachelor"]').click();
+    await page.waitForTimeout(500);
+
+    const bachelorLink = page.locator('nav a[href="#bachelor"]');
+    const kontaktLink = page.locator('nav a[href="#kontakt"]');
+    await expect(bachelorLink).toHaveClass(/nav-active/);
+    await expect(kontaktLink).not.toHaveClass(/nav-active/);
+  });
+
+  test("clicking kontakt nav link highlights it and not bachelor", async ({ page }) => {
+    // Scroll to bachelor first
+    await page.locator('nav a[href="#bachelor"]').click();
+    await page.waitForTimeout(500);
+
+    // Now click kontakt
+    await page.locator('nav a[href="#kontakt"]').click();
+    await page.waitForTimeout(500);
+
+    const bachelorLink = page.locator('nav a[href="#bachelor"]');
+    const kontaktLink = page.locator('nav a[href="#kontakt"]');
+    await expect(kontaktLink).toHaveClass(/nav-active/);
+    await expect(bachelorLink).not.toHaveClass(/nav-active/);
+  });
+
+  test("only one nav link is active at a time", async ({ page }) => {
+    const hrefs = ['#hjem', '#om-meg', '#studiet', '#bachelor', '#kontakt'];
+    for (const href of hrefs) {
+      await page.locator('nav a[href="' + href + '"]').click();
+      await page.waitForTimeout(500);
+      const activeLinks = page.locator('nav a.nav-active');
+      await expect(activeLinks).toHaveCount(1);
+    }
+  });
+});
