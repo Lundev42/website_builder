@@ -1060,13 +1060,20 @@
             _gotcha: honeypot
           })
         })
-        .then(function (res) { return res.json(); })
-        .then(function (data) {
-          if (data.success) {
+        .then(function (res) {
+          if (!res.ok && res.status === 404) {
+            throw new Error("PHP_UNAVAILABLE");
+          }
+          return res.json().then(function (data) {
+            return { ok: res.ok, data: data };
+          });
+        })
+        .then(function (result) {
+          if (result.ok && result.data.success) {
             form.hidden = true;
             successDiv.hidden = false;
           } else {
-            errorMsg.textContent = data.message || dict["contact.form.error.server"];
+            errorMsg.textContent = result.data.message || dict["contact.form.error.server"];
             errorMsg.hidden = false;
           }
         })
@@ -1083,8 +1090,10 @@
           successDiv.hidden = false;
         })
         .finally(function () {
-          submitBtn.disabled = false;
-          submitBtn.textContent = dict["contact.form.submit"] || "Send melding";
+          if (!form.hidden) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = dict["contact.form.submit"] || "Send melding";
+          }
         });
       });
 
