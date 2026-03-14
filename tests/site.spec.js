@@ -114,6 +114,24 @@ test.describe("i18n language switching", () => {
   });
 });
 
+test.describe("About section – background subheading", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(PAGE_URL);
+  });
+
+  test("displays 'Min bakgrunn' subheading in Om meg section", async ({ page }) => {
+    const heading = page.locator("#om-meg h3");
+    await expect(heading).toBeVisible();
+    await expect(heading).toHaveText("Min bakgrunn");
+  });
+
+  test("subheading switches to 'My background' in English", async ({ page }) => {
+    await page.click(".lang-toggle");
+    const heading = page.locator("#om-meg h3");
+    await expect(heading).toHaveText("My background");
+  });
+});
+
 test.describe("Norwegian Bokmål content", () => {
   test("all text is in Bokmål (not Nynorsk)", async ({ page }) => {
     await page.goto(PAGE_URL);
