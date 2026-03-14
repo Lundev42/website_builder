@@ -353,6 +353,7 @@ test.describe("Contact form modal", () => {
     await expect(page.locator("#contact-email")).toHaveValue("");
     await expect(page.locator("#contact-subject")).toHaveValue("");
     await expect(page.locator("#contact-message")).toHaveValue("");
+    await expect(page.locator("#contact-privacy")).not.toBeChecked();
   });
 
   test("reopening modal after submission shows fresh form", async ({ page }) => {
