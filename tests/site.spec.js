@@ -425,11 +425,11 @@ test.describe("Navigation active highlighting", () => {
   test("clicking bachelor nav link highlights it and not kontakt", async ({ page }) => {
     // Scroll to kontakt first so it becomes active
     await page.locator('nav a[href="#kontakt"]').click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(900);
 
     // Now click bachelor
     await page.locator('nav a[href="#bachelor"]').click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(900);
 
     const bachelorLink = page.locator('nav a[href="#bachelor"]');
     const kontaktLink = page.locator('nav a[href="#kontakt"]');
@@ -440,11 +440,11 @@ test.describe("Navigation active highlighting", () => {
   test("clicking kontakt nav link highlights it and not bachelor", async ({ page }) => {
     // Scroll to bachelor first
     await page.locator('nav a[href="#bachelor"]').click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(900);
 
     // Now click kontakt
     await page.locator('nav a[href="#kontakt"]').click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(900);
 
     const bachelorLink = page.locator('nav a[href="#bachelor"]');
     const kontaktLink = page.locator('nav a[href="#kontakt"]');
@@ -456,7 +456,7 @@ test.describe("Navigation active highlighting", () => {
     const hrefs = ['#hjem', '#om-meg', '#studiet', '#bachelor', '#kontakt'];
     for (const href of hrefs) {
       await page.locator('nav a[href="' + href + '"]').click();
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(900);
       const activeLinks = page.locator('nav a.nav-active');
       await expect(activeLinks).toHaveCount(1);
     }
