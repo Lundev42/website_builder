@@ -147,10 +147,11 @@ test.describe("SEO and accessibility must-haves", () => {
     await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute("content", "#0f1117");
   });
 
-  test("has a skip-to-content link", async ({ page }) => {
+  test("has a skip-to-content link targeting main content", async ({ page }) => {
     const skipLink = page.locator(".skip-link");
     await expect(skipLink).toHaveAttribute("href", "#hovedinnhold");
     await expect(skipLink).toHaveText("Hopp til hovedinnhold");
+    await expect(page.locator("#hovedinnhold")).toHaveCount(1);
   });
 
   test("skip-to-content link text switches language", async ({ page }) => {

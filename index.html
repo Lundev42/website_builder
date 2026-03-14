@@ -657,6 +657,9 @@
       var ogLocale = document.querySelector('meta[property="og:locale"]');
       if (ogLocale) ogLocale.setAttribute("content", lang === "en" ? "en_US" : "nb_NO");
 
+      var ogLocaleAlt = document.querySelector('meta[property="og:locale:alternate"]');
+      if (ogLocaleAlt) ogLocaleAlt.setAttribute("content", lang === "en" ? "nb_NO" : "en_US");
+
       document.querySelectorAll("[data-i18n]").forEach(function (el) {
         var key = el.getAttribute("data-i18n");
         if (dict[key] != null) el.textContent = dict[key];
