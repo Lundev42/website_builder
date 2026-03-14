@@ -486,6 +486,18 @@
     [data-theme="light"] .theme-icon-moon { display: none; }
     [data-theme="light"] .theme-icon-sun { display: inline !important; }
 
+    /* Sun icon: golden yellow in light mode */
+    [data-theme="light"] .theme-toggle .theme-icon-sun {
+      stroke: #f59e0b;
+      fill: #f59e0b;
+    }
+
+    /* Moon icon: soft silver fill in dark mode */
+    .theme-toggle .theme-icon-moon {
+      fill: #c0c8d8;
+      stroke: #c0c8d8;
+    }
+
     [data-theme="light"] nav a:hover,
     [data-theme="light"] nav a:focus-visible {
       color: var(--accent);
@@ -1327,6 +1339,7 @@
 
       /* Detection strip occupies 20 %–40 % from the top of the viewport. */
       var observer = new IntersectionObserver(function (entries) {
+        if (scrollLocked) return;
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             setActive(entry.target.id);
