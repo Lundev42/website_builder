@@ -281,20 +281,21 @@
     /* ── Hero caption ── */
     .hero-caption {
       position: absolute;
-      bottom: 150px;
+      bottom: 170px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 3;
       text-align: center;
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: rgba(255, 255, 255, 0.75);
       padding: 12px 14px;
-      background: var(--card-bg);
+      background: rgba(15, 17, 23, 0.55);
       border: 3px solid rgba(255, 255, 255, 0.12);
       border-radius: 16px;
       max-width: 600px;
       width: max-content;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     /* ── Hero-to-section fade transition ── */
