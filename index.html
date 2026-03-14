@@ -176,6 +176,61 @@
       margin-bottom: 8px;
     }
 
+    /* ── Timeline ── */
+    .timeline {
+      position: relative;
+      margin-top: 32px;
+      padding-left: 180px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 170px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--accent);
+      opacity: 0.4;
+    }
+
+    .timeline-entry {
+      position: relative;
+      padding-left: 32px;
+      padding-bottom: 36px;
+    }
+
+    .timeline-entry:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-date {
+      position: absolute;
+      left: -180px;
+      top: 2px;
+      width: 148px;
+      text-align: right;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: -11px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: var(--bg-primary);
+    }
+
+    .timeline-entry .job-title {
+      margin-top: 0;
+    }
+
     .text-col p {
       font-size: 1.05rem;
       line-height: 1.75;
@@ -456,6 +511,25 @@
       .gallery-grid .tall {
         grid-row: span 1;
         height: 200px;
+      }
+
+      .timeline {
+        padding-left: 28px;
+      }
+
+      .timeline::before {
+        left: 6px;
+      }
+
+      .timeline-marker {
+        left: -22px;
+      }
+
+      .timeline-date {
+        position: static;
+        width: auto;
+        text-align: left;
+        margin-bottom: 4px;
       }
     }
 
@@ -873,10 +947,24 @@
           <p data-i18n="about.background.text">I 2023 startet jeg på den treårige bachelorgraden Geologi og Geofare ved Høgskulen på Vestlandet i Sogndal. Studiet har gitt meg stor kunnskap og lærerike opplevelser gjennom både teoretisk undervisning og feltarbeid/ekskursjoner. Nå bygger jeg videre på kunnskapen jeg har opparbeidet meg ved å skrive en bacheloroppgave som avslutning på studiet.</p>
           <h3 data-i18n="about.background.title">Min bakgrunn</h3>
           <p data-i18n="about.background.intro">Fra perioden 2023–2025 har jeg hatt to sommerjobber i firmaet ConocoPhillips, hvor jeg har jobbet med oljerelatert geologi og geofysikk.</p>
-          <h4 data-i18n="about.job1.title" class="job-title">ConocoPhillips 2023–2024</h4>
-          <p data-i18n="about.job1.text">Arbeidet mitt besto av å hjelpe reservoarkarakteriserings teamet med å lage en brukbar biostratigrafisk database. Dette arbeidet støtter den geologiske tolkningen etter borekampanjen på gasskondensatfeltet Tommeliten A, og bidro til den fullstendige modelloppdateringen for 2024/2025. Arbeidsflyten bestod av databehandling i Excel etterfulgt av analysearbeid i Spotfire.</p>
-          <h4 data-i18n="about.job2.title" class="job-title">ConocoPhillips 2024–2025</h4>
-          <p data-i18n-html="about.job2.text"><em>Foreløpig under arbeid</em></p>
+          <div class="timeline">
+            <div class="timeline-entry">
+              <div class="timeline-date">2023–2024</div>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4 data-i18n="about.job1.title" class="job-title">ConocoPhillips 2023–2024</h4>
+                <p data-i18n="about.job1.text">Arbeidet mitt besto av å hjelpe reservoarkarakteriserings teamet med å lage en brukbar biostratigrafisk database. Dette arbeidet støtter den geologiske tolkningen etter borekampanjen på gasskondensatfeltet Tommeliten A, og bidro til den fullstendige modelloppdateringen for 2024/2025. Arbeidsflyten bestod av databehandling i Excel etterfulgt av analysearbeid i Spotfire.</p>
+              </div>
+            </div>
+            <div class="timeline-entry">
+              <div class="timeline-date">2024–2025</div>
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4 data-i18n="about.job2.title" class="job-title">ConocoPhillips 2024–2025</h4>
+                <p data-i18n-html="about.job2.text"><em>Foreløpig under arbeid</em></p>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="media-col">
           <figure>

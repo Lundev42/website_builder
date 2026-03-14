@@ -183,6 +183,26 @@ test.describe("About section – content", () => {
     await expect(job2Text).toContainText("under arbeid");
   });
 
+  test("timeline container is visible in Om meg section", async ({ page }) => {
+    const timeline = page.locator('#om-meg .timeline');
+    await expect(timeline).toBeVisible();
+    const entries = page.locator('#om-meg .timeline-entry');
+    await expect(entries).toHaveCount(2);
+  });
+
+  test("timeline displays year ranges", async ({ page }) => {
+    const dates = page.locator('#om-meg .timeline-date');
+    await expect(dates.nth(0)).toHaveText("2023–2024");
+    await expect(dates.nth(1)).toHaveText("2024–2025");
+  });
+
+  test("timeline markers are visible", async ({ page }) => {
+    const markers = page.locator('#om-meg .timeline-marker');
+    await expect(markers).toHaveCount(2);
+    await expect(markers.nth(0)).toBeVisible();
+    await expect(markers.nth(1)).toBeVisible();
+  });
+
   test("job history switches to English", async ({ page }) => {
     await page.click(".lang-toggle");
     const job1Text = page.locator('#om-meg [data-i18n="about.job1.text"]');
