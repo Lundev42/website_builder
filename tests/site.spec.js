@@ -126,3 +126,42 @@ test.describe("Norwegian Bokmål content", () => {
     expect(html).not.toContain("Ikkje");
   });
 });
+
+test.describe("SEO and accessibility must-haves", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(PAGE_URL);
+  });
+
+  test("has a meta description tag", async ({ page }) => {
+    const desc = page.locator('meta[name="description"]');
+    await expect(desc).toHaveAttribute("content", /Vetle/);
+  });
+
+  test("has Open Graph meta tags", async ({ page }) => {
+    await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", /Vetle/);
+    await expect(page.locator('meta[property="og:type"]')).toHaveAttribute("content", "website");
+    await expect(page.locator('meta[property="og:url"]')).toHaveAttribute("content", /vetle-lunde-site/);
+  });
+
+  test("has a theme-color meta tag", async ({ page }) => {
+    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute("content", "#0f1117");
+  });
+
+  test("has a skip-to-content link", async ({ page }) => {
+    const skipLink = page.locator(".skip-link");
+    await expect(skipLink).toHaveAttribute("href", "#hovedinnhold");
+    await expect(skipLink).toHaveText("Hopp til hovedinnhold");
+  });
+
+  test("skip-to-content link text switches language", async ({ page }) => {
+    await page.click(".lang-toggle");
+    await expect(page.locator(".skip-link")).toHaveText("Skip to main content");
+  });
+
+  test("meta description updates on language switch", async ({ page }) => {
+    const desc = page.locator('meta[name="description"]');
+    await expect(desc).toHaveAttribute("content", /geologistudent/);
+    await page.click(".lang-toggle");
+    await expect(desc).toHaveAttribute("content", /geology student/);
+  });
+});

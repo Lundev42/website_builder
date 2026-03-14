@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portefølje for Vetle Øyvind Larsen Lunde – geologistudent ved Høgskulen på Vestlandet i Sogndal. Geologi og Geofare.">
+  <meta property="og:title" content="Vetle – Geologi og Geofare">
+  <meta property="og:description" content="Portefølje for Vetle Øyvind Larsen Lunde – geologistudent ved Høgskulen på Vestlandet i Sogndal.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://Lundev42.github.io/vetle-lunde-site/">
+  <meta property="og:locale" content="nb_NO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="theme-color" content="#0f1117">
   <title>Vetle – Geologi og Geofare</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🪨</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -411,9 +419,29 @@
       max-height: 500px;
       object-fit: cover;
     }
+
+    /* ── Skip-to-content (a11y) ── */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 200;
+      background: #6384ff;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 0 0 8px 0;
+    }
+
+    .skip-link:focus {
+      left: 0;
+    }
   </style>
 </head>
 <body>
+
+  <a href="#hovedinnhold" class="skip-link" data-i18n="skip.link">Hopp til hovedinnhold</a>
 
   <!-- Navigation -->
   <nav>
@@ -427,7 +455,7 @@
     </ul>
   </nav>
 
-  <main>
+  <main id="hovedinnhold">
 
     <!-- Hero -->
     <section id="hjem">
@@ -566,6 +594,8 @@
         "contact.text": "Har du sp\u00f8rsm\u00e5l om studiet, bacheloroppgaven eller bare vil sl\u00e5 av en prat om geologi? Ikke n\u00f8l med \u00e5 ta kontakt!",
         "footer.text": "Geologi og Geofare",
         "page.title": "Vetle \u2013 Geologi og Geofare",
+        "meta.description": "Portefølje for Vetle Øyvind Larsen Lunde – geologistudent ved Høgskulen på Vestlandet i Sogndal. Geologi og Geofare.",
+        "skip.link": "Hopp til hovedinnhold",
         "lang.switch": "EN"
       },
       en: {
@@ -600,6 +630,8 @@
         "contact.text": "Do you have questions about the programme, the bachelor thesis or just want to chat about geology? Don\u2019t hesitate to get in touch!",
         "footer.text": "Geology and Geo-Hazards",
         "page.title": "Vetle \u2013 Geology and Geo-Hazards",
+        "meta.description": "Portfolio of Vetle Øyvind Larsen Lunde – geology student at Western Norway University of Applied Sciences in Sogndal. Geology and Geo-Hazards.",
+        "skip.link": "Skip to main content",
         "lang.switch": "NO"
       }
     };
@@ -612,6 +644,18 @@
       if (!dict) return;
 
       document.title = dict["page.title"] || document.title;
+
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && dict["meta.description"]) metaDesc.setAttribute("content", dict["meta.description"]);
+
+      var ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute("content", dict["page.title"] || "");
+
+      var ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc && dict["meta.description"]) ogDesc.setAttribute("content", dict["meta.description"]);
+
+      var ogLocale = document.querySelector('meta[property="og:locale"]');
+      if (ogLocale) ogLocale.setAttribute("content", lang === "en" ? "en_US" : "nb_NO");
 
       document.querySelectorAll("[data-i18n]").forEach(function (el) {
         var key = el.getAttribute("data-i18n");
