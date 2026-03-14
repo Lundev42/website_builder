@@ -143,6 +143,10 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
+      background: linear-gradient(90deg, var(--accent), #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 14px;
     }
 
@@ -175,6 +179,7 @@
       border: 3px solid rgba(255, 255, 255, 0.12);
       object-fit: cover;
       display: block;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
     /* ── Hero section ── */
@@ -215,6 +220,7 @@
       margin-bottom: 16px;
       line-height: 1.15;
       white-space: nowrap;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     }
 
     #hjem .hero-geolog {
@@ -223,6 +229,7 @@
       color: #ffffff;
       margin-bottom: 8px;
       text-transform: none;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
     }
 
     #hjem .subtitle {
@@ -231,6 +238,7 @@
       max-width: 520px;
       margin: 0 auto 32px;
       line-height: 1.7;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
     }
 
     #hjem .cta-button {
@@ -244,7 +252,7 @@
       border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
-      transition: background 0.3s, transform 0.2s;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
       letter-spacing: 0.02em;
     }
 
@@ -252,6 +260,7 @@
     #hjem .cta-button:focus-visible {
       background: #4a6bff;
       transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(99, 132, 255, 0.4);
     }
 
     #hjem .scroll-hint {
@@ -278,8 +287,8 @@
     }
 
     #om-meg .media-col figure:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 20px rgba(99, 132, 255, 0.4), 0 0 40px rgba(99, 132, 255, 0.15);
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(99, 132, 255, 0.2), 0 0 20px rgba(99, 132, 255, 0.1);
     }
 
     #om-meg .media-col img {
@@ -502,8 +511,8 @@
     }
 
     .gallery-grid figure:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 20px rgba(99, 132, 255, 0.4), 0 0 40px rgba(99, 132, 255, 0.15);
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(99, 132, 255, 0.2), 0 0 20px rgba(99, 132, 255, 0.1);
     }
 
     .gallery-grid figcaption {
@@ -558,7 +567,7 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
       letter-spacing: 0.02em;
     }
 
@@ -566,6 +575,7 @@
     .contact-btn:focus-visible {
       background: #4a6bff;
       transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(99, 132, 255, 0.4);
     }
 
     /* ── Contact Modal ── */
@@ -744,6 +754,34 @@
         padding: 28px 20px;
       }
     }
+
+    /* ── Scroll reveal animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Active navigation state ── */
+    nav a.nav-active {
+      color: var(--accent);
+      background: var(--accent-bg);
+    }
+
+    /* ── Image hover border glow ── */
+    .media-col figure:hover img {
+      border-color: rgba(99, 132, 255, 0.4);
+    }
+
+    /* ── Alternating section backgrounds ── */
+    section:nth-of-type(even) {
+      background: var(--bg-secondary);
+    }
   </style>
 </head>
 <body>
@@ -771,7 +809,7 @@
     <!-- Hero -->
     <section id="hjem">
       <div class="hero-overlay"></div>
-      <div class="hero-content">
+      <div class="hero-content reveal">
         <p class="hero-geolog" data-i18n="hero.geolog">geolog</p>
         <h1 data-i18n="hero.title">Vetle Øyvind Larsen Lunde</h1>
         <p class="subtitle" data-i18n="hero.subtitle">Jeg er interessert i geologi, spesielt bergartsgeologi og jordas utvikling frem til i dag. Jeg jobber for tiden med bacheloroppgaven min om Gula- og Funnsjøgruppen i Trøndelag, som en del av Merøprosjektet til NGU.</p>
@@ -782,7 +820,7 @@
 
     <!-- About me -->
     <section id="om-meg">
-      <div class="section-inner">
+      <div class="section-inner reveal">
         <div class="text-col">
           <h2 data-i18n="about.title">Om meg</h2>
           <p data-i18n="about.text">Jeg er en student fra Sogndal med stor interesse for geologi og hvordan naturkreftene former landskapet rundt oss. Gjennom studietiden har jeg fått utforsket alt fra fjellformasjoner til skredfare, og jeg trives best ute i felt med hammer og kompass i hånden.</p>
@@ -804,7 +842,7 @@
 
     <!-- Study -->
     <section id="studiet">
-      <div class="section-inner">
+      <div class="section-inner reveal">
         <div class="text-col">
           <span class="section-label" data-i18n="study.label">Studiet</span>
           <h2 data-i18n="study.title">Geologi og Geofare</h2>
@@ -827,7 +865,7 @@
 
     <!-- Bachelor thesis -->
     <section id="bachelor">
-      <div class="section-inner">
+      <div class="section-inner reveal">
         <div class="text-col">
           <span class="section-label" data-i18n="bachelor.label">Bacheloroppgave</span>
           <h2 data-i18n="bachelor.title">Bacheloroppgaven min</h2>
@@ -858,7 +896,7 @@
 
     <!-- Contact -->
     <section id="kontakt">
-      <div class="section-inner">
+      <div class="section-inner reveal">
         <div class="text-col">
           <span class="section-label" data-i18n="contact.label">Kontakt</span>
           <h2 data-i18n="contact.title">Ta kontakt</h2>
@@ -1248,6 +1286,46 @@
         });
       });
 
+    })();
+
+    /* ── Scroll reveal ── */
+    (function () {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        reveals.forEach(function (el) { obs.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('visible'); });
+      }
+    })();
+
+    /* ── Active nav highlighting ── */
+    (function () {
+      var sections = document.querySelectorAll('section[id]');
+      var navLinks = document.querySelectorAll('nav a[href^="#"]');
+      if (!('IntersectionObserver' in window)) return;
+      /* Top 40% and bottom 60% margins ensure the "active" section is the one
+         occupying the middle strip of the viewport, giving a natural feel. */
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            navLinks.forEach(function (link) {
+              link.classList.remove('nav-active');
+              if (link.getAttribute('href') === '#' + entry.target.id) {
+                link.classList.add('nav-active');
+              }
+            });
+          }
+        });
+      }, { rootMargin: '-40% 0px -60% 0px' });
+      sections.forEach(function (s) { observer.observe(s); });
     })();
   </script>
 
