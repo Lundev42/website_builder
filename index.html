@@ -1027,7 +1027,7 @@
         var message = document.getElementById("contact-message").value;
 
         var body = "Navn / Name: " + name + "\nE-post / Email: " + email + "\n\n" + message;
-        var mailto = "mailto:" + encodeURIComponent(CONTACT_EMAIL) +
+        var mailto = "mailto:" + CONTACT_EMAIL +
           "?subject=" + encodeURIComponent(subject) +
           "&body=" + encodeURIComponent(body);
 
