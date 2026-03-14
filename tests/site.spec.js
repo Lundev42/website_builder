@@ -66,20 +66,20 @@ test.describe("Hero section", () => {
   test("has a caption describing the hero image", async ({ page }) => {
     const caption = page.locator("#hjem .hero-caption");
     await expect(caption).toBeVisible();
-    await expect(caption).toHaveText("Visdalen, med fjellet Hellstuguhøe på 2072 moh sentralt i bildet");
+    await expect(caption).toHaveText("Visdalen, med fjellet Hellstuguhøe på 2072 moh. i midten av bildet med Hellstugubreen bak.");
   });
 
   test("hero caption switches to English", async ({ page }) => {
     await page.click(".lang-toggle");
     const caption = page.locator("#hjem .hero-caption");
-    await expect(caption).toHaveText("Visdalen, with the mountain Hellstuguhøe at 2072 m a.s.l. in the centre of the image");
+    await expect(caption).toHaveText("Visdalen, with the mountain Hellstuguhøe at 2072 m a.s.l. in the centre of the image with Hellstugubreen behind.");
   });
 
   test("hero caption switches back to Norwegian", async ({ page }) => {
     await page.click(".lang-toggle");
     await page.click(".lang-toggle");
     const caption = page.locator("#hjem .hero-caption");
-    await expect(caption).toHaveText("Visdalen, med fjellet Hellstuguhøe på 2072 moh sentralt i bildet");
+    await expect(caption).toHaveText("Visdalen, med fjellet Hellstuguhøe på 2072 moh. i midten av bildet med Hellstugubreen bak.");
   });
 
   test("hero caption has border styling consistent with other captions", async ({ page }) => {
