@@ -443,6 +443,33 @@
       transition: background-color 0.3s ease;
     }
 
+    #bakgrunn .text-col {
+      max-width: 100%;
+    }
+
+    .study-layout {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .study-layout .study-text-col {
+      flex: 1 1 55%;
+    }
+
+    .study-layout .study-image-col {
+      flex: 1 1 40%;
+    }
+
+    .study-layout .study-image-col figure {
+      margin: 0;
+    }
+
+    .study-layout .study-image-col img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
     .course-table {
       width: 100%;
       border-collapse: collapse;
@@ -574,6 +601,10 @@
       nav a {
         font-size: 0.75rem;
         padding: 6px 12px;
+      }
+
+      .study-layout {
+        flex-direction: column;
       }
 
       .gallery-grid {
@@ -1044,7 +1075,21 @@
           <details class="accordion">
             <summary data-i18n="background.study.button">Bsc. Geologi og Geofare</summary>
             <div class="accordion-content">
-              <p data-i18n="study.text">Jeg studerer Geologi og geofare, Norges fremste bachelorprogram innen geofag, som i både 2022 og 2023 ble kåret til landets beste i Studiebarometeret. Studiet utmerker seg med sitt unike fokus på geofare og arealplanlegging, og som student her drar jeg nytte av et læringsmiljø i norgestoppen med tett oppfølging fra fagmiljøet. Med min bakgrunn fra dette studiet har jeg opparbeidet meg solid kompetanse på å løse komplekse geologiske problemstillinger i praksis.</p>
+              <div class="study-layout">
+                <div class="study-text-col">
+                  <p data-i18n="study.text">Jeg studerer Geologi og geofare, Norges fremste bachelorprogram innen geofag, som i både 2022 og 2023 ble kåret til landets beste i Studiebarometeret. Studiet utmerker seg med sitt unike fokus på geofare og arealplanlegging, og som student her drar jeg nytte av et læringsmiljø i norgestoppen med tett oppfølging fra fagmiljøet. Med min bakgrunn fra dette studiet har jeg opparbeidet meg solid kompetanse på å løse komplekse geologiske problemstillinger i praksis.</p>
+                </div>
+                <div class="study-image-col">
+                  <figure>
+                    <img
+                      src="standard_hvl.jpg"
+                      alt="Høgskulen på Vestlandet, Campus Sogndal"
+                      data-i18n-alt="study.hvl.alt"
+                    />
+                    <figcaption data-i18n="study.hvl.caption">Høgskulen på Vestlandet, Campus Sogndal</figcaption>
+                  </figure>
+                </div>
+              </div>
               <details class="accordion">
                 <summary data-i18n="study.accordion.title">Oppnådd faglig kompetanse</summary>
                 <div class="accordion-content" data-i18n-html="study.accordion.content">
@@ -1169,20 +1214,12 @@
                   </table>
                 </div>
               </details>
-              <figure style="margin-top: 24px;">
-                <img
-                  src="standard_hvl.jpg"
-                  alt="Høgskulen på Vestlandet, Campus Sogndal"
-                  data-i18n-alt="study.hvl.alt"
-                />
-                <figcaption data-i18n="study.hvl.caption">Høgskulen på Vestlandet, Campus Sogndal</figcaption>
-              </figure>
             </div>
           </details>
 
           <!-- Job accordion -->
           <details class="accordion">
-            <summary data-i18n="background.job.button">ConocoPhillips 2023–2025</summary>
+            <summary data-i18n="background.job.button">Jobberfaring</summary>
             <div class="accordion-content">
               <p data-i18n="about.background.intro">Fra perioden 2023–2025 har jeg hatt to sommerjobber i firmaet ConocoPhillips, hvor jeg har jobbet med oljerelatert geologi og geofysikk.</p>
               <div class="timeline">
@@ -1319,7 +1356,7 @@
         "about.job2.text": "Som en del av Well Delivery-teamet arbeidet jeg med \u00e5 utvikle et omfattende bibliotek av re-styrte br\u00f8nner p\u00e5 Ekofiskfeltet. Arbeidet ble utf\u00f8rt i programvaren StarSteer ved \u00e5 integrere biostratigrafi, bildeloggtolkninger og geofysiske logger (CPI). Form\u00e5let var \u00e5 forbedre treffsikkerheten for fremtidige br\u00f8nner og st\u00f8tte implementeringen av sanntidsoperasjoner i 2025. Prosjektet innebar avansert korrelasjon og analyse av tetthet og resistivitetslogger, samt bruk av utdata til \u00e5 identifisere avvik i strukturelle geomodeller (Petrel) for m\u00e5lrettet modellforbedring p\u00e5 Ekofisk og Eldfisk-feltene.",
         "background.title": "Bakgrunn",
         "background.study.button": "Bsc. Geologi og Geofare",
-        "background.job.button": "ConocoPhillips 2023\u20132025",
+        "background.job.button": "Jobberfaring",
         "study.text": "Jeg studerer Geologi og geofare, Norges fremste bachelorprogram innen geofag, som i b\u00e5de 2022 og 2023 ble k\u00e5ret til landets beste i Studiebarometeret. Studiet utmerker seg med sitt unike fokus p\u00e5 geofare og arealplanlegging, og som student her drar jeg nytte av et l\u00e6ringsmilj\u00f8 i norgestoppen med tett oppf\u00f8lging fra fagmilj\u00f8et. Med min bakgrunn fra dette studiet har jeg opparbeidet meg solid kompetanse p\u00e5 \u00e5 l\u00f8se komplekse geologiske problemstillinger i praksis.",
         "study.hvl.alt": "Høgskulen på Vestlandet, Campus Sogndal",
         "study.hvl.caption": "Høgskulen på Vestlandet, Campus Sogndal",
@@ -1382,7 +1419,7 @@
         "about.job2.text": "As part of the Well Delivery team, I worked on developing a comprehensive library of re-steered wells on the Ekofisk field. The work was carried out in the StarSteer software by integrating biostratigraphy, image log interpretations and geophysical logs (CPI). The purpose was to improve the accuracy of future wells and support the implementation of real-time operations in 2025. The project involved advanced correlation and analysis of density and resistivity logs, as well as using the output to identify discrepancies in structural geomodels (Petrel) for targeted model improvement on the Ekofisk and Eldfisk fields.",
         "background.title": "Background",
         "background.study.button": "Bsc. Geology and Geo-Hazards",
-        "background.job.button": "ConocoPhillips 2023\u20132025",
+        "background.job.button": "Work Experience",
         "study.text": "I study Geology and Geo-Hazards, Norway\u2019s leading bachelor\u2019s programme in geoscience, which was voted the best in the country in the Studiebarometeret survey in both 2022 and 2023. The programme stands out with its unique focus on geo-hazards and land-use planning, and as a student here I benefit from a top-tier learning environment with close support from the academic staff. With my background from this programme, I have developed solid expertise in solving complex geological problems in practice.",
         "study.hvl.alt": "Western Norway University of Applied Sciences, Campus Sogndal",
         "study.hvl.caption": "Western Norway University of Applied Sciences, Campus Sogndal",
