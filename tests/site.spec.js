@@ -608,6 +608,7 @@ test.describe("Accordion component in Studiet section", () => {
     const summary = page.locator("#studiet .accordion summary");
     await summary.click();
     const firstCourse = page.locator("#studiet .accordion-content .course-table tbody tr:not(.semester-row)").first();
+    await expect(firstCourse).toContainText("GE413");
     await expect(firstCourse).toContainText("Cartography and GIS");
   });
 });
