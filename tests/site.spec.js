@@ -2,10 +2,11 @@
 const { test, expect } = require("@playwright/test");
 
 const PAGE_URL = "file://" + require("path").resolve(__dirname, "../index.html");
+const BACHELOR_URL = "file://" + require("path").resolve(__dirname, "../bacheloroppgave.html");
 
 test.describe("Bacheloroppgave section", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(PAGE_URL);
+    await page.goto(BACHELOR_URL);
   });
 
   test("has two images in the bachelor gallery", async ({ page }) => {
@@ -85,7 +86,7 @@ test.describe("i18n language switching", () => {
     await expect(page.locator("html")).toHaveAttribute("lang", "nb");
     await expect(page.locator("[data-i18n='nav.home']")).toHaveText("Hjem");
     await expect(page.locator("[data-i18n='hero.title']")).toHaveText("Vetle Øyvind Larsen Lunde");
-    await expect(page.locator("[data-i18n='bachelor.title']")).toHaveText("Bacheloroppgave");
+    await expect(page.locator("[data-i18n='nav.bachelor']")).toHaveText("Bacheloroppgave");
   });
 
   test("switches to English when toggle is clicked", async ({ page }) => {
@@ -93,9 +94,7 @@ test.describe("i18n language switching", () => {
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect(page.locator("[data-i18n='nav.home']")).toHaveText("Home");
     await expect(page.locator("[data-i18n='hero.title']")).toHaveText("Vetle Øyvind Larsen Lunde");
-    await expect(page.locator("[data-i18n='bachelor.title']")).toHaveText("Bachelor Thesis");
-    await expect(page.locator("[data-i18n='bachelor.caption1']")).toHaveText("The beautiful nature of Trøndelag");
-    await expect(page.locator("[data-i18n='bachelor.caption2']")).toHaveText("Steep mountain sides");
+    await expect(page.locator("[data-i18n='nav.bachelor']")).toHaveText("Bachelor Thesis");
   });
 
   test("switches back to Norwegian when toggle is clicked twice", async ({ page }) => {
@@ -103,7 +102,7 @@ test.describe("i18n language switching", () => {
     await page.click(".lang-toggle");
     await expect(page.locator("html")).toHaveAttribute("lang", "nb");
     await expect(page.locator("[data-i18n='nav.home']")).toHaveText("Hjem");
-    await expect(page.locator("[data-i18n='bachelor.caption1']")).toHaveText("Den vakre naturen i Trøndelag");
+    await expect(page.locator("[data-i18n='nav.bachelor']")).toHaveText("Bacheloroppgave");
   });
 
   test("updates page title on language switch", async ({ page }) => {
@@ -113,10 +112,20 @@ test.describe("i18n language switching", () => {
   });
 
   test("updates image alt texts on language switch", async ({ page }) => {
+    await page.goto(BACHELOR_URL);
     const img = page.locator("[data-i18n-alt='bachelor.img1.alt']");
     await expect(img).toHaveAttribute("alt", "Bacheloroppgave – feltarbeid bilde 1");
     await page.click(".lang-toggle");
     await expect(img).toHaveAttribute("alt", "Bachelor thesis – fieldwork photo 1");
+  });
+
+  test("bachelor page defaults to Norwegian and switches to English", async ({ page }) => {
+    await page.goto(BACHELOR_URL);
+    await expect(page.locator("[data-i18n='bachelor.title']")).toHaveText("Bacheloroppgave");
+    await page.click(".lang-toggle");
+    await expect(page.locator("[data-i18n='bachelor.title']")).toHaveText("Bachelor Thesis");
+    await expect(page.locator("[data-i18n='bachelor.caption1']")).toHaveText("The beautiful nature of Trøndelag");
+    await expect(page.locator("[data-i18n='bachelor.caption2']")).toHaveText("Steep mountain sides");
   });
 
   test("language toggle button shows correct label", async ({ page }) => {
@@ -434,44 +443,48 @@ test.describe("Navigation active highlighting", () => {
     await page.goto(PAGE_URL);
   });
 
-  test("clicking bachelor nav link highlights it and not kontakt", async ({ page }) => {
-    // Scroll to kontakt first so it becomes active
-    await page.locator('nav a[href="#kontakt"]').click();
-    await page.waitForTimeout(900);
-
-    // Now click bachelor
-    await page.locator('nav a[href="#bachelor"]').click();
-    await page.waitForTimeout(900);
-
-    const bachelorLink = page.locator('nav a[href="#bachelor"]');
-    const kontaktLink = page.locator('nav a[href="#kontakt"]');
-    await expect(bachelorLink).toHaveClass(/nav-active/);
-    await expect(kontaktLink).not.toHaveClass(/nav-active/);
+  test("bachelor nav link points to bacheloroppgave.html", async ({ page }) => {
+    const bachelorLink = page.locator('nav a[href="bacheloroppgave.html"]');
+    await expect(bachelorLink).toBeVisible();
+    await expect(bachelorLink).toHaveAttribute("href", "bacheloroppgave.html");
   });
 
-  test("clicking kontakt nav link highlights it and not bachelor", async ({ page }) => {
-    // Scroll to bachelor first
-    await page.locator('nav a[href="#bachelor"]').click();
-    await page.waitForTimeout(900);
-
-    // Now click kontakt
+  test("clicking kontakt nav link highlights it", async ({ page }) => {
     await page.locator('nav a[href="#kontakt"]').click();
     await page.waitForTimeout(900);
-
-    const bachelorLink = page.locator('nav a[href="#bachelor"]');
     const kontaktLink = page.locator('nav a[href="#kontakt"]');
     await expect(kontaktLink).toHaveClass(/nav-active/);
-    await expect(bachelorLink).not.toHaveClass(/nav-active/);
   });
 
   test("only one nav link is active at a time", async ({ page }) => {
-    const hrefs = ['#hjem', '#om-meg', '#bakgrunn', '#bachelor', '#kontakt'];
+    const hrefs = ['#hjem', '#om-meg', '#bakgrunn', '#kontakt'];
     for (const href of hrefs) {
       await page.locator('nav a[href="' + href + '"]').click();
       await page.waitForTimeout(900);
       const activeLinks = page.locator('nav a.nav-active');
       await expect(activeLinks).toHaveCount(1);
     }
+  });
+});
+
+test.describe("Multi-page navigation", () => {
+  test("index.html bachelor nav link points to bacheloroppgave.html", async ({ page }) => {
+    await page.goto(PAGE_URL);
+    const link = page.locator('nav a[data-i18n="nav.bachelor"]');
+    await expect(link).toHaveAttribute("href", "bacheloroppgave.html");
+  });
+
+  test("bacheloroppgave.html has nav links back to index.html", async ({ page }) => {
+    await page.goto(BACHELOR_URL);
+    await expect(page.locator('nav a[data-i18n="nav.home"]')).toHaveAttribute("href", "index.html#hjem");
+    await expect(page.locator('nav a[data-i18n="nav.about"]')).toHaveAttribute("href", "index.html#om-meg");
+    await expect(page.locator('nav a[data-i18n="nav.background"]')).toHaveAttribute("href", "index.html#bakgrunn");
+    await expect(page.locator('nav a[data-i18n="nav.contact"]')).toHaveAttribute("href", "index.html#kontakt");
+  });
+
+  test("bacheloroppgave.html bachelor link points to #bachelor", async ({ page }) => {
+    await page.goto(BACHELOR_URL);
+    await expect(page.locator('nav a[data-i18n="nav.bachelor"]')).toHaveAttribute("href", "#bachelor");
   });
 });
 

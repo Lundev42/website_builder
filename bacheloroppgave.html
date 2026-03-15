@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portefølje for Vetle Øyvind Larsen Lunde – geologistudent ved Høgskulen på Vestlandet i Sogndal. Geologi og Geofare.">
+  <meta property="og:title" content="Vetle – Geologi og Geofare">
+  <meta property="og:description" content="Portefølje for Vetle Øyvind Larsen Lunde – geologistudent ved Høgskulen på Vestlandet i Sogndal.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://Lundev42.github.io/vetle-lunde-site/">
+  <meta property="og:locale" content="nb_NO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="theme-color" content="#0f1117">
+  <title>Vetle – Geologi og Geofare</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🪨</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    :root {
+      --bg-primary: #0f1117;
+      --bg-secondary: #181a20;
+      --text-primary: #c0c8d8;
+      --text-secondary: #a0a8c0;
+      --text-muted: #9ca3b8;
+      --text-heading: #e8ecf4;
+      --accent: #6384ff;
+      --accent-hover: rgba(99, 132, 255, 0.25);
+      --accent-bg: rgba(99, 132, 255, 0.15);
+      --accent-border: rgba(99, 132, 255, 0.3);
+      --nav-bg: rgba(26, 26, 26, 0.85);
+      --nav-border: rgba(255, 255, 255, 0.06);
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --overlay-bg: rgba(0, 0, 0, 0.6);
+      --input-bg: rgba(255, 255, 255, 0.05);
+      --input-border: rgba(255, 255, 255, 0.12);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #eef0f6;
+      --bg-secondary: #e1e4ec;
+      --text-primary: #23272f;
+      --text-secondary: #4a5060;
+      --text-muted: #6b7280;
+      --text-heading: #1a1d24;
+      --accent: #4a63cc;
+      --accent-hover: rgba(74, 99, 204, 0.18);
+      --accent-bg: rgba(74, 99, 204, 0.10);
+      --accent-border: rgba(74, 99, 204, 0.3);
+      --nav-bg: rgba(238, 240, 246, 0.92);
+      --nav-border: rgba(0, 0, 0, 0.08);
+      --card-bg: rgba(0, 0, 0, 0.03);
+      --overlay-bg: rgba(0, 0, 0, 0.4);
+      --input-bg: rgba(0, 0, 0, 0.04);
+      --input-border: rgba(0, 0, 0, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', Arial, Helvetica, sans-serif;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--nav-border);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 24px;
+      transition: color 0.3s, background 0.3s;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      color: #fff;
+      background: var(--accent-bg);
+    }
+
+    /* ── Sections (shared) ── */
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 60px 80px;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .text-col {
+      flex: 1 1 45%;
+      max-width: 650px;
+    }
+
+    .media-col {
+      flex: 1 1 50%;
+    }
+
+    .text-col h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .text-col p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+    }
+
+    .media-col img {
+      width: 100%;
+      border-radius: 16px;
+      border: 3px solid rgba(255, 255, 255, 0.12);
+      object-fit: cover;
+      display: block;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    /* ── Gallery grid (used in media-col) ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px 12px 0 0;
+      border: 3px solid rgba(255, 255, 255, 0.12);
+      border-bottom: none;
+      display: block;
+    }
+
+    .gallery-grid figure {
+      margin: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .gallery-grid figure:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(99, 132, 255, 0.2), 0 0 20px rgba(99, 132, 255, 0.1);
+    }
+
+    .gallery-grid figcaption {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding: 10px 12px;
+      background: var(--card-bg);
+      border: 3px solid rgba(255, 255, 255, 0.12);
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* ── Contact / Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.75rem;
+      color: #4e5672;
+      border-top: 1px solid var(--nav-border);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      section {
+        padding: 100px 24px 60px;
+      }
+
+      .section-inner {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .text-col h2 {
+        font-size: 1.8rem;
+      }
+
+      nav ul {
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── Language toggle ── */
+    .lang-toggle {
+      background: var(--accent-bg);
+      color: var(--text-secondary);
+      border: 2px solid var(--accent-border);
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 6px 14px;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: color 0.3s, background 0.3s, border-color 0.3s;
+    }
+
+    .lang-toggle:hover,
+    .lang-toggle:focus-visible {
+      color: #fff;
+      background: var(--accent-hover);
+      border-color: #fff;
+    }
+
+    /* ── Theme toggle ── */
+    .theme-toggle {
+      background: var(--accent-bg);
+      color: var(--text-secondary);
+      border: 2px solid var(--accent-border);
+      font-family: inherit;
+      font-size: 0.75rem;
+      padding: 6px 10px;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: color 0.3s, background 0.3s, border-color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .theme-toggle:hover,
+    .theme-toggle:focus-visible {
+      color: #fff;
+      background: var(--accent-hover);
+      border-color: #fff;
+    }
+
+    .theme-toggle svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    [data-theme="light"] .theme-icon-moon { display: none; }
+    [data-theme="light"] .theme-icon-sun { display: inline !important; }
+
+    /* Sun icon: golden yellow in light mode */
+    [data-theme="light"] .theme-toggle .theme-icon-sun {
+      stroke: #f59e0b;
+      fill: #f59e0b;
+    }
+
+    /* Moon icon: soft silver fill in dark mode */
+    .theme-toggle .theme-icon-moon {
+      fill: #c0c8d8;
+      stroke: #c0c8d8;
+    }
+
+    [data-theme="light"] nav a:hover,
+    [data-theme="light"] nav a:focus-visible {
+      color: var(--accent);
+      background: var(--accent-hover);
+    }
+
+    [data-theme="light"] .theme-toggle:hover,
+    [data-theme="light"] .theme-toggle:focus-visible {
+      color: var(--accent);
+      border-color: #000;
+    }
+
+    [data-theme="light"] .lang-toggle:hover,
+    [data-theme="light"] .lang-toggle:focus-visible {
+      color: var(--accent);
+      border-color: #000;
+    }
+
+    /* ── Skip-to-content (a11y) ── */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 200;
+      background: #6384ff;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 0 0 8px 0;
+    }
+
+    .skip-link:focus {
+      left: 0;
+    }
+
+    /* ── Scroll reveal animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Active navigation state ── */
+    nav a.nav-active {
+      color: var(--accent);
+      background: var(--accent-bg);
+    }
+
+    /* ── Image hover border glow ── */
+    .media-col figure:hover img {
+      border-color: rgba(99, 132, 255, 0.4);
+    }
+
+    /* ── Alternating section backgrounds ── */
+    section:nth-of-type(even) {
+      background: var(--bg-secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#hovedinnhold" class="skip-link" data-i18n="skip.link">Hopp til hovedinnhold</a>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html#hjem" data-i18n="nav.home">Hjem</a></li>
+      <li><a href="index.html#om-meg" data-i18n="nav.about">Om meg</a></li>
+      <li><a href="index.html#bakgrunn" data-i18n="nav.background">Bakgrunn</a></li>
+      <li><a href="#bachelor" data-i18n="nav.bachelor">Bacheloroppgave</a></li>
+      <li><a href="index.html#kontakt" data-i18n="nav.contact">Kontakt</a></li>
+      <li><button class="lang-toggle" data-i18n="lang.switch" aria-label="Switch language">EN</button></li>
+      <li><button class="theme-toggle" id="theme-toggle" data-i18n-aria-label="theme.toggle.dark" aria-label="Bytt til lyst tema">
+        <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button></li>
+    </ul>
+  </nav>
+
+  <main id="hovedinnhold">
+
+    <!-- Bachelor thesis -->
+    <section id="bachelor">
+      <div class="section-inner reveal">
+        <div class="text-col">
+          <h2 data-i18n="bachelor.title">Bacheloroppgave</h2>
+          <p data-i18n="bachelor.text">Bacheloroppgaven min fokuserer på å forstå geologiske prosesser og hvordan de påvirker samfunnet. Gjennom feltarbeid, laboratorieanalyser og kartlegging har jeg undersøkt hvordan man kan vurdere og håndtere geofarer i norsk terreng. Oppgaven knytter sammen teori og praksis på en måte som er relevant for fremtidig arbeid innen geofag.</p>
+        </div>
+        <div class="media-col">
+          <div class="gallery-grid">
+            <figure>
+              <img
+                src="IMG_3906.JPG"
+                alt="Bacheloroppgave – feltarbeid bilde 1"
+                data-i18n-alt="bachelor.img1.alt"
+              />
+              <figcaption data-i18n="bachelor.caption1">Den vakre naturen i Trøndelag</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="IMG_7509.jpeg"
+                alt="Bacheloroppgave – feltarbeid bilde 2"
+                data-i18n-alt="bachelor.img2.alt"
+              />
+              <figcaption data-i18n="bachelor.caption2">Bratte fjellsider</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Vetle &middot; <span data-i18n="footer.text">Geologi og Geofare</span> &middot; Sogndal
+  </footer>
+
+  <script>
+    var translations = {
+      nb: {
+        "nav.home": "Hjem",
+        "nav.about": "Om meg",
+        "nav.background": "Bakgrunn",
+        "nav.bachelor": "Bacheloroppgave",
+        "nav.contact": "Kontakt",
+        "bachelor.title": "Bacheloroppgave",
+        "bachelor.text": "Bacheloroppgaven min fokuserer p\u00e5 \u00e5 forst\u00e5 geologiske prosesser og hvordan de p\u00e5virker samfunnet. Gjennom feltarbeid, laboratorieanalyser og kartlegging har jeg unders\u00f8kt hvordan man kan vurdere og h\u00e5ndtere geofarer i norsk terreng. Oppgaven knytter sammen teori og praksis p\u00e5 en m\u00e5te som er relevant for fremtidig arbeid innen geofag.",
+        "bachelor.img1.alt": "Bacheloroppgave \u2013 feltarbeid bilde 1",
+        "bachelor.img2.alt": "Bacheloroppgave \u2013 feltarbeid bilde 2",
+        "bachelor.caption1": "Den vakre naturen i Tr\u00f8ndelag",
+        "bachelor.caption2": "Bratte fjellsider",
+        "footer.text": "Geologi og Geofare",
+        "page.title": "Vetle \u2013 Geologi og Geofare",
+        "meta.description": "Portefølje for Vetle Øyvind Larsen Lunde – geologistudent ved Høgskulen på Vestlandet i Sogndal. Geologi og Geofare.",
+        "skip.link": "Hopp til hovedinnhold",
+        "lang.switch": "EN",
+        "theme.toggle.dark": "Bytt til lyst tema",
+        "theme.toggle.light": "Bytt til m\u00f8rkt tema"
+      },
+      en: {
+        "nav.home": "Home",
+        "nav.about": "About me",
+        "nav.background": "Background",
+        "nav.bachelor": "Bachelor Thesis",
+        "nav.contact": "Contact",
+        "bachelor.title": "Bachelor Thesis",
+        "bachelor.text": "My bachelor thesis focuses on understanding geological processes and how they affect society. Through fieldwork, laboratory analyses and mapping, I have investigated how one can assess and manage geo-hazards in Norwegian terrain. The thesis ties together theory and practice in a way that is relevant for future work in geoscience.",
+        "bachelor.img1.alt": "Bachelor thesis \u2013 fieldwork photo 1",
+        "bachelor.img2.alt": "Bachelor thesis \u2013 fieldwork photo 2",
+        "bachelor.caption1": "The beautiful nature of Tr\u00f8ndelag",
+        "bachelor.caption2": "Steep mountain sides",
+        "footer.text": "Geology and Geo-Hazards",
+        "page.title": "Vetle \u2013 Geology and Geo-Hazards",
+        "meta.description": "Portfolio of Vetle Øyvind Larsen Lunde – geology student at Western Norway University of Applied Sciences in Sogndal. Geology and Geo-Hazards.",
+        "skip.link": "Skip to main content",
+        "lang.switch": "NO",
+        "theme.toggle.dark": "Switch to light mode",
+        "theme.toggle.light": "Switch to dark mode"
+      }
+    };
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      try { localStorage.setItem("lang", lang); } catch (e) { /* ignore */ }
+
+      var dict = translations[lang];
+      if (!dict) return;
+
+      document.title = dict["page.title"] || document.title;
+
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && dict["meta.description"]) metaDesc.setAttribute("content", dict["meta.description"]);
+
+      var ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute("content", dict["page.title"] || "");
+
+      var ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc && dict["meta.description"]) ogDesc.setAttribute("content", dict["meta.description"]);
+
+      var ogLocale = document.querySelector('meta[property="og:locale"]');
+      if (ogLocale) ogLocale.setAttribute("content", lang === "en" ? "en_US" : "nb_NO");
+
+      var ogLocaleAlt = document.querySelector('meta[property="og:locale:alternate"]');
+      if (ogLocaleAlt) ogLocaleAlt.setAttribute("content", lang === "en" ? "nb_NO" : "en_US");
+
+      document.querySelectorAll("[data-i18n]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n");
+        if (dict[key] != null) el.textContent = dict[key];
+      });
+
+      document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n-html");
+        if (dict[key] != null) el.innerHTML = dict[key];
+      });
+
+      document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n-alt");
+        if (dict[key] != null) el.alt = dict[key];
+      });
+
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key] != null) el.placeholder = dict[key];
+      });
+
+      document.querySelectorAll("[data-i18n-aria-label]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n-aria-label");
+        if (dict[key] != null) el.setAttribute("aria-label", dict[key]);
+      });
+    }
+
+    document.querySelector(".lang-toggle").addEventListener("click", function () {
+      var current = document.documentElement.lang === "en" ? "nb" : "en";
+      setLanguage(current);
+    });
+
+    (function () {
+      var saved;
+      try { saved = localStorage.getItem("lang"); } catch (e) { /* ignore */ }
+      if (saved && translations[saved]) {
+        setLanguage(saved);
+      }
+    })();
+
+    /* ── Theme toggle logic ── */
+    (function () {
+      var toggle = document.getElementById("theme-toggle");
+      var htmlEl = document.documentElement;
+      var moonIcon = toggle.querySelector(".theme-icon-moon");
+      var sunIcon = toggle.querySelector(".theme-icon-sun");
+
+      function applyTheme(theme) {
+        htmlEl.setAttribute("data-theme", theme);
+        try { localStorage.setItem("theme", theme); } catch (e) { /* ignore */ }
+
+        var ariaKey;
+        if (theme === "light") {
+          moonIcon.style.display = "none";
+          sunIcon.style.display = "inline";
+          ariaKey = "theme.toggle.light";
+        } else {
+          moonIcon.style.display = "inline";
+          sunIcon.style.display = "none";
+          ariaKey = "theme.toggle.dark";
+        }
+        toggle.setAttribute("data-i18n-aria-label", ariaKey);
+        var dict = translations[htmlEl.lang] || translations["nb"];
+        if (dict[ariaKey] != null) toggle.setAttribute("aria-label", dict[ariaKey]);
+      }
+
+      toggle.addEventListener("click", function () {
+        var current = htmlEl.getAttribute("data-theme") === "light" ? "dark" : "light";
+        applyTheme(current);
+      });
+
+      // Initialize: localStorage > system preference > default (dark)
+      var saved;
+      try { saved = localStorage.getItem("theme"); } catch (e) { /* ignore */ }
+      if (saved === "light" || saved === "dark") {
+        applyTheme(saved);
+      } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+        applyTheme("light");
+      } else {
+        applyTheme("dark");
+      }
+    })();
+
+    /* ── Scroll reveal ── */
+    (function () {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        reveals.forEach(function (el) { obs.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('visible'); });
+      }
+    })();
+
+    /* ── Active nav highlighting ── */
+    (function () {
+      var sections = document.querySelectorAll('section[id]');
+      var navLinks = document.querySelectorAll('nav a[href^="#"]');
+      if (!('IntersectionObserver' in window)) return;
+
+      var scrollLocked = false;
+
+      function setActive(id) {
+        navLinks.forEach(function (link) {
+          link.classList.remove('nav-active');
+          if (link.getAttribute('href') === '#' + id) {
+            link.classList.add('nav-active');
+          }
+        });
+      }
+
+      var lastSection = sections[sections.length - 1];
+
+      /* Detection strip occupies 20 %–40 % from the top of the viewport. */
+      var observer = new IntersectionObserver(function (entries) {
+        if (scrollLocked) return;
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      }, { rootMargin: '-20% 0px -60% 0px' });
+      sections.forEach(function (s) { observer.observe(s); });
+
+      /* When a nav link is clicked, immediately highlight it and suppress
+         the scroll-to-bottom override during the smooth-scroll animation. */
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          var id = link.getAttribute('href').substring(1);
+          setActive(id);
+          scrollLocked = true;
+          setTimeout(function () { scrollLocked = false; }, 800);
+        });
+      });
+
+      /* When scrolled to the bottom of the page, activate the last section
+         even if it is too short to reach the observer's detection zone. */
+      window.addEventListener('scroll', function () {
+        if (!scrollLocked && (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 2)) {
+          setActive(lastSection.id);
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
