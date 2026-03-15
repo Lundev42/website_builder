@@ -415,6 +415,73 @@
 
     /* ── Study ── */
 
+    /* ── Accordion ── */
+    .accordion {
+      margin-top: 24px;
+      border: 1px solid var(--accent-border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+    }
+
+    .accordion summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      background: var(--accent-bg);
+      cursor: pointer;
+      list-style: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--accent);
+      transition: transform 0.3s ease;
+    }
+
+    .accordion[open] summary::after {
+      content: '\2212';
+    }
+
+    .accordion summary:hover,
+    .accordion summary:focus-visible {
+      background: var(--accent-hover);
+    }
+
+    .accordion-content {
+      padding: 16px 20px;
+      background: var(--card-bg);
+      transition: background-color 0.3s ease;
+    }
+
+    .accordion-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .accordion-content li {
+      padding: 8px 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--input-border);
+    }
+
+    .accordion-content li:last-child {
+      border-bottom: none;
+    }
+
     /* ── Bachelor ── */
 
     /* ── Gallery grid (used in media-col) ── */
@@ -999,6 +1066,23 @@
           <span class="section-label" data-i18n="study.label">Studiet</span>
           <h2 data-i18n="study.title">Geologi og Geofare</h2>
           <p data-i18n="study.text">Jeg studerer Geologi og geofare, Norges fremste bachelorprogram innen geofag, som i både 2022 og 2023 ble kåret til landets beste i Studiebarometeret. Studiet utmerker seg med sitt unike fokus på geofare og arealplanlegging, og som student her drar jeg nytte av et læringsmiljø i norgestoppen med tett oppfølging fra fagmiljøet. Med min bakgrunn fra dette studiet har jeg opparbeidet meg solid kompetanse på å løse komplekse geologiske problemstillinger i praksis.</p>
+          <details class="accordion">
+            <summary data-i18n="study.accordion.title">Oppnådd faglig kompetanse</summary>
+            <div class="accordion-content" data-i18n-html="study.accordion.content">
+              <ul>
+                <li>GEO100 Innføring i geologi</li>
+                <li>GEO110 Mineralogi og petrografi</li>
+                <li>GEO120 Strukturgeologi og tektonikk</li>
+                <li>GEO130 Sedimentologi og stratigrafi</li>
+                <li>GEO200 Feltmetoder i geologi</li>
+                <li>GEO210 Geomorfologi og kvartærgeologi</li>
+                <li>GEO220 Geofarer og risikoanalyse</li>
+                <li>GEO230 Hydrogeologi og miljøgeologi</li>
+                <li>GEO240 Arealplanlegging og geomatikk</li>
+                <li>GEO250 Geofysikk</li>
+              </ul>
+            </div>
+          </details>
         </div>
         <div class="media-col">
           <div class="gallery-grid">
@@ -1131,6 +1215,8 @@
         "study.text": "Jeg studerer Geologi og geofare, Norges fremste bachelorprogram innen geofag, som i b\u00e5de 2022 og 2023 ble k\u00e5ret til landets beste i Studiebarometeret. Studiet utmerker seg med sitt unike fokus p\u00e5 geofare og arealplanlegging, og som student her drar jeg nytte av et l\u00e6ringsmilj\u00f8 i norgestoppen med tett oppf\u00f8lging fra fagmilj\u00f8et. Med min bakgrunn fra dette studiet har jeg opparbeidet meg solid kompetanse p\u00e5 \u00e5 l\u00f8se komplekse geologiske problemstillinger i praksis.",
         "study.hvl.alt": "Høgskulen på Vestlandet, Campus Sogndal",
         "study.hvl.caption": "Høgskulen på Vestlandet, Campus Sogndal",
+        "study.accordion.title": "Oppnådd faglig kompetanse",
+        "study.accordion.content": "<ul><li>GEO100 Innføring i geologi</li><li>GEO110 Mineralogi og petrografi</li><li>GEO120 Strukturgeologi og tektonikk</li><li>GEO130 Sedimentologi og stratigrafi</li><li>GEO200 Feltmetoder i geologi</li><li>GEO210 Geomorfologi og kvartærgeologi</li><li>GEO220 Geofarer og risikoanalyse</li><li>GEO230 Hydrogeologi og miljøgeologi</li><li>GEO240 Arealplanlegging og geomatikk</li><li>GEO250 Geofysikk</li></ul>",
         "bachelor.label": "Bacheloroppgave",
         "bachelor.title": "Bacheloroppgaven min",
         "bachelor.text": "Bacheloroppgaven min fokuserer p\u00e5 \u00e5 forst\u00e5 geologiske prosesser og hvordan de p\u00e5virker samfunnet. Gjennom feltarbeid, laboratorieanalyser og kartlegging har jeg unders\u00f8kt hvordan man kan vurdere og h\u00e5ndtere geofarer i norsk terreng. Oppgaven knytter sammen teori og praksis p\u00e5 en m\u00e5te som er relevant for fremtidig arbeid innen geofag.",
@@ -1195,6 +1281,8 @@
         "study.text": "I study Geology and Geo-Hazards, Norway\u2019s leading bachelor\u2019s programme in geoscience, which was voted the best in the country in the Studiebarometeret survey in both 2022 and 2023. The programme stands out with its unique focus on geo-hazards and land-use planning, and as a student here I benefit from a top-tier learning environment with close support from the academic staff. With my background from this programme, I have developed solid expertise in solving complex geological problems in practice.",
         "study.hvl.alt": "Western Norway University of Applied Sciences, Campus Sogndal",
         "study.hvl.caption": "Western Norway University of Applied Sciences, Campus Sogndal",
+        "study.accordion.title": "Achieved Academic Competence",
+        "study.accordion.content": "<ul><li>GEO100 Introduction to Geology</li><li>GEO110 Mineralogy and Petrography</li><li>GEO120 Structural Geology and Tectonics</li><li>GEO130 Sedimentology and Stratigraphy</li><li>GEO200 Field Methods in Geology</li><li>GEO210 Geomorphology and Quaternary Geology</li><li>GEO220 Geo-Hazards and Risk Analysis</li><li>GEO230 Hydrogeology and Environmental Geology</li><li>GEO240 Land-Use Planning and Geomatics</li><li>GEO250 Geophysics</li></ul>",
         "bachelor.label": "Bachelor Thesis",
         "bachelor.title": "My Bachelor Thesis",
         "bachelor.text": "My bachelor thesis focuses on understanding geological processes and how they affect society. Through fieldwork, laboratory analyses and mapping, I have investigated how one can assess and manage geo-hazards in Norwegian terrain. The thesis ties together theory and practice in a way that is relevant for future work in geoscience.",

@@ -549,3 +549,63 @@ test.describe("Navigation active highlighting", () => {
     }
   });
 });
+
+test.describe("Accordion component in Studiet section", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(PAGE_URL);
+  });
+
+  test("accordion exists in the studiet section", async ({ page }) => {
+    const accordion = page.locator("#studiet .accordion");
+    await expect(accordion).toBeVisible();
+  });
+
+  test("accordion is collapsed by default", async ({ page }) => {
+    const details = page.locator("#studiet details.accordion");
+    await expect(details).not.toHaveAttribute("open", "");
+  });
+
+  test("accordion summary has correct Norwegian title", async ({ page }) => {
+    const summary = page.locator("#studiet .accordion summary");
+    await expect(summary).toHaveText("Oppnådd faglig kompetanse");
+  });
+
+  test("accordion expands when clicked", async ({ page }) => {
+    const summary = page.locator("#studiet .accordion summary");
+    await summary.click();
+    const details = page.locator("#studiet details.accordion");
+    await expect(details).toHaveAttribute("open", "");
+    const content = page.locator("#studiet .accordion-content");
+    await expect(content).toBeVisible();
+  });
+
+  test("accordion collapses when clicked again", async ({ page }) => {
+    const summary = page.locator("#studiet .accordion summary");
+    await summary.click();
+    await expect(page.locator("#studiet details.accordion")).toHaveAttribute("open", "");
+    await summary.click();
+    await expect(page.locator("#studiet details.accordion")).not.toHaveAttribute("open", "");
+  });
+
+  test("accordion contains course list items", async ({ page }) => {
+    const summary = page.locator("#studiet .accordion summary");
+    await summary.click();
+    const items = page.locator("#studiet .accordion-content li");
+    await expect(items).toHaveCount(10);
+    await expect(items.first()).toContainText("GEO100");
+  });
+
+  test("accordion title switches to English", async ({ page }) => {
+    await page.click(".lang-toggle");
+    const summary = page.locator("#studiet .accordion summary");
+    await expect(summary).toHaveText("Achieved Academic Competence");
+  });
+
+  test("accordion content switches to English", async ({ page }) => {
+    await page.click(".lang-toggle");
+    const summary = page.locator("#studiet .accordion summary");
+    await summary.click();
+    const firstItem = page.locator("#studiet .accordion-content li").first();
+    await expect(firstItem).toContainText("Introduction to Geology");
+  });
+});
