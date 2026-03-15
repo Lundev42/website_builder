@@ -559,16 +559,16 @@ test.describe("Accordion component in Bakgrunn section", () => {
   test("study accordion expands when clicked", async ({ page }) => {
     const summary = page.locator('summary[data-i18n="background.study.button"]');
     await summary.click();
-    const studyDetails = summary.locator('..');
+    const studyDetails = page.locator('#bakgrunn details.accordion').filter({ has: page.locator('summary[data-i18n="background.study.button"]') });
     await expect(studyDetails).toHaveAttribute("open", "");
-    const content = studyDetails.locator("> .accordion-content");
+    const content = page.locator('#bakgrunn [data-i18n="study.text"]');
     await expect(content).toBeVisible();
   });
 
   test("study accordion collapses when clicked again", async ({ page }) => {
     const summary = page.locator('summary[data-i18n="background.study.button"]');
+    const studyDetails = page.locator('#bakgrunn details.accordion').filter({ has: page.locator('summary[data-i18n="background.study.button"]') });
     await summary.click();
-    const studyDetails = summary.locator('..');
     await expect(studyDetails).toHaveAttribute("open", "");
     await summary.click();
     await expect(studyDetails).not.toHaveAttribute("open", "");
