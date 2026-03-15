@@ -325,6 +325,30 @@ test.describe("Contact section link buttons", () => {
     const style = await p.evaluate(el => getComputedStyle(el).whiteSpace);
     expect(style).toBe("nowrap");
   });
+
+  test("email button has envelope icon", async ({ page }) => {
+    const icon = page.locator('.contact-link-btn[href^="mailto:"] i.fa-envelope');
+    await expect(icon).toBeAttached();
+    await expect(icon).toHaveAttribute("aria-hidden", "true");
+  });
+
+  test("GitHub button has GitHub icon", async ({ page }) => {
+    const icon = page.locator('.contact-link-btn[href*="github.com"] i.fa-github');
+    await expect(icon).toBeAttached();
+    await expect(icon).toHaveAttribute("aria-hidden", "true");
+  });
+
+  test("LinkedIn button has LinkedIn icon", async ({ page }) => {
+    const icon = page.locator('.contact-link-btn[href*="linkedin.com"] i.fa-linkedin');
+    await expect(icon).toBeAttached();
+    await expect(icon).toHaveAttribute("aria-hidden", "true");
+  });
+
+  test("icons appear before text in buttons", async ({ page }) => {
+    const emailBtn = page.locator('.contact-link-btn[href^="mailto:"]');
+    const firstChild = emailBtn.locator('> :first-child');
+    await expect(firstChild).toHaveClass(/fa-envelope/);
+  });
 });
 
 test.describe("Theme toggle (dark/light mode)", () => {
