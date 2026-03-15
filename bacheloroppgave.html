@@ -161,6 +161,20 @@
       transition: border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
+    /* ── Bachelor heading centered on top ── */
+    #bachelor .section-inner {
+      flex-wrap: wrap;
+    }
+
+    #bachelor .section-inner > h2 {
+      width: 100%;
+      text-align: center;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.2;
+    }
+
     /* ── Gallery grid (used in media-col) ── */
     .gallery-grid {
       display: grid;
@@ -402,8 +416,8 @@
     <!-- Bachelor thesis -->
     <section id="bachelor">
       <div class="section-inner reveal">
+        <h2 data-i18n="bachelor.title">Bacheloroppgave</h2>
         <div class="text-col">
-          <h2 data-i18n="bachelor.title">Bacheloroppgave</h2>
           <p data-i18n="bachelor.text">Bacheloroppgaven min fokuserer på å forstå geologiske prosesser og hvordan de påvirker samfunnet. Gjennom feltarbeid, laboratorieanalyser og kartlegging har jeg undersøkt hvordan man kan vurdere og håndtere geofarer i norsk terreng. Oppgaven knytter sammen teori og praksis på en måte som er relevant for fremtidig arbeid innen geofag.</p>
         </div>
         <div class="media-col">
