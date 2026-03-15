@@ -593,8 +593,8 @@ test.describe("Accordion component in Studiet section", () => {
     const table = page.locator("#studiet .accordion-content .course-table");
     await expect(table).toBeVisible();
     const courseRows = page.locator("#studiet .accordion-content .course-table tbody tr:not(.semester-row)");
-    await expect(courseRows).toHaveCount(6);
-    await expect(courseRows.first()).toContainText("GE413");
+    await expect(courseRows).toHaveCount(18);
+    await expect(courseRows.first()).toContainText("MA414");
   });
 
   test("accordion title switches to English", async ({ page }) => {
@@ -608,7 +608,7 @@ test.describe("Accordion component in Studiet section", () => {
     const summary = page.locator("#studiet .accordion summary");
     await summary.click();
     const firstCourse = page.locator("#studiet .accordion-content .course-table tbody tr:not(.semester-row)").first();
-    await expect(firstCourse).toContainText("GE413");
-    await expect(firstCourse).toContainText("Cartography and GIS");
+    await expect(firstCourse).toContainText("MA414");
+    await expect(firstCourse).toContainText("Mathematics for Natural Sciences");
   });
 });
