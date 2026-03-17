@@ -153,8 +153,6 @@ test.describe("About section – content", () => {
   });
 
   test("displays job history entries in Bakgrunn section", async ({ page }) => {
-    const jobSummary = page.locator('summary[data-i18n="background.job.button"]');
-    await jobSummary.click();
     const job1Title = page.locator('#bakgrunn h4[data-i18n="about.job1.title"]');
     await expect(job1Title).toBeVisible();
     await expect(job1Title).toContainText("ConocoPhillips 2023");
@@ -169,8 +167,6 @@ test.describe("About section – content", () => {
   });
 
   test("timeline container is visible in Bakgrunn section", async ({ page }) => {
-    const jobSummary = page.locator('summary[data-i18n="background.job.button"]');
-    await jobSummary.click();
     const timeline = page.locator('#bakgrunn .timeline');
     await expect(timeline).toBeVisible();
     const entries = page.locator('#bakgrunn .timeline-entry');
@@ -178,16 +174,12 @@ test.describe("About section – content", () => {
   });
 
   test("timeline displays year ranges", async ({ page }) => {
-    const jobSummary = page.locator('summary[data-i18n="background.job.button"]');
-    await jobSummary.click();
     const dates = page.locator('#bakgrunn .timeline-date');
     await expect(dates.nth(0)).toHaveText("2024–2025");
     await expect(dates.nth(1)).toHaveText("2023–2024");
   });
 
   test("timeline markers are visible", async ({ page }) => {
-    const jobSummary = page.locator('summary[data-i18n="background.job.button"]');
-    await jobSummary.click();
     const markers = page.locator('#bakgrunn .timeline-marker');
     await expect(markers).toHaveCount(2);
     await expect(markers.nth(0)).toBeVisible();
@@ -196,8 +188,6 @@ test.describe("About section – content", () => {
 
   test("job history switches to English", async ({ page }) => {
     await page.click(".lang-toggle");
-    const jobSummary = page.locator('summary[data-i18n="background.job.button"]');
-    await jobSummary.click();
     const job1Text = page.locator('#bakgrunn [data-i18n="about.job1.text"]');
     await expect(job1Text).toContainText("biostratigraphic database");
     const job2Text = page.locator('#bakgrunn [data-i18n-html="about.job2.text"]');
@@ -206,8 +196,6 @@ test.describe("About section – content", () => {
   });
 
   test("job2 text contains Ekofisk description", async ({ page }) => {
-    const jobSummary = page.locator('summary[data-i18n="background.job.button"]');
-    await jobSummary.click();
     const job2Text = page.locator('#bakgrunn [data-i18n-html="about.job2.text"]');
     await expect(job2Text).toContainText("Ekofiskfeltet");
     await expect(job2Text).toContainText("StarSteer");
@@ -503,32 +491,12 @@ test.describe("Accordion component in Bakgrunn section", () => {
     await expect(details).not.toHaveAttribute("open", "");
   });
 
-  test("study accordion summary has correct Norwegian title", async ({ page }) => {
-    const summary = page.locator('summary[data-i18n="background.study.button"]');
-    await expect(summary).toHaveText("Bsc. Geologi og Geofare");
-  });
-
-  test("study accordion expands when clicked", async ({ page }) => {
-    const summary = page.locator('summary[data-i18n="background.study.button"]');
-    await summary.click();
-    const studyDetails = page.locator('#bakgrunn details.accordion').filter({ has: page.locator('summary[data-i18n="background.study.button"]') });
-    await expect(studyDetails).toHaveAttribute("open", "");
-    const content = page.locator('#bakgrunn [data-i18n="study.text"]');
-    await expect(content).toBeVisible();
-  });
-
-  test("study accordion collapses when clicked again", async ({ page }) => {
-    const summary = page.locator('summary[data-i18n="background.study.button"]');
-    const studyDetails = page.locator('#bakgrunn details.accordion').filter({ has: page.locator('summary[data-i18n="background.study.button"]') });
-    await summary.click();
-    await expect(studyDetails).toHaveAttribute("open", "");
-    await summary.click();
-    await expect(studyDetails).not.toHaveAttribute("open", "");
+  test("study subsection heading has correct Norwegian title", async ({ page }) => {
+    const heading = page.locator('h3[data-i18n="background.study.title"]');
+    await expect(heading).toHaveText("Faglig bakgrunn");
   });
 
   test("nested accordion contains course table with correct courses", async ({ page }) => {
-    const studySummary = page.locator('summary[data-i18n="background.study.button"]');
-    await studySummary.click();
     const nestedSummary = page.locator('summary[data-i18n="study.accordion.title"]');
     await nestedSummary.click();
     const table = page.locator("#bakgrunn .course-table");
@@ -538,16 +506,14 @@ test.describe("Accordion component in Bakgrunn section", () => {
     await expect(courseRows.first()).toContainText("MA414");
   });
 
-  test("study accordion title switches to English", async ({ page }) => {
+  test("study subsection heading switches to English", async ({ page }) => {
     await page.click(".lang-toggle");
-    const summary = page.locator('summary[data-i18n="background.study.button"]');
-    await expect(summary).toHaveText("Bsc. Geology and Geo-Hazards");
+    const heading = page.locator('h3[data-i18n="background.study.title"]');
+    await expect(heading).toHaveText("Academic background");
   });
 
   test("nested accordion content switches to English", async ({ page }) => {
     await page.click(".lang-toggle");
-    const studySummary = page.locator('summary[data-i18n="background.study.button"]');
-    await studySummary.click();
     const nestedSummary = page.locator('summary[data-i18n="study.accordion.title"]');
     await nestedSummary.click();
     const firstCourse = page.locator("#bakgrunn .course-table tbody tr:not(.semester-row)").first();
