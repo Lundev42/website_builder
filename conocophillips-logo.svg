@@ -1,3 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">
-  <path d="M5,75 C30,70 60,20 120,10 C160,3 195,15 195,15 C195,15 160,45 110,55 C70,63 30,85 5,75 Z" fill="#E4002B"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" role="img" aria-label="ConocoPhillips logo">
+  <title>ConocoPhillips</title>
+  <!-- "ConocoPhillips" wordmark, currentColor adapts to dark/light themes -->
+  <text x="8" y="30" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="currentColor" letter-spacing="-0.3">ConocoPhillips</text>
+  <!-- Red swoosh/arc above the "i" dot in "Phillips" — stylised brand accent -->
+  <path d="M137,7 C139,4 143,4 145,7" stroke="#DA2315" stroke-width="2.2" fill="none" stroke-linecap="round"/>
 </svg>
