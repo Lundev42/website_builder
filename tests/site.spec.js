@@ -167,6 +167,15 @@ test.describe("About section – content", () => {
     await expect(job2Text).toContainText("Well Delivery");
   });
 
+  test("displays ConocoPhillips logo beside job titles", async ({ page }) => {
+    const logos = page.locator('#bakgrunn .company-logo');
+    await expect(logos).toHaveCount(2);
+    for (let i = 0; i < 2; i++) {
+      await expect(logos.nth(i)).toBeVisible();
+      await expect(logos.nth(i)).toHaveAttribute('src', 'conocophillips-logo.svg');
+    }
+  });
+
   test("timeline container is visible in Bakgrunn section", async ({ page }) => {
     const timeline = page.locator('#bakgrunn .timeline');
     await expect(timeline).toBeVisible();
