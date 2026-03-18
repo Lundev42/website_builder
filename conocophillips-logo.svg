@@ -1,15 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" role="img" aria-label="ConocoPhillips logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1648 789" role="img" aria-label="ConocoPhillips logo">
   <title>ConocoPhillips</title>
-  <defs>
-    <linearGradient id="swoosh3d" x1="0.1" y1="0.9" x2="0.9" y2="0.1">
-      <stop offset="0%" stop-color="#B30000"/>
-      <stop offset="40%" stop-color="#E60000"/>
-      <stop offset="60%" stop-color="#FF1A1A"/>
-      <stop offset="80%" stop-color="#FF0000"/>
-      <stop offset="100%" stop-color="#CC0000"/>
-    </linearGradient>
-  </defs>
-  <!-- V-shape swoosh: left needle (12,88) → sharp elbow (148,240) → right needle (490,12);
-       inner edge returns via concave dip (248,192) → inner elbow (152,232) → back to start -->
-  <path fill="url(#swoosh3d)" d="M 12,88 C 34,128 92,198 148,240 C 258,148 388,58 490,12 C 438,48 338,125 248,192 C 200,222 164,236 152,232 C 96,190 42,128 12,88 Z"/>
+  <path fill="#d11e0f" d="M1647.57 0.14C1365.53 98.11 1291.66 195.25 1139.38 317.69C707.98 431.4 329.75 249.16 0.75 98.57C156.13 210.98 310.02 449.84 375.1 788.5C623.76 713.95 923.33 512.55 1186.99 324.42C1334.74 258.8 1496.91 161.99 1647.57 0.14Z"/>
 </svg>
