@@ -1,4 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" role="img" aria-label="ConocoPhillips logo">
   <title>ConocoPhillips</title>
-  <path fill="#FF0000" d="M 12,135 C 45,115 115,65 200,30 C 275,0 370,5 475,55 C 430,80 360,120 275,160 C 190,200 90,215 40,195 C 18,187 8,165 12,135 Z"/>
+  <defs>
+    <linearGradient id="swoosh3d" x1="0.1" y1="0.9" x2="0.9" y2="0.1">
+      <stop offset="0%" stop-color="#B30000"/>
+      <stop offset="40%" stop-color="#E60000"/>
+      <stop offset="60%" stop-color="#FF1A1A"/>
+      <stop offset="80%" stop-color="#FF0000"/>
+      <stop offset="100%" stop-color="#CC0000"/>
+    </linearGradient>
+  </defs>
+  <!-- V-shape swoosh: left needle (12,88) → sharp elbow (148,240) → right needle (490,12);
+       inner edge returns via concave dip (248,192) → inner elbow (152,232) → back to start -->
+  <path fill="url(#swoosh3d)" d="M 12,88 C 34,128 92,198 148,240 C 258,148 388,58 490,12 C 438,48 338,125 248,192 C 200,222 164,236 152,232 C 96,190 42,128 12,88 Z"/>
 </svg>
