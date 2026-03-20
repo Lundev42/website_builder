@@ -179,11 +179,9 @@ test.describe("About section – content", () => {
     await expect(entries).toHaveCount(3);
   });
 
-  test("timeline displays year ranges", async ({ page }) => {
+  test("timeline does not display separate year range labels", async ({ page }) => {
     const dates = page.locator('#bakgrunn .timeline-date');
-    await expect(dates.nth(0)).toHaveText("2024–2025");
-    await expect(dates.nth(1)).toHaveText("2023–2024");
-    await expect(dates.nth(2)).toHaveText("2022–2023");
+    await expect(dates).toHaveCount(0);
   });
 
   test("timeline markers are visible", async ({ page }) => {
