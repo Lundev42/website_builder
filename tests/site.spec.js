@@ -154,14 +154,11 @@ test.describe("About section – content", () => {
   });
 
   test("displays job history entries in Bakgrunn section", async ({ page }) => {
-    const job1Title = page.locator('#bakgrunn h4[data-i18n="about.job1.title"]');
-    await expect(job1Title).toBeVisible();
-    await expect(job1Title).toContainText("ConocoPhillips 2023");
+    const logos = page.locator('#bakgrunn .company-logo');
+    await expect(logos).toHaveCount(2);
     const job1Text = page.locator('#bakgrunn [data-i18n="about.job1.text"]');
     await expect(job1Text).toBeVisible();
     await expect(job1Text).toContainText("biostratigrafisk database");
-    const job2Title = page.locator('#bakgrunn h4[data-i18n="about.job2.title"]');
-    await expect(job2Title).toBeVisible();
     const job2Text = page.locator('#bakgrunn [data-i18n-html="about.job2.text"]');
     await expect(job2Text).toBeVisible();
     await expect(job2Text).toContainText("Well Delivery");
