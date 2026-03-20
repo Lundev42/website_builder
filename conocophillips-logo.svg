@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1648 789" role="img" aria-label="ConocoPhillips logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1648 1000" role="img" aria-label="ConocoPhillips logo">
   <title>ConocoPhillips</title>
-  <path fill="#d11e0f" d="M1647.57 0.14C1365.53 98.11 1291.66 195.25 1139.38 317.69C707.98 431.4 329.75 249.16 0.75 98.57C156.13 210.98 310.02 449.84 375.1 788.5C623.76 713.95 923.33 512.55 1186.99 324.42C1334.74 258.8 1496.91 161.99 1647.57 0.14Z"/>
+  <path fill="currentColor" d="M1647.57 0.14C1365.53 98.11 1291.66 195.25 1139.38 317.69C707.98 431.4 329.75 249.16 0.75 98.57C156.13 210.98 310.02 449.84 375.1 788.5C623.76 713.95 923.33 512.55 1186.99 324.42C1334.74 258.8 1496.91 161.99 1647.57 0.14Z"/>
+  <text x="824" y="950" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="260" fill="currentColor">ConocoPhillips</text>
 </svg>
