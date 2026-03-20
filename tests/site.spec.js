@@ -154,8 +154,8 @@ test.describe("About section – content", () => {
   });
 
   test("displays job history entries in Bakgrunn section", async ({ page }) => {
-    const logos = page.locator('#bakgrunn .company-logo');
-    await expect(logos).toHaveCount(2);
+    const titles = page.locator('#bakgrunn h4.job-title');
+    await expect(titles).toHaveCount(2);
     const job1Text = page.locator('#bakgrunn [data-i18n="about.job1.text"]');
     await expect(job1Text).toBeVisible();
     await expect(job1Text).toContainText("biostratigrafisk database");
@@ -164,13 +164,11 @@ test.describe("About section – content", () => {
     await expect(job2Text).toContainText("Well Delivery");
   });
 
-  test("displays ConocoPhillips logo beside job titles", async ({ page }) => {
-    const logos = page.locator('#bakgrunn .company-logo');
-    await expect(logos).toHaveCount(2);
-    for (let i = 0; i < 2; i++) {
-      await expect(logos.nth(i)).toBeVisible();
-      await expect(logos.nth(i)).toHaveAttribute('src', 'conocophillips-logo.svg');
-    }
+  test("displays ConocoPhillips text titles beside job entries", async ({ page }) => {
+    const titles = page.locator('#bakgrunn h4.job-title');
+    await expect(titles).toHaveCount(2);
+    await expect(titles.nth(0)).toHaveText("ConocoPhillips 2024–2025");
+    await expect(titles.nth(1)).toHaveText("ConocoPhillips 2023–2024");
   });
 
   test("timeline container is visible in Bakgrunn section", async ({ page }) => {
