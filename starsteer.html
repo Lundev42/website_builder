@@ -8,9 +8,11 @@
   <meta property="og:description" content="StarSteer – programvare for retningsboring brukt av Vetle Lunde ved ConocoPhillips på Ekofiskfeltet.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://Lundev42.github.io/vetle-lunde-site/starsteer.html">
+  <meta property="og:image" content="https://Lundev42.github.io/vetle-lunde-site/logo.webp">
   <meta property="og:locale" content="nb_NO">
   <meta property="og:locale:alternate" content="en_US">
   <meta name="theme-color" content="#0f1117">
+  <link rel="canonical" href="https://Lundev42.github.io/vetle-lunde-site/starsteer.html">
   <title>StarSteer – Vetle Lunde</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🪨</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -115,6 +117,7 @@
     /* ── Sections (shared) ── */
     section {
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       align-items: center;
       padding: 120px 60px 80px;
@@ -205,7 +208,7 @@
       text-align: center;
       padding: 24px;
       font-size: 0.75rem;
-      color: #4e5672;
+      color: #7a82a0;
       border-top: 1px solid var(--nav-border);
     }
 
@@ -342,6 +345,18 @@
       left: 0;
     }
 
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     /* ── Scroll reveal animations ── */
     .reveal {
       opacity: 0;
@@ -364,6 +379,15 @@
     section:nth-of-type(even) {
       background: var(--bg-secondary);
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -371,7 +395,7 @@
   <a href="#hovedinnhold" class="skip-link" data-i18n="skip.link">Hopp til hovedinnhold</a>
 
   <!-- Navigation -->
-  <nav>
+  <nav aria-label="Hovednavigasjon" data-i18n-aria-label="nav.aria.label">
     <ul>
       <li><a href="index.html#hjem" data-i18n="nav.home">Hjem</a></li>
       <li><a href="index.html#om-meg" data-i18n="nav.about">Om meg</a></li>
@@ -391,6 +415,7 @@
     <!-- StarSteer intro -->
     <section id="starsteer-intro">
       <div class="section-inner reveal">
+        <h1 class="sr-only" data-i18n="page.title">StarSteer – Vetle Lunde</h1>
         <div class="text-col">
           <span class="section-label" data-i18n="starsteer.label">Programvare</span>
           <h2 data-i18n="starsteer.title">StarSteer</h2>
@@ -441,6 +466,7 @@
         "nav.background": "Bakgrunn",
         "nav.bachelor": "Bacheloroppgave",
         "nav.contact": "Kontakt",
+        "nav.aria.label": "Hovednavigasjon",
         "starsteer.label": "Programvare",
         "starsteer.title": "StarSteer",
         "starsteer.intro": "StarSteer er en spesialisert programvare for retningsboring, utviklet for \u00e5 designe og modellere br\u00f8nntrajektorier med h\u00f8y presisjon. Programvaren er et av bransjens ledende verkt\u00f8y innen br\u00f8nnstyring og brukes av geofaglige team verden over.",
@@ -469,6 +495,7 @@
         "nav.background": "Background",
         "nav.bachelor": "Bachelor Thesis",
         "nav.contact": "Contact",
+        "nav.aria.label": "Main navigation",
         "starsteer.label": "Software",
         "starsteer.title": "StarSteer",
         "starsteer.intro": "StarSteer is a specialised directional drilling software designed for planning and modelling wellbore trajectories with high precision. It is one of the industry\u2019s leading tools for well steering and is used by geoscience teams worldwide.",

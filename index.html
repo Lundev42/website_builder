@@ -8,9 +8,11 @@
   <meta property="og:description" content="Portefølje for Vetle Øyvind Larsen Lunde – geologistudent ved Høgskulen på Vestlandet i Sogndal.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://Lundev42.github.io/vetle-lunde-site/">
+  <meta property="og:image" content="https://Lundev42.github.io/vetle-lunde-site/logo.webp">
   <meta property="og:locale" content="nb_NO">
   <meta property="og:locale:alternate" content="en_US">
   <meta name="theme-color" content="#0f1117">
+  <link rel="canonical" href="https://Lundev42.github.io/vetle-lunde-site/">
   <title>Vetle – Geologi og Geofare</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🪨</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -115,6 +117,7 @@
     /* ── Sections (shared) ── */
     section {
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       align-items: center;
       padding: 120px 60px 80px;
@@ -595,7 +598,7 @@
       text-align: center;
       padding: 24px;
       font-size: 0.75rem;
-      color: #4e5672;
+      color: #7a82a0;
       border-top: 1px solid var(--nav-border);
     }
 
@@ -901,6 +904,15 @@
     section:nth-of-type(even) {
       background: var(--bg-secondary);
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -908,7 +920,7 @@
   <a href="#hovedinnhold" class="skip-link" data-i18n="skip.link">Hopp til hovedinnhold</a>
 
   <!-- Navigation -->
-  <nav>
+  <nav aria-label="Hovednavigasjon" data-i18n-aria-label="nav.aria.label">
     <ul>
       <li><a href="#hjem" data-i18n="nav.home">Hjem</a></li>
       <li><a href="#om-meg" data-i18n="nav.about">Om meg</a></li>
@@ -952,6 +964,9 @@
               src="ccdr 2025-08-09 113111.519.JPG"
               alt="Vetle Øyvind Larsen Lunde"
               data-i18n-alt="about.img.alt"
+              loading="lazy"
+              width="3024"
+              height="4033"
             />
             <figcaption data-i18n="about.caption">Solen går ned, men kartleggingen fortsetter</figcaption>
           </figure>
@@ -1102,6 +1117,9 @@
                       src="standard_hvl.jpg"
                       alt="Høgskulen på Vestlandet, Campus Sogndal"
                       data-i18n-alt="study.hvl.alt"
+                      loading="lazy"
+                      width="1200"
+                      height="900"
                     />
                     <figcaption data-i18n="study.hvl.caption">Høgskulen på Vestlandet, Campus Sogndal</figcaption>
                   </figure>
@@ -1183,6 +1201,7 @@
         "nav.background": "Bakgrunn",
         "nav.bachelor": "Bacheloroppgave",
         "nav.contact": "Kontakt",
+        "nav.aria.label": "Hovednavigasjon",
         "hero.title": "Vetle \u00d8yvind Larsen Lunde",
         "hero.geolog": "geolog",
         "hero.subtitle": "Bergvæg, brist med drøn og brag<br>for mit tunge hammerslag!<br>Nedad må jeg vejen bryde,<br>til jeg hører malmen lyde.<br><span class=\"quote-attr\">\u2013 Henrik Ibsen</span>",
@@ -1237,6 +1256,7 @@
         "nav.background": "Background",
         "nav.bachelor": "Bachelor Thesis",
         "nav.contact": "Contact",
+        "nav.aria.label": "Main navigation",
         "hero.title": "Vetle \u00d8yvind Larsen Lunde",
         "hero.geolog": "geologist",
         "hero.subtitle": "Bergvæg, brist med drøn og brag<br>for mit tunge hammerslag!<br>Nedad må jeg vejen bryde,<br>til jeg hører malmen lyde.<br><span class=\"quote-attr\">\u2013 Henrik Ibsen</span>",
