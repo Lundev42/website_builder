@@ -631,3 +631,102 @@ test.describe("StarSteer page", () => {
     await expect(body).toContainText("StarSteer");
   });
 });
+
+test.describe("Accessibility improvements", () => {
+  test("nav has aria-label on index page", async ({ page }) => {
+    await page.goto(PAGE_URL);
+    await expect(page.locator("nav")).toHaveAttribute("aria-label", "Hovednavigasjon");
+  });
+
+  test("nav has aria-label on bacheloroppgave page", async ({ page }) => {
+    await page.goto(BACHELOR_URL);
+    await expect(page.locator("nav")).toHaveAttribute("aria-label", "Hovednavigasjon");
+  });
+
+  test("nav has aria-label on starsteer page", async ({ page }) => {
+    await page.goto(STARSTEER_URL);
+    await expect(page.locator("nav")).toHaveAttribute("aria-label", "Hovednavigasjon");
+  });
+
+  test("nav aria-label switches to English", async ({ page }) => {
+    await page.goto(PAGE_URL);
+    await page.click(".lang-toggle");
+    await expect(page.locator("nav")).toHaveAttribute("aria-label", "Main navigation");
+  });
+
+  test("below-the-fold images have loading=lazy on index", async ({ page }) => {
+    await page.goto(PAGE_URL);
+    const aboutImg = page.locator('#om-meg img[src*="ccdr"]');
+    await expect(aboutImg).toHaveAttribute("loading", "lazy");
+    const studyImg = page.locator('img[src="standard_hvl.jpg"]');
+    await expect(studyImg).toHaveAttribute("loading", "lazy");
+  });
+
+  test("gallery images have loading=lazy on bacheloroppgave", async ({ page }) => {
+    await page.goto(BACHELOR_URL);
+    const imgs = page.locator("#bachelor .gallery-grid img");
+    await expect(imgs.nth(0)).toHaveAttribute("loading", "lazy");
+    await expect(imgs.nth(1)).toHaveAttribute("loading", "lazy");
+  });
+
+  test("images have width and height attributes on index", async ({ page }) => {
+    await page.goto(PAGE_URL);
+    const aboutImg = page.locator('#om-meg img[src*="ccdr"]');
+    await expect(aboutImg).toHaveAttribute("width");
+    await expect(aboutImg).toHaveAttribute("height");
+  });
+
+  test("images have width and height attributes on bacheloroppgave", async ({ page }) => {
+    await page.goto(BACHELOR_URL);
+    const imgs = page.locator("#bachelor .gallery-grid img");
+    await expect(imgs.nth(0)).toHaveAttribute("width");
+    await expect(imgs.nth(0)).toHaveAttribute("height");
+  });
+
+  test("bacheloroppgave page has an h1 element", async ({ page }) => {
+    await page.goto(BACHELOR_URL);
+    await expect(page.locator("h1")).toHaveCount(1);
+  });
+
+  test("starsteer page has an h1 element", async ({ page }) => {
+    await page.goto(STARSTEER_URL);
+    await expect(page.locator("h1")).toHaveCount(1);
+  });
+});
+
+test.describe("SEO improvements", () => {
+  test("index has canonical URL", async ({ page }) => {
+    await page.goto(PAGE_URL);
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveAttribute("href", "https://Lundev42.github.io/vetle-lunde-site/");
+  });
+
+  test("bacheloroppgave has correct canonical URL", async ({ page }) => {
+    await page.goto(BACHELOR_URL);
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveAttribute("href", "https://Lundev42.github.io/vetle-lunde-site/bacheloroppgave.html");
+  });
+
+  test("starsteer has correct canonical URL", async ({ page }) => {
+    await page.goto(STARSTEER_URL);
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveAttribute("href", "https://Lundev42.github.io/vetle-lunde-site/starsteer.html");
+  });
+
+  test("bacheloroppgave has correct og:url", async ({ page }) => {
+    await page.goto(BACHELOR_URL);
+    const ogUrl = page.locator('meta[property="og:url"]');
+    await expect(ogUrl).toHaveAttribute("content", "https://Lundev42.github.io/vetle-lunde-site/bacheloroppgave.html");
+  });
+
+  test("all pages have og:image meta tag", async ({ page }) => {
+    await page.goto(PAGE_URL);
+    await expect(page.locator('meta[property="og:image"]')).toHaveCount(1);
+
+    await page.goto(BACHELOR_URL);
+    await expect(page.locator('meta[property="og:image"]')).toHaveCount(1);
+
+    await page.goto(STARSTEER_URL);
+    await expect(page.locator('meta[property="og:image"]')).toHaveCount(1);
+  });
+});
