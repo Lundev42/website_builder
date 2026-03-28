@@ -75,6 +75,32 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
+    /* ── Decorative background pattern ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse at 10% 10%, rgba(99, 132, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 20%, rgba(167, 139, 250, 0.05) 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 80%, rgba(99, 132, 255, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 90%, rgba(167, 139, 250, 0.04) 0%, transparent 45%),
+        radial-gradient(circle, rgba(99, 132, 255, 0.04) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+      pointer-events: none;
+    }
+
+    [data-theme="light"] body::before {
+      background:
+        radial-gradient(ellipse at 10% 10%, rgba(74, 99, 204, 0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 20%, rgba(139, 92, 246, 0.04) 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 80%, rgba(74, 99, 204, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 90%, rgba(139, 92, 246, 0.03) 0%, transparent 45%),
+        radial-gradient(circle, rgba(74, 99, 204, 0.035) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+    }
+
     /* ── Navigation ── */
     nav {
       position: fixed;
@@ -470,8 +496,19 @@
       margin-top: 32px;
     }
 
+    #bakgrunn .section-inner {
+      align-items: flex-start;
+    }
+
     #bakgrunn .text-col {
       max-width: 100%;
+      flex: 1 1 60%;
+    }
+
+    #bakgrunn .media-col {
+      flex: 0 0 340px;
+      position: sticky;
+      top: 100px;
     }
 
     .study-layout {
@@ -972,8 +1009,6 @@
           <!-- Study subsection -->
           <div class="background-subsection">
             <h3 data-i18n="background.study.title">Faglig bakgrunn</h3>
-              <div class="study-layout">
-                <div class="study-text-col">
                   <p data-i18n="study.text">Jeg studerer Geologi og geofare, Norges fremste bachelorprogram innen geofag, som i både 2022 og 2023 ble kåret til landets beste i Studiebarometeret. Studiet utmerker seg med sitt unike fokus på geofare og arealplanlegging, og som student her drar jeg nytte av et læringsmiljø i norgestoppen med tett oppfølging fra fagmiljøet. Med min bakgrunn fra dette studiet har jeg opparbeidet meg solid kompetanse på å løse komplekse geologiske problemstillinger i praksis.</p>
                   <details class="accordion">
                 <summary data-i18n="study.accordion.title">Oppnådd faglig kompetanse</summary>
@@ -1099,21 +1134,6 @@
                   </table>
                   </div>
                   </details>
-                </div>
-                <div class="study-image-col">
-                  <figure>
-                    <img
-                      src="standard_hvl.jpg"
-                      alt="Høgskulen på Vestlandet, Campus Sogndal"
-                      data-i18n-alt="study.hvl.alt"
-                      loading="lazy"
-                      width="1200"
-                      height="900"
-                    />
-                    <figcaption data-i18n="study.hvl.caption">Høgskulen på Vestlandet, Campus Sogndal</figcaption>
-                  </figure>
-                </div>
-              </div>
             </div>
 
           <!-- Job subsection -->
@@ -1156,6 +1176,19 @@
               </div>
             </div>
 
+        </div>
+        <div class="media-col">
+          <figure>
+            <img
+              src="standard_hvl.jpg"
+              alt="Høgskulen på Vestlandet, Campus Sogndal"
+              data-i18n-alt="study.hvl.alt"
+              loading="lazy"
+              width="1200"
+              height="900"
+            />
+            <figcaption data-i18n="study.hvl.caption">Høgskulen på Vestlandet, Campus Sogndal</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -1231,7 +1264,7 @@
         "study.accordion.title": "Oppnådd faglig kompetanse",
         "study.accordion.content": "<table class=\"course-table\"><thead><tr><th scope=\"col\">Emnekode</th><th scope=\"col\">Emnenavn</th><th scope=\"col\">Studiepoeng</th></tr></thead><tbody><tr class=\"semester-row\"><th colspan=\"3\" scope=\"row\">Semester 1</th></tr><tr><td>MA414</td><td>Matematikk for naturfag</td><td>10 sp</td></tr><tr><td>GE406</td><td>Geologi grunnkurs</td><td>10 sp</td></tr><tr><td>GE413</td><td>Kartlære og GIS</td><td>10 sp</td></tr><tr class=\"semester-row\"><th colspan=\"3\" scope=\"row\">Semester 2</th></tr><tr><td>FY400</td><td>Innføring i fysikk</td><td>10 sp</td></tr><tr><td>GE408</td><td>Mineralogi og petrografi</td><td>10 sp</td></tr><tr><td>GE436</td><td>Sedimentologi</td><td>10 sp</td></tr><tr class=\"semester-row\"><th colspan=\"3\" scope=\"row\">Semester 3</th></tr><tr><td>GE414</td><td>Strukturgeologi og tektonikk</td><td>10 sp</td></tr><tr><td>GE407</td><td>Anvendt geofysikk</td><td>10 sp</td></tr><tr><td>GE486</td><td>Glasialgeologi</td><td>10 sp</td></tr><tr class=\"semester-row\"><th colspan=\"3\" scope=\"row\">Semester 4</th></tr><tr><td>GE483</td><td>Climate Change</td><td>10 sp</td></tr><tr><td>GE484</td><td>Geofare og skredkartlegging</td><td>10 sp</td></tr><tr><td>GE481</td><td>Ingeniørgeologi, geoteknikk og overvåkning av ustabile fjellsider</td><td>10 sp</td></tr><tr class=\"semester-row\"><th colspan=\"3\" scope=\"row\">Semester 5</th></tr><tr><td>GE482</td><td>Hydrogeologi</td><td>10 sp</td></tr><tr><td>ING202</td><td>Programmering for ingeniører</td><td>5 sp</td></tr><tr><td>ME420</td><td>Statistikk</td><td>10 sp</td></tr><tr class=\"semester-row\"><th colspan=\"3\" scope=\"row\">Semester 6</th></tr><tr><td>GE448</td><td>Snø og snøskred</td><td>10 sp</td></tr><tr><td>ING301</td><td>Datateknologi og videregående programmering for ingeniører</td><td>5 sp</td></tr><tr><td>GE491</td><td>Bacheloroppgave i geologi</td><td>20 sp</td></tr></tbody></table>",
         "bachelor.title": "Bacheloroppgave",
-        "bachelor.text": "Bacheloroppgaven min fokuserer p\u00e5 \u00e5 forst\u00e5 geologiske prosesser og hvordan de p\u00e5virker samfunnet. Gjennom feltarbeid, laboratorieanalyser og kartlegging har jeg unders\u00f8kt hvordan man kan vurdere og h\u00e5ndtere geofarer i norsk terreng. Oppgaven knytter sammen teori og praksis p\u00e5 en m\u00e5te som er relevant for fremtidig arbeid innen geofag.",
+        "bachelor.text": "Oppgaven unders\u00f8ker de metasediment\u00e6re bergartene i Gulagruppen og Funnsj\u00f8gruppen i den s\u00f8r\u00f8stlige delen av Trondheimsdekkekomplekset. M\u00e5let er \u00e5 bedre forst\u00e5 forskjellene mellom disse enhetene, siden grensen mellom dem er usikker og d\u00e5rlig kartlagt. Studien er en del av NGUs MER\u00d8-prosjekt, som skal forbedre berggrunnskartene i Tr\u00f8ndelag.",
         "bachelor.img1.alt": "Bacheloroppgave \u2013 feltarbeid bilde 1",
         "bachelor.img2.alt": "Bacheloroppgave \u2013 feltarbeid bilde 2",
         "bachelor.caption1": "Den vakre naturen i Tr\u00f8ndelag",
@@ -1288,7 +1321,7 @@
         "study.accordion.title": "Achieved Academic Competence",
         "study.accordion.content": "<table class=\"course-table\"><thead><tr><th scope=\"col\">Course Code</th><th scope=\"col\">Course Name</th><th scope=\"col\">Credits</th></tr></thead><tbody><tr class=\"semester-row\"><th colspan=\"3\" scope=\"row\">Semester 1</th></tr><tr><td>MA414</td><td>Mathematics for Natural Sciences</td><td>10 ECTS</td></tr><tr><td>GE406</td><td>Basic Geology</td><td>10 ECTS</td></tr><tr><td>GE413</td><td>Cartography and GIS</td><td>10 ECTS</td></tr><tr class=\"semester-row\"><th colspan=\"3\" scope=\"row\">Semester 2</th></tr><tr><td>FY400</td><td>Introduction to Physics</td><td>10 ECTS</td></tr><tr><td>GE408</td><td>Mineralogy and Petrography</td><td>10 ECTS</td></tr><tr><td>GE436</td><td>Sedimentology</td><td>10 ECTS</td></tr><tr class=\"semester-row\"><th colspan=\"3\" scope=\"row\">Semester 3</th></tr><tr><td>GE414</td><td>Structural Geology and Tectonics</td><td>10 ECTS</td></tr><tr><td>GE407</td><td>Applied Geophysics</td><td>10 ECTS</td></tr><tr><td>GE486</td><td>Glacial Geology</td><td>10 ECTS</td></tr><tr class=\"semester-row\"><th colspan=\"3\" scope=\"row\">Semester 4</th></tr><tr><td>GE483</td><td>Climate Change</td><td>10 ECTS</td></tr><tr><td>GE484</td><td>Geohazards and Landslide Mapping</td><td>10 ECTS</td></tr><tr><td>GE481</td><td>Engineering Geology, Geotechnics and Monitoring of Unstable Rock Slopes</td><td>10 ECTS</td></tr><tr class=\"semester-row\"><th colspan=\"3\" scope=\"row\">Semester 5</th></tr><tr><td>GE482</td><td>Hydrogeology</td><td>10 ECTS</td></tr><tr><td>ING202</td><td>Programming for Engineers</td><td>5 ECTS</td></tr><tr><td>ME420</td><td>Statistics</td><td>10 ECTS</td></tr><tr class=\"semester-row\"><th colspan=\"3\" scope=\"row\">Semester 6</th></tr><tr><td>GE448</td><td>Snow and Avalanches</td><td>10 ECTS</td></tr><tr><td>ING301</td><td>Data Technology and Advanced Programming for Engineers</td><td>5 ECTS</td></tr><tr><td>GE491</td><td>Bachelor Thesis in Geology</td><td>20 ECTS</td></tr></tbody></table>",
         "bachelor.title": "Bachelor Thesis",
-        "bachelor.text": "My bachelor thesis focuses on understanding geological processes and how they affect society. Through fieldwork, laboratory analyses and mapping, I have investigated how one can assess and manage geo-hazards in Norwegian terrain. The thesis ties together theory and practice in a way that is relevant for future work in geoscience.",
+        "bachelor.text": "The thesis examines the metasedimentary rocks of the Gula Group and the Funnsj\u00f8 Group in the southeastern part of the Trondheim Nappe Complex. The aim is to better understand the differences between these units, as the boundary between them is uncertain and poorly mapped. The study is part of NGU\u2019s MER\u00d8 project, which aims to improve the bedrock maps of Tr\u00f8ndelag.",
         "bachelor.img1.alt": "Bachelor thesis \u2013 fieldwork photo 1",
         "bachelor.img2.alt": "Bachelor thesis \u2013 fieldwork photo 2",
         "bachelor.caption1": "The beautiful nature of Tr\u00f8ndelag",

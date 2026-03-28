@@ -75,6 +75,32 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
+    /* ── Decorative background pattern ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse at 10% 10%, rgba(99, 132, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 20%, rgba(167, 139, 250, 0.05) 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 80%, rgba(99, 132, 255, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 90%, rgba(167, 139, 250, 0.04) 0%, transparent 45%),
+        radial-gradient(circle, rgba(99, 132, 255, 0.04) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+      pointer-events: none;
+    }
+
+    [data-theme="light"] body::before {
+      background:
+        radial-gradient(ellipse at 10% 10%, rgba(74, 99, 204, 0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 20%, rgba(139, 92, 246, 0.04) 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 80%, rgba(74, 99, 204, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 90%, rgba(139, 92, 246, 0.03) 0%, transparent 45%),
+        radial-gradient(circle, rgba(74, 99, 204, 0.035) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+    }
+
     /* ── Navigation ── */
     nav {
       position: fixed;
@@ -157,11 +183,10 @@
 
     .media-col img {
       width: 100%;
-      border-radius: 16px;
-      border: 3px solid rgba(255, 255, 255, 0.12);
+      border-radius: 0;
       object-fit: cover;
       display: block;
-      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+      transition: box-shadow 0.4s ease;
     }
 
     /* ── Bachelor heading centered on top ── */
@@ -194,16 +219,15 @@
     .gallery-grid img {
       width: 100%;
       height: auto;
-      object-fit: contain;
-      border-radius: 12px 12px 0 0;
-      border: 3px solid rgba(255, 255, 255, 0.12);
-      border-bottom: none;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 0;
       display: block;
     }
 
     .gallery-grid figure {
       margin: 0;
-      border-radius: 12px;
+      border-radius: 0;
       overflow: hidden;
     }
 
@@ -213,9 +237,7 @@
       color: var(--text-muted);
       padding: 10px 12px;
       background: var(--card-bg);
-      border: 3px solid rgba(255, 255, 255, 0.12);
-      border-top: none;
-      border-radius: 0 0 12px 12px;
+      border-radius: 0;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
@@ -450,7 +472,7 @@
         <h1 class="sr-only" data-i18n="page.title">Vetle – Geologi og Geofare</h1>
         <h2 data-i18n="bachelor.title">Bacheloroppgave</h2>
         <div class="text-col">
-          <p data-i18n="bachelor.text">Bacheloroppgaven min fokuserer på å forstå geologiske prosesser og hvordan de påvirker samfunnet. Gjennom feltarbeid, laboratorieanalyser og kartlegging har jeg undersøkt hvordan man kan vurdere og håndtere geofarer i norsk terreng. Oppgaven knytter sammen teori og praksis på en måte som er relevant for fremtidig arbeid innen geofag.</p>
+          <p data-i18n="bachelor.text">Oppgaven undersøker de metasedimentære bergartene i Gulagruppen og Funnsjøgruppen i den sørøstlige delen av Trondheimsdekkekomplekset. Målet er å bedre forstå forskjellene mellom disse enhetene, siden grensen mellom dem er usikker og dårlig kartlagt. Studien er en del av NGUs MERØ-prosjekt, som skal forbedre berggrunnskartene i Trøndelag.</p>
         </div>
         <div class="media-col">
           <div class="gallery-grid">
@@ -497,7 +519,7 @@
         "nav.contact": "Kontakt",
         "nav.aria.label": "Hovednavigasjon",
         "bachelor.title": "Bacheloroppgave",
-        "bachelor.text": "Bacheloroppgaven min fokuserer p\u00e5 \u00e5 forst\u00e5 geologiske prosesser og hvordan de p\u00e5virker samfunnet. Gjennom feltarbeid, laboratorieanalyser og kartlegging har jeg unders\u00f8kt hvordan man kan vurdere og h\u00e5ndtere geofarer i norsk terreng. Oppgaven knytter sammen teori og praksis p\u00e5 en m\u00e5te som er relevant for fremtidig arbeid innen geofag.",
+        "bachelor.text": "Oppgaven unders\u00f8ker de metasediment\u00e6re bergartene i Gulagruppen og Funnsj\u00f8gruppen i den s\u00f8r\u00f8stlige delen av Trondheimsdekkekomplekset. M\u00e5let er \u00e5 bedre forst\u00e5 forskjellene mellom disse enhetene, siden grensen mellom dem er usikker og d\u00e5rlig kartlagt. Studien er en del av NGUs MER\u00d8-prosjekt, som skal forbedre berggrunnskartene i Tr\u00f8ndelag.",
         "bachelor.img1.alt": "Bacheloroppgave \u2013 feltarbeid bilde 1",
         "bachelor.img2.alt": "Bacheloroppgave \u2013 feltarbeid bilde 2",
         "bachelor.caption1": "Den vakre naturen i Tr\u00f8ndelag",
@@ -518,7 +540,7 @@
         "nav.contact": "Contact",
         "nav.aria.label": "Main navigation",
         "bachelor.title": "Bachelor Thesis",
-        "bachelor.text": "My bachelor thesis focuses on understanding geological processes and how they affect society. Through fieldwork, laboratory analyses and mapping, I have investigated how one can assess and manage geo-hazards in Norwegian terrain. The thesis ties together theory and practice in a way that is relevant for future work in geoscience.",
+        "bachelor.text": "The thesis examines the metasedimentary rocks of the Gula Group and the Funnsj\u00f8 Group in the southeastern part of the Trondheim Nappe Complex. The aim is to better understand the differences between these units, as the boundary between them is uncertain and poorly mapped. The study is part of NGU\u2019s MER\u00d8 project, which aims to improve the bedrock maps of Tr\u00f8ndelag.",
         "bachelor.img1.alt": "Bachelor thesis \u2013 fieldwork photo 1",
         "bachelor.img2.alt": "Bachelor thesis \u2013 fieldwork photo 2",
         "bachelor.caption1": "The beautiful nature of Tr\u00f8ndelag",
