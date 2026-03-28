@@ -923,27 +923,29 @@
     }
 
     /* ── Horizontal Reveal Slider ── */
-    .reveal-slider {
-      position: relative;
-      margin-top: 16px;
-      height: 160px;
+    .timeline-entry-with-slider {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .timeline-entry-with-slider .timeline-content {
+      flex: 1;
+      min-width: 0;
     }
 
     .reveal-slider-tab {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 36px;
-      height: 100%;
+      flex-shrink: 0;
+      width: 28px;
       background: var(--card-bg);
       border: 1px solid var(--accent-border);
-      border-radius: 8px;
+      border-radius: 8px 0 0 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: background 0.3s ease;
-      z-index: 2;
+      margin-right: -1px;
     }
 
     .reveal-slider-tab:hover {
@@ -951,36 +953,32 @@
     }
 
     .reveal-slider-tab .arrow {
-      font-size: 0.85rem;
+      font-size: 0.7rem;
       color: var(--accent);
       transition: transform 0.5s ease;
     }
 
-    .reveal-slider.open .reveal-slider-tab .arrow {
+    .reveal-slider-tab.open .arrow {
       transform: rotate(180deg);
     }
 
-    .reveal-slider-content {
-      position: absolute;
-      left: 36px;
-      top: 0;
-      height: 100%;
+    .reveal-slider-panel {
       width: 0;
       overflow: hidden;
       background: var(--card-bg);
       border: 1px solid var(--accent-border);
-      border-left: none;
       border-radius: 0 8px 8px 0;
-      transition: width 0.5s ease;
+      transition: width 0.5s ease, padding 0.5s ease;
       display: flex;
       align-items: center;
       gap: 16px;
       padding: 0;
+      flex-shrink: 0;
     }
 
-    .reveal-slider.open .reveal-slider-content {
-      width: calc(100% - 36px);
-      padding: 16px;
+    .reveal-slider-panel.open {
+      width: 300px;
+      padding: 12px;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1195,32 +1193,32 @@
                 <div class="timeline-entry">
                   <span class="timeline-date">2024–2025</span>
                   <div class="timeline-marker"></div>
-                  <div class="timeline-content">
-                    <h4 class="job-title" data-i18n="about.job2.title">ConocoPhillips</h4>
-                    <p data-i18n-html="about.job2.text">Som en del av Well Delivery-teamet arbeidet jeg med å utvikle et omfattende bibliotek av re-styrte brønner på Ekofiskfeltet. Arbeidet ble utført i programvaren <a href="starsteer.html">StarSteer</a> ved å integrere biostratigrafi, bildeloggtolkninger og geofysiske logger (CPI). Formålet var å forbedre treffsikkerheten for fremtidige brønner og støtte implementeringen av sanntidsoperasjoner i 2025. Prosjektet innebar avansert korrelasjon og analyse av tetthet og resistivitetslogger, samt bruk av utdata til å identifisere avvik i strukturelle geomodeller (Petrel) for målrettet modellforbedring på Ekofisk og Eldfisk-feltene.</p>
-                    <div class="reveal-slider" id="revealSlider1">
-                      <button class="reveal-slider-tab" aria-label="Vis bilder" onclick="document.getElementById('revealSlider1').classList.toggle('open')">
-                        <span class="arrow">&#9654;</span>
-                      </button>
-                      <div class="reveal-slider-content">
-                        <!-- Images go here -->
-                      </div>
+                  <div class="timeline-entry-with-slider">
+                    <button class="reveal-slider-tab" id="sliderTab1" aria-label="Vis bilder" onclick="this.classList.toggle('open');document.getElementById('sliderPanel1').classList.toggle('open')">
+                      <span class="arrow">&#9654;</span>
+                    </button>
+                    <div class="reveal-slider-panel" id="sliderPanel1">
+                      <!-- Images go here -->
+                    </div>
+                    <div class="timeline-content">
+                      <h4 class="job-title" data-i18n="about.job2.title">ConocoPhillips</h4>
+                      <p data-i18n-html="about.job2.text">Som en del av Well Delivery-teamet arbeidet jeg med å utvikle et omfattende bibliotek av re-styrte brønner på Ekofiskfeltet. Arbeidet ble utført i programvaren <a href="starsteer.html">StarSteer</a> ved å integrere biostratigrafi, bildeloggtolkninger og geofysiske logger (CPI). Formålet var å forbedre treffsikkerheten for fremtidige brønner og støtte implementeringen av sanntidsoperasjoner i 2025. Prosjektet innebar avansert korrelasjon og analyse av tetthet og resistivitetslogger, samt bruk av utdata til å identifisere avvik i strukturelle geomodeller (Petrel) for målrettet modellforbedring på Ekofisk og Eldfisk-feltene.</p>
                     </div>
                   </div>
                 </div>
                 <div class="timeline-entry">
                   <span class="timeline-date">2023–2024</span>
                   <div class="timeline-marker"></div>
-                  <div class="timeline-content">
-                    <h4 class="job-title" data-i18n="about.job1.title">ConocoPhillips</h4>
-                    <p data-i18n="about.job1.text">Arbeidet mitt besto av å hjelpe reservoarkarakteriserings teamet med å lage en brukbar biostratigrafisk database. Dette arbeidet støtter den geologiske tolkningen etter borekampanjen på gasskondensatfeltet Tommeliten A, og bidro til den fullstendige modelloppdateringen for 2024/2025. Arbeidsflyten bestod av databehandling i Excel etterfulgt av analysearbeid i Spotfire.</p>
-                    <div class="reveal-slider" id="revealSlider2">
-                      <button class="reveal-slider-tab" aria-label="Vis bilder" onclick="document.getElementById('revealSlider2').classList.toggle('open')">
-                        <span class="arrow">&#9654;</span>
-                      </button>
-                      <div class="reveal-slider-content">
-                        <!-- Images go here -->
-                      </div>
+                  <div class="timeline-entry-with-slider">
+                    <button class="reveal-slider-tab" id="sliderTab2" aria-label="Vis bilder" onclick="this.classList.toggle('open');document.getElementById('sliderPanel2').classList.toggle('open')">
+                      <span class="arrow">&#9654;</span>
+                    </button>
+                    <div class="reveal-slider-panel" id="sliderPanel2">
+                      <!-- Images go here -->
+                    </div>
+                    <div class="timeline-content">
+                      <h4 class="job-title" data-i18n="about.job1.title">ConocoPhillips</h4>
+                      <p data-i18n="about.job1.text">Arbeidet mitt besto av å hjelpe reservoarkarakteriserings teamet med å lage en brukbar biostratigrafisk database. Dette arbeidet støtter den geologiske tolkningen etter borekampanjen på gasskondensatfeltet Tommeliten A, og bidro til den fullstendige modelloppdateringen for 2024/2025. Arbeidsflyten bestod av databehandling i Excel etterfulgt av analysearbeid i Spotfire.</p>
                     </div>
                   </div>
                 </div>
