@@ -408,6 +408,67 @@
       background: var(--bg-secondary);
     }
 
+    /* ── Horizontal Reveal Slider ── */
+    .reveal-slider {
+      position: relative;
+      margin-top: 40px;
+      height: 200px;
+    }
+
+    .reveal-slider-tab {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--accent-border);
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+      z-index: 2;
+    }
+
+    .reveal-slider-tab:hover {
+      background: var(--accent-hover);
+    }
+
+    .reveal-slider-tab .arrow {
+      font-size: 1rem;
+      color: var(--accent);
+      transition: transform 0.5s ease;
+    }
+
+    .reveal-slider.open .reveal-slider-tab .arrow {
+      transform: rotate(180deg);
+    }
+
+    .reveal-slider-content {
+      position: absolute;
+      left: 40px;
+      top: 0;
+      height: 100%;
+      width: 0;
+      overflow: hidden;
+      background: var(--card-bg);
+      border: 1px solid var(--accent-border);
+      border-left: none;
+      border-radius: 0 8px 8px 0;
+      transition: width 0.5s ease;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0;
+    }
+
+    .reveal-slider.open .reveal-slider-content {
+      width: calc(100% - 40px);
+      padding: 16px;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -472,6 +533,20 @@
               />
               <figcaption data-i18n="bachelor.caption2">Bratte fjellsider</figcaption>
             </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Horizontal Reveal Slider -->
+    <section>
+      <div class="section-inner reveal">
+        <div class="reveal-slider" id="revealSlider">
+          <button class="reveal-slider-tab" aria-label="Vis bilder" onclick="document.getElementById('revealSlider').classList.toggle('open')">
+            <span class="arrow">&#9654;</span>
+          </button>
+          <div class="reveal-slider-content">
+            <!-- Images go here -->
           </div>
         </div>
       </div>
