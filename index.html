@@ -272,11 +272,10 @@
 
     .media-col img {
       width: 100%;
-      border-radius: 16px;
-      border: 3px solid rgba(255, 255, 255, 0.12);
+      border-radius: 0;
       object-fit: cover;
       display: block;
-      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+      transition: box-shadow 0.4s ease;
     }
 
     /* ── Hero section ── */
@@ -370,8 +369,7 @@
       color: rgba(255, 255, 255, 0.75);
       padding: 12px 14px;
       background: rgba(15, 17, 23, 0.55);
-      border: 3px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
+      border-radius: 0;
       max-width: 600px;
       width: max-content;
       backdrop-filter: blur(6px);
@@ -393,7 +391,7 @@
 
     #om-meg .media-col figure {
       margin: 0;
-      border-radius: 16px;
+      border-radius: 0;
       overflow: hidden;
     }
 
@@ -402,10 +400,7 @@
       max-height: 480px;
       object-fit: cover;
       object-position: center 80%;
-      border-radius: 16px 16px 0 0;
-      border: 3px solid rgba(255, 255, 255, 0.12);
-      border-bottom: none;
-      border-left: none;
+      border-radius: 0;
       display: block;
     }
 
@@ -415,10 +410,7 @@
       color: var(--text-muted);
       padding: 12px 14px;
       background: var(--card-bg);
-      border: 3px solid rgba(255, 255, 255, 0.12);
-      border-top: none;
-      border-left: none;
-      border-radius: 0 0 16px 16px;
+      border-radius: 0;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
@@ -503,7 +495,7 @@
     .study-layout .study-image-col img {
       width: 100%;
       height: auto;
-      border-radius: 12px;
+      border-radius: 0;
     }
 
     .course-table {
@@ -555,9 +547,7 @@
       width: 100%;
       height: auto;
       object-fit: contain;
-      border-radius: 12px 12px 0 0;
-      border: 3px solid rgba(255, 255, 255, 0.12);
-      border-bottom: none;
+      border-radius: 0;
       display: block;
     }
 
@@ -796,7 +786,7 @@
     /* ── Figure captions inside gallery ── */
     .gallery-grid figure {
       margin: 0;
-      border-radius: 12px;
+      border-radius: 0;
       overflow: hidden;
     }
 
@@ -806,9 +796,7 @@
       color: var(--text-muted);
       padding: 10px 12px;
       background: var(--card-bg);
-      border: 3px solid rgba(255, 255, 255, 0.12);
-      border-top: none;
-      border-radius: 0 0 12px 12px;
+      border-radius: 0;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
@@ -1154,7 +1142,15 @@
                   <div class="timeline-marker"></div>
                   <div class="timeline-content">
                     <h4 class="job-title" data-i18n="about.job0.title">Vaktsoldat – Akershus Festning</h4>
-                    <p data-i18n="about.job0.text">Tjenestegjorde som vaktsoldat ved Hans Majestet Kongens Garde på Akershus festning. Tjenesten innebar vakthold og seremoniell aktivitet, og ga meg verdifull erfaring med disiplin, samarbeid og ansvar i en militær kontekst.</p>
+                    <p data-i18n="about.job0.text">Tjenestegjorde som vaktsoldat ved Akershus festning i Oslo. Her jobbet vi med å ivareta sikkerhet gjennom døgnkontinuerlig vakthold. Hovedoppgavene inkluderer portvakt, streifvakter (patruljering) og flaggpost, samt bistand ved arrangementer. Tjenesten innebar tett kontakt med sivile på en av Oslo's største turistattraksjoner.</p>
+                  </div>
+                </div>
+                <div class="timeline-entry">
+                  <span class="timeline-date">2021–2022</span>
+                  <div class="timeline-marker"></div>
+                  <div class="timeline-content">
+                    <h4 class="job-title" data-i18n="about.job_ren.title">Renovasjonen IKS</h4>
+                    <p data-i18n="about.job_ren.text">Som en sommerjobb i coronatiden jobbet jeg med avfallshåndtering, både husholdning, elektronisk og annet diverse. Jobben startet tidlig og innebar mye fysisk arbeid, samt samhandling med kollegaer.</p>
                   </div>
                 </div>
               </div>
@@ -1221,7 +1217,9 @@
         "about.conocophillips.logo.alt": "ConocoPhillips logo",
         "about.job2.text": "Som en del av Well Delivery-teamet arbeidet jeg med \u00e5 utvikle et omfattende bibliotek av re-styrte br\u00f8nner p\u00e5 Ekofiskfeltet. Arbeidet ble utf\u00f8rt i programvaren <a href=\"starsteer.html\">StarSteer</a> ved \u00e5 integrere biostratigrafi, bildeloggtolkninger og geofysiske logger (CPI). Form\u00e5let var \u00e5 forbedre treffsikkerheten for fremtidige br\u00f8nner og st\u00f8tte implementeringen av sanntidsoperasjoner i 2025. Prosjektet innebar avansert korrelasjon og analyse av tetthet og resistivitetslogger, samt bruk av utdata til \u00e5 identifisere avvik i strukturelle geomodeller (Petrel) for m\u00e5lrettet modellforbedring p\u00e5 Ekofisk og Eldfisk-feltene.",
         "about.job0.title": "Vaktsoldat \u2013 Akershus Festning",
-        "about.job0.text": "Tjenestegjorde som vaktsoldat ved Hans Majestet Kongens Garde p\u00e5 Akershus festning. Tjenesten innebar vakthold og seremoniell aktivitet, og ga meg verdifull erfaring med disiplin, samarbeid og ansvar i en milit\u00e6r kontekst.",
+        "about.job0.text": "Tjenestegjorde som vaktsoldat ved Akershus festning i Oslo. Her jobbet vi med \u00e5 ivareta sikkerhet gjennom d\u00f8gnkontinuerlig vakthold. Hovedoppgavene inkluderer portvakt, streifvakter (patruljering) og flaggpost, samt bistand ved arrangementer. Tjenesten innebar tett kontakt med sivile p\u00e5 en av Oslo's st\u00f8rste turistattraksjoner.",
+        "about.job_ren.title": "Renovasjonen IKS",
+        "about.job_ren.text": "Som en sommerjobb i coronatiden jobbet jeg med avfallsh\u00e5ndtering, b\u00e5de husholdning, elektronisk og annet diverse. Jobben startet tidlig og innebar mye fysisk arbeid, samt samhandling med kollegaer.",
         "background.title": "Bakgrunn",
         "background.study.button": "Bsc. Geologi og Geofare",
         "background.study.title": "Faglig bakgrunn",
@@ -1276,7 +1274,9 @@
         "about.conocophillips.logo.alt": "ConocoPhillips logo",
         "about.job2.text": "As part of the Well Delivery team, I worked on developing a comprehensive library of re-steered wells on the Ekofisk field. The work was carried out in the <a href=\"starsteer.html\">StarSteer</a> software by integrating biostratigraphy, image log interpretations and geophysical logs (CPI). The purpose was to improve the accuracy of future wells and support the implementation of real-time operations in 2025. The project involved advanced correlation and analysis of density and resistivity logs, as well as using the output to identify discrepancies in structural geomodels (Petrel) for targeted model improvement on the Ekofisk and Eldfisk fields.",
         "about.job0.title": "Guard Soldier \u2013 Akershus Fortress",
-        "about.job0.text": "Served as a guard soldier in His Majesty The King\u2019s Guard at Akershus Fortress. The service involved guard duty and ceremonial activities, and gave me valuable experience with discipline, teamwork and responsibility in a military context.",
+        "about.job0.text": "Served as a guard soldier at Akershus Fortress in Oslo. We worked to maintain security through round-the-clock guard duty. Main tasks included gate guard, patrol rounds and flag post, as well as assistance at events. The service involved close contact with civilians at one of Oslo's largest tourist attractions.",
+        "about.job_ren.title": "Renovasjonen IKS",
+        "about.job_ren.text": "As a summer job during the COVID period, I worked with waste management, including household, electronic and other miscellaneous waste. The job started early and involved a lot of physical work, as well as collaboration with colleagues.",
         "background.title": "Background",
         "background.study.button": "Bsc. Geology and Geo-Hazards",
         "background.study.title": "Academic background",
