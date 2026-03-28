@@ -287,6 +287,12 @@
       background: url('IMG_7173.JPG') center 42% / cover no-repeat;
       min-height: 100vh;
       padding: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    #hjem.loaded {
+      opacity: 1;
     }
 
     #hjem .hero-overlay {
@@ -1195,7 +1201,7 @@
             <h3 data-i18n="background.job.title">Jobberfaring</h3>
               <div class="timeline">
                 <div class="timeline-entry">
-                  <span class="timeline-date">2024–2025</span>
+                  <span class="timeline-date">2025</span>
                   <div class="timeline-marker"></div>
                   <div class="timeline-entry-with-slider">
                     <div class="timeline-content">
@@ -1211,7 +1217,7 @@
                   </div>
                 </div>
                 <div class="timeline-entry">
-                  <span class="timeline-date">2023–2024</span>
+                  <span class="timeline-date">2024</span>
                   <div class="timeline-marker"></div>
                   <div class="timeline-entry-with-slider">
                     <div class="timeline-content">
@@ -1513,6 +1519,16 @@
         applyTheme("light");
       } else {
         applyTheme("dark");
+      }
+    })();
+
+    /* ── Hero fade-in ── */
+    (function () {
+      var hero = document.getElementById('hjem');
+      if (hero) {
+        requestAnimationFrame(function () {
+          hero.classList.add('loaded');
+        });
       }
     })();
 
