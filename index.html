@@ -465,18 +465,27 @@
       cursor: pointer;
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.07);
       transition: transform var(--duration-state) var(--ease-out-quart), box-shadow var(--duration-state) var(--ease-out-quart);
     }
 
     .about-sub-gallery .gallery-thumb:hover {
       transform: scale(1.03);
+      box-shadow: 0 8px 28px rgba(255, 255, 255, 0.12);
+    }
+
+    [data-theme="light"] .about-sub-gallery .gallery-thumb {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    [data-theme="light"] .about-sub-gallery .gallery-thumb:hover {
       box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
     }
 
     .about-sub-gallery .gallery-thumb img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
 
