@@ -383,6 +383,10 @@
     }
 
     /* ── About ── */
+    #om-meg {
+      flex-direction: column;
+    }
+
     #om-meg .section-inner {
       align-items: flex-start;
     }
@@ -403,9 +407,8 @@
 
     #om-meg .media-col img {
       width: 100%;
-      max-height: 480px;
-      object-fit: cover;
-      object-position: center 30%;
+      max-height: 400px;
+      object-fit: contain;
       border-radius: 0;
       display: block;
     }
@@ -422,7 +425,7 @@
     }
 
     .about-sub-gallery {
-      max-width: 1200px;
+      max-width: 1400px;
       width: 100%;
       margin: 24px auto 0;
       padding: 0 60px;
@@ -438,8 +441,8 @@
 
     .about-sub-gallery img {
       width: 100%;
-      height: 250px;
-      object-fit: cover;
+      height: auto;
+      object-fit: contain;
       display: block;
     }
 
@@ -1029,9 +1032,27 @@
         scroll-behavior: auto !important;
       }
     }
+    /* Suppress transitions during initial page load to prevent glitchy flashes */
+    .no-transition,
+    .no-transition *,
+    .no-transition *::before,
+    .no-transition *::after {
+      transition: none !important;
+    }
   </style>
+  <script>
+    /* Apply saved theme before first paint to avoid a flash of wrong theme */
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
 </head>
-<body>
+<body class="no-transition">
 
   <a href="#hovedinnhold" class="skip-link" data-i18n="skip.link">Hopp til hovedinnhold</a>
 
@@ -1103,7 +1124,7 @@
             data-i18n-alt="about.img6585.alt"
             loading="lazy"
           />
-          <figcaption data-i18n="about.caption6585">Hva er vel et menneskes kraft mot en kjempe som har sovet under isen i tusen år?</figcaption>
+          <figcaption data-i18n="about.caption6585">Hva er vel en manns kraft mot en kjempe som har sovet under isen i tusen år?</figcaption>
         </figure>
       </div>
     </section>
@@ -1368,7 +1389,7 @@
         "about.caption": "Solen g\u00e5r ned, men kartleggingen fortsetter",
         "about.caption7797": "Bak meg er det turkise smeltevannet fra Nigardsbreen. Selv om brearmen gjemmer seg langt bak i dalen etter mye smelting, er dette fortsatt et vakkert sted",
         "about.caption2172": "\u00c5 krype gjennom trange marmorganger p\u00e5 tur gjennom de ber\u00f8mte Dumdalsgrottene",
-        "about.caption6585": "Hva er vel et menneskes kraft mot en kjempe som har sovet under isen i tusen \u00e5r?",
+        "about.caption6585": "Hva er vel en manns kraft mot en kjempe som har sovet under isen i tusen \u00e5r?",
         "about.img7797.alt": "Vetle foran Nigardsbreen",
         "about.img2172.alt": "Dumdalsgrottene",
         "about.img6585.alt": "Feltarbeid p\u00e5 bre",
@@ -1431,7 +1452,7 @@
         "about.caption": "The sun sets, but the mapping continues",
         "about.caption7797": "Behind me is the turquoise meltwater from Nigardsbreen. Even though the glacier arm hides far back in the valley after much melting, this is still a beautiful place",
         "about.caption2172": "Crawling through narrow marble passages on a trip through the famous Dumdals Caves",
-        "about.caption6585": "What is a human\u2019s strength against a giant that has slept under the ice for a thousand years?",
+        "about.caption6585": "What is a man\u2019s strength against a giant that has slept under the ice for a thousand years?",
         "about.img7797.alt": "Vetle in front of Nigardsbreen",
         "about.img2172.alt": "Dumdals Caves",
         "about.img6585.alt": "Fieldwork on glacier",
@@ -1581,6 +1602,11 @@
         applyTheme("dark");
       }
     })();
+
+    /* ── Remove no-transition class after theme is applied ── */
+    requestAnimationFrame(function () {
+      document.body.classList.remove('no-transition');
+    });
 
     /* ── Hero fade-in ── */
     (function () {
