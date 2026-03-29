@@ -748,7 +748,7 @@ test.describe('Motion design (impeccable skill)', function () {
 
   test('about bilder slider contains two figures', async function ({ page }) {
     await page.goto(PAGE_URL);
-    var figures = page.locator('.about-bilder-slider .reveal-slider-panel figure');
+    var figures = page.locator('.about-bilder-slider .bilder-panel figure');
     var count = await figures.count();
     expect(count).toBe(2);
   });
