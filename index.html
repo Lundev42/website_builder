@@ -403,6 +403,19 @@
 
     #om-meg .section-inner {
       align-items: start;
+      padding: 40px;
+      border-radius: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--accent-border);
+      box-shadow: 0 2px 16px rgba(99, 132, 255, 0.08);
+      transition: background-color var(--duration-state) var(--ease-out-quart),
+                  box-shadow var(--duration-state) var(--ease-out-quart),
+                  border-color var(--duration-state) var(--ease-out-quart);
+    }
+
+    [data-theme="light"] #om-meg .section-inner {
+      border-color: transparent;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
     }
 
     #om-meg .text-col {
@@ -436,8 +449,7 @@
       transform: none;
     }
 
-    #om-meg .media-col figcaption,
-    .about-sub-gallery figcaption {
+    #om-meg .media-col figcaption {
       text-align: center;
       font-size: 0.85rem;
       color: var(--text-muted);
@@ -447,33 +459,58 @@
       transition: background-color var(--duration-state) var(--ease-out-quart), color var(--duration-state) var(--ease-out-quart);
     }
 
-    .about-sub-gallery {
-      max-width: 900px;
+    .about-bilder-slider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+      position: relative;
+      max-width: 1200px;
       width: 100%;
-      margin: 24px auto 0;
-      padding: 0 60px;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 40px;
+    }
+
+    .bilder-label {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      transition: color var(--duration-state) var(--ease-out-quart);
+    }
+
+    .about-bilder-slider .reveal-slider-panel {
+      position: relative;
+      left: auto;
+      top: auto;
+      transform: none;
+    }
+
+    .about-bilder-slider .reveal-slider-panel.open {
+      width: 100%;
+      max-width: 700px;
       gap: 16px;
     }
 
-    .about-sub-gallery figure {
+    .about-bilder-slider .reveal-slider-panel figure {
       margin: 0;
-      overflow: hidden;
+      min-width: 0;
+      flex: 1;
     }
 
-    .about-sub-gallery img {
+    .about-bilder-slider .reveal-slider-panel img {
       width: 100%;
       height: auto;
-      object-fit: contain;
       display: block;
+      border-radius: 4px;
     }
 
-    @media (max-width: 768px) {
-      .about-sub-gallery {
-        grid-template-columns: 1fr;
-        padding: 0 24px;
-      }
+    .about-bilder-slider .reveal-slider-panel figcaption {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding: 8px 10px;
+      transition: color var(--duration-state) var(--ease-out-quart);
     }
 
     /* ── Study ── */
@@ -784,6 +821,13 @@
 
       #kontakt p {
         white-space: normal;
+      }
+
+      #om-meg .section-inner {
+        padding: 24px;
+      }
+      .about-bilder-slider {
+        padding: 0 24px;
       }
 
     }
@@ -1170,25 +1214,21 @@
           </figure>
         </div>
       </div>
-      <div class="about-sub-gallery">
-        <figure class="reveal" style="--i: 0">
-          <img
-            src="IMG_2172.jpeg"
-            alt="Dumdalsgrottene"
-            data-i18n-alt="about.img2172.alt"
-            loading="lazy"
-          />
-          <figcaption data-i18n="about.caption2172">Å krype gjennom trange marmorganger på tur gjennom de berømte Dumdalsgrottene</figcaption>
-        </figure>
-        <figure class="reveal" style="--i: 1">
-          <img
-            src="IMG_6585.jpeg"
-            alt="Feltarbeid på bre"
-            data-i18n-alt="about.img6585.alt"
-            loading="lazy"
-          />
-          <figcaption data-i18n="about.caption6585">Hva er vel en manns kraft mot en kjempe som har sovet under isen i tusen år?</figcaption>
-        </figure>
+      <div class="about-bilder-slider">
+        <span class="bilder-label" data-i18n="about.bilder.label">Bilder</span>
+        <button class="reveal-slider-tab" id="sliderTabBilder" aria-label="Vis bilder" data-i18n-aria-label="about.bilder.aria" onclick="this.classList.toggle('open');document.getElementById('sliderPanelBilder').classList.toggle('open')">
+          <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="reveal-slider-panel" id="sliderPanelBilder">
+          <figure>
+            <img src="IMG_2172.jpeg" alt="Dumdalsgrottene" data-i18n-alt="about.img2172.alt" loading="lazy"/>
+            <figcaption data-i18n="about.caption2172">Å krype gjennom trange marmorganger på tur gjennom de berømte Dumdalsgrottene</figcaption>
+          </figure>
+          <figure>
+            <img src="IMG_6585.jpeg" alt="Feltarbeid på bre" data-i18n-alt="about.img6585.alt" loading="lazy"/>
+            <figcaption data-i18n="about.caption6585">Hva er vel en manns kraft mot en kjempe som har sovet under isen i tusen år?</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -1456,6 +1496,8 @@
         "about.img8394.alt": "Vetle på fjelltur om vinteren",
         "about.img2172.alt": "Dumdalsgrottene",
         "about.img6585.alt": "Feltarbeid p\u00e5 bre",
+        "about.bilder.label": "Bilder",
+        "about.bilder.aria": "Vis bilder",
         "about.background.intro": "Jeg har jobbet som vaktsoldat ved Akershus festning og hatt to sommerjobber i ConocoPhillips, hvor jeg har jobbet med oljerelatert geologi og geofysikk.",
         "about.job1.title": "ConocoPhillips",
         "about.job1.text": "Arbeidet mitt besto av \u00e5 hjelpe reservoarkarakteriserings teamet med \u00e5 lage en brukbar biostratigrafisk database. Dette arbeidet st\u00f8tter den geologiske tolkningen etter borekampanjen p\u00e5 gasskondensatfeltet Tommeliten A, og bidro til den fullstendige modelloppdateringen for 2024/2025. Arbeidsflyten bestod av databehandling i Excel etterfulgt av analysearbeid i Spotfire.",
@@ -1519,6 +1561,8 @@
         "about.img8394.alt": "Vetle on a winter mountain hike",
         "about.img2172.alt": "Dumdals Caves",
         "about.img6585.alt": "Fieldwork on glacier",
+        "about.bilder.label": "Photos",
+        "about.bilder.aria": "Show photos",
         "about.background.intro": "I have worked as a guard soldier at Akershus Fortress and had two summer jobs at ConocoPhillips, where I worked with oil-related geology and geophysics.",
         "about.job1.title": "ConocoPhillips",
         "about.job1.text": "My work consisted of helping the reservoir characterisation team to create a usable biostratigraphic database. This work supports the geological interpretation following the drilling campaign on the Tommeliten A gas condensate field, and contributed to the complete model update for 2024/2025. The workflow consisted of data processing in Excel followed by analysis work in Spotfire.",
