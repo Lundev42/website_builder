@@ -37,6 +37,15 @@
       --overlay-bg: rgba(0, 0, 0, 0.6);
       --input-bg: rgba(255, 255, 255, 0.05);
       --input-border: rgba(255, 255, 255, 0.12);
+
+      /* Motion tokens (impeccable/motion-design) */
+      --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+      --duration-instant: 150ms;
+      --duration-state: 250ms;
+      --duration-layout: 400ms;
+      --duration-entrance: 600ms;
     }
 
     [data-theme="light"] {
@@ -72,7 +81,7 @@
       font-family: 'Inter', Arial, Helvetica, sans-serif;
       color: var(--text-primary);
       background: var(--bg-primary);
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color var(--duration-state) var(--ease-out-quart), color var(--duration-state) var(--ease-out-quart);
     }
 
     /* ── Navigation ── */
@@ -85,7 +94,7 @@
       background: var(--nav-bg);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--nav-border);
-      transition: background-color 0.3s ease, border-color 0.3s ease;
+      transition: background-color var(--duration-state) var(--ease-out-quart), border-color var(--duration-state) var(--ease-out-quart);
     }
 
     nav ul {
@@ -160,7 +169,12 @@
       border-radius: 0;
       object-fit: cover;
       display: block;
-      transition: box-shadow 0.4s ease;
+      transition: box-shadow var(--duration-state) var(--ease-out-quart), transform var(--duration-state) var(--ease-out-quart);
+    }
+
+    .media-col img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
     }
 
     /* ── Bachelor heading centered on top ── */
@@ -212,7 +226,7 @@
       padding: 10px 12px;
       background: var(--card-bg);
       border-radius: 0;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color var(--duration-state) var(--ease-out-quart), color var(--duration-state) var(--ease-out-quart);
     }
 
     /* ── Contact / Footer ── */
@@ -389,12 +403,26 @@
     .reveal {
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: opacity var(--duration-entrance) var(--ease-out-expo), transform var(--duration-entrance) var(--ease-out-expo);
     }
 
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Staggered reveal: children use --i for cascade delay */
+    .reveal[style*="--i"] {
+      transition-delay: calc(var(--i, 0) * 80ms);
+    }
+
+    nav a:active {
+      transform: scale(0.96);
+    }
+
+    .lang-toggle:active,
+    .theme-toggle:active {
+      transform: scale(0.95);
     }
 
     /* ── Active navigation state ── */

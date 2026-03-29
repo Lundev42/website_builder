@@ -37,6 +37,15 @@
       --overlay-bg: rgba(0, 0, 0, 0.6);
       --input-bg: rgba(255, 255, 255, 0.05);
       --input-border: rgba(255, 255, 255, 0.12);
+
+      /* Motion tokens (impeccable/motion-design) */
+      --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+      --duration-instant: 150ms;
+      --duration-state: 250ms;
+      --duration-layout: 400ms;
+      --duration-entrance: 600ms;
     }
 
     [data-theme="light"] {
@@ -72,7 +81,7 @@
       font-family: 'Inter', Arial, Helvetica, sans-serif;
       color: var(--text-primary);
       background: var(--bg-primary);
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color var(--duration-state) var(--ease-out-quart), color var(--duration-state) var(--ease-out-quart);
     }
 
     /* ── Navigation ── */
@@ -85,7 +94,7 @@
       background: var(--nav-bg);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--nav-border);
-      transition: background-color 0.3s ease, border-color 0.3s ease;
+      transition: background-color var(--duration-state) var(--ease-out-quart), border-color var(--duration-state) var(--ease-out-quart);
     }
 
     nav ul {
@@ -275,7 +284,12 @@
       border-radius: 0;
       object-fit: cover;
       display: block;
-      transition: box-shadow 0.4s ease;
+      transition: box-shadow var(--duration-state) var(--ease-out-quart), transform var(--duration-state) var(--ease-out-quart);
+    }
+
+    .media-col img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
     }
 
     /* ── Hero section ── */
@@ -288,7 +302,7 @@
       min-height: 100vh;
       padding: 0;
       opacity: 0;
-      transition: opacity 0.4s ease;
+      transition: opacity var(--duration-layout) var(--ease-out-expo);
     }
 
     #hjem.loaded {
@@ -426,7 +440,7 @@
       padding: 12px 14px;
       background: var(--card-bg);
       border-radius: 0;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color var(--duration-state) var(--ease-out-quart), color var(--duration-state) var(--ease-out-quart);
     }
 
     .about-sub-gallery {
@@ -466,7 +480,7 @@
       border: 1px solid var(--accent-border);
       border-radius: 12px;
       overflow: hidden;
-      transition: border-color 0.3s ease;
+      transition: border-color var(--duration-state) var(--ease-out-quart);
     }
 
     .accordion summary {
@@ -480,7 +494,7 @@
       background: var(--accent-bg);
       cursor: pointer;
       list-style: none;
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: background var(--duration-state) var(--ease-out-quart), color var(--duration-state) var(--ease-out-quart);
     }
 
     .accordion summary::-webkit-details-marker {
@@ -495,7 +509,7 @@
       border-right: 2.5px solid var(--accent);
       border-bottom: 2.5px solid var(--accent);
       transform: rotate(45deg);
-      transition: transform 0.5s ease;
+      transition: transform var(--duration-layout) var(--ease-out-expo);
       flex-shrink: 0;
     }
 
@@ -511,7 +525,7 @@
     .accordion-content {
       padding: 16px 20px;
       background: var(--card-bg);
-      transition: background-color 0.3s ease;
+      transition: background-color var(--duration-state) var(--ease-out-quart);
     }
 
     .background-subsection {
@@ -546,7 +560,7 @@
       color: var(--text-muted);
       padding: 12px 14px;
       background: var(--card-bg);
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color var(--duration-state) var(--ease-out-quart), color var(--duration-state) var(--ease-out-quart);
     }
 
     .study-layout {
@@ -873,7 +887,7 @@
       padding: 10px 12px;
       background: var(--card-bg);
       border-radius: 0;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color var(--duration-state) var(--ease-out-quart), color var(--duration-state) var(--ease-out-quart);
     }
 
     /* ── Study section – larger image ── */
@@ -942,6 +956,23 @@
       border-color: #000;
     }
 
+    .contact-link-btn:active {
+      transform: scale(0.97);
+    }
+
+    nav a:active {
+      transform: scale(0.96);
+    }
+
+    .lang-toggle:active,
+    .theme-toggle:active {
+      transform: scale(0.95);
+    }
+
+    .accordion summary:active {
+      transform: scale(0.99);
+    }
+
     .contact-link-btn i {
       flex-shrink: 0;
       font-size: 1.4em;
@@ -951,12 +982,17 @@
     .reveal {
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: opacity var(--duration-entrance) var(--ease-out-expo), transform var(--duration-entrance) var(--ease-out-expo);
     }
 
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Staggered reveal: children use --i for cascade delay */
+    .reveal[style*="--i"] {
+      transition-delay: calc(var(--i, 0) * 80ms);
     }
 
     /* ── Active navigation state ── */
@@ -994,7 +1030,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.3s ease, border-color 0.3s ease;
+      transition: background var(--duration-state) var(--ease-out-quart), border-color var(--duration-state) var(--ease-out-quart);
       margin-left: 12px;
       padding: 0;
     }
@@ -1028,7 +1064,7 @@
       overflow: hidden;
       background: var(--card-bg);
       border-radius: 8px;
-      transition: width 0.5s ease, padding 0.5s ease, margin 0.5s ease, opacity 0.5s ease;
+      transition: width var(--duration-layout) var(--ease-out-expo), padding var(--duration-layout) var(--ease-out-expo), margin var(--duration-layout) var(--ease-out-expo), opacity var(--duration-layout) var(--ease-out-expo);
       display: flex;
       align-items: center;
       gap: 16px;
@@ -1130,7 +1166,7 @@
         </div>
       </div>
       <div class="about-sub-gallery">
-        <figure>
+        <figure class="reveal" style="--i: 0">
           <img
             src="IMG_2172.jpeg"
             alt="Dumdalsgrottene"
@@ -1139,7 +1175,7 @@
           />
           <figcaption data-i18n="about.caption2172">Å krype gjennom trange marmorganger på tur gjennom de berømte Dumdalsgrottene</figcaption>
         </figure>
-        <figure>
+        <figure class="reveal" style="--i: 1">
           <img
             src="IMG_6585.jpeg"
             alt="Feltarbeid på bre"
