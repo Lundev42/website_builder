@@ -70,7 +70,7 @@ test.describe("Hero section", () => {
     await expect(caption).toHaveText("På vei opp Galdhøgpiggen får man en fin utsikt over Visdalen, hvor fjellet Hellstuguhøe (2072 moh) markerer seg i midten av bildet.");
   });
 
-  test("hero caption has border styling consistent with other captions", async ({ page }) => {
+  test("hero caption has no border radius", async ({ page }) => {
     const caption = page.locator("#hjem .hero-caption");
     const borderRadius = await caption.evaluate((el) => getComputedStyle(el).borderRadius);
     expect(borderRadius).toBe("0px");
