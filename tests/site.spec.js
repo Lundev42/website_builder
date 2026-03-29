@@ -658,7 +658,7 @@ test.describe("Accessibility improvements", () => {
 
   test("below-the-fold images have loading=lazy on index", async ({ page }) => {
     await page.goto(PAGE_URL);
-    const aboutImg = page.locator('#om-meg img[src="IMG_7797.JPG"]');
+    const aboutImg = page.locator('#om-meg img[src="IMG_8394.jpeg"]');
     await expect(aboutImg).toHaveAttribute("loading", "lazy");
     const studyImg = page.locator('img[src*="FalkeblikkAS"]');
     await expect(studyImg).toHaveAttribute("loading", "lazy");

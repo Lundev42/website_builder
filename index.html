@@ -403,14 +403,15 @@
       margin: 0;
       border-radius: 0;
       overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
     }
 
     #om-meg .media-col img {
       width: 100%;
-      max-height: 400px;
+      height: auto;
       object-fit: contain;
-      border-radius: 0;
       display: block;
+      border-radius: 0;
     }
 
     #om-meg .media-col figcaption,
@@ -966,6 +967,7 @@
       display: flex;
       align-items: center;
       gap: 0;
+      position: relative;
     }
 
     .timeline-entry-with-slider .timeline-content {
@@ -975,17 +977,18 @@
 
     .reveal-slider-tab {
       flex-shrink: 0;
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       background: transparent;
-      border: 2px solid var(--accent);
+      border: 3px solid var(--accent);
       border-radius: 50%;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, border-color 0.3s ease;
       margin-left: 12px;
+      padding: 0;
     }
 
     .reveal-slider-tab:hover {
@@ -993,10 +996,20 @@
     }
 
     .reveal-slider-tab .arrow {
-      font-size: 0.75rem;
-      color: var(--accent);
-      transition: transform 0.5s ease;
-      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal-slider-tab .arrow svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .reveal-slider-tab.open .arrow {
@@ -1004,17 +1017,23 @@
     }
 
     .reveal-slider-panel {
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
       width: 0;
       overflow: hidden;
       background: var(--card-bg);
       border-radius: 8px;
-      transition: width 0.5s ease, padding 0.5s ease, margin 0.5s ease;
+      transition: width 0.5s ease, padding 0.5s ease, margin 0.5s ease, opacity 0.5s ease;
       display: flex;
       align-items: center;
       gap: 16px;
       padding: 0;
       margin-left: 0;
       flex-shrink: 0;
+      opacity: 0;
+      z-index: 10;
     }
 
     .reveal-slider-panel.open {
@@ -1022,6 +1041,7 @@
       padding: 12px;
       margin-left: 12px;
       border: 1px solid var(--accent-border);
+      opacity: 1;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1098,12 +1118,11 @@
         <div class="media-col">
           <figure>
             <img
-              src="IMG_7797.JPG"
-              alt="Vetle foran Nigardsbreen"
-              data-i18n-alt="about.img7797.alt"
+              src="IMG_8394.jpeg"
+              alt="Vetle på fjelltur om vinteren"
+              data-i18n-alt="about.img8394.alt"
               loading="lazy"
             />
-            <figcaption data-i18n="about.caption7797">Bak meg er det turkise smeltevannet fra Nigardsbreen. Selv om brearmen gjemmer seg langt bak i dalen etter mye smelting, er dette fortsatt et vakkert sted</figcaption>
           </figure>
         </div>
       </div>
@@ -1278,7 +1297,7 @@
                       <p data-i18n-html="about.job2.text">Som en del av Well Delivery-teamet arbeidet jeg med å utvikle et omfattende bibliotek av re-styrte brønner på Ekofiskfeltet. Arbeidet ble utført i programvaren <a href="starsteer.html">StarSteer</a> ved å integrere biostratigrafi, bildeloggtolkninger og geofysiske logger (CPI). Formålet var å forbedre treffsikkerheten for fremtidige brønner og støtte implementeringen av sanntidsoperasjoner i 2025. Prosjektet innebar avansert korrelasjon og analyse av tetthet og resistivitetslogger, samt bruk av utdata til å identifisere avvik i strukturelle geomodeller (Petrel) for målrettet modellforbedring på Ekofisk og Eldfisk-feltene.</p>
                     </div>
                     <button class="reveal-slider-tab" id="sliderTab1" aria-label="Vis bilder" onclick="this.classList.toggle('open');document.getElementById('sliderPanel1').classList.toggle('open')">
-                      <span class="arrow">&#9654;</span>
+                      <span class="arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg></span>
                     </button>
                     <div class="reveal-slider-panel" id="sliderPanel1">
                       <!-- Images go here -->
@@ -1294,7 +1313,7 @@
                       <p data-i18n="about.job1.text">Arbeidet mitt besto av å hjelpe reservoarkarakteriserings teamet med å lage en brukbar biostratigrafisk database. Dette arbeidet støtter den geologiske tolkningen etter borekampanjen på gasskondensatfeltet Tommeliten A, og bidro til den fullstendige modelloppdateringen for 2024/2025. Arbeidsflyten bestod av databehandling i Excel etterfulgt av analysearbeid i Spotfire.</p>
                     </div>
                     <button class="reveal-slider-tab" id="sliderTab2" aria-label="Vis bilder" onclick="this.classList.toggle('open');document.getElementById('sliderPanel2').classList.toggle('open')">
-                      <span class="arrow">&#9654;</span>
+                      <span class="arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg></span>
                     </button>
                     <div class="reveal-slider-panel" id="sliderPanel2">
                       <!-- Images go here -->
@@ -1387,10 +1406,10 @@
         "about.img.alt": "Vetle Øyvind Larsen Lunde",
         "about.background.text": "I 2023 startet jeg på den treårige bachelorgraden Geologi og Geofare ved Høgskulen på Vestlandet i Sogndal. Studiet har gitt meg stor kunnskap og lærerike opplevelser gjennom både teoretisk undervisning og feltarbeid/ekskursjoner. Nå bygger jeg videre på kunnskapen jeg har opparbeidet meg ved å skrive en bacheloroppgave som avslutning på studiet.",
         "about.caption": "Solen g\u00e5r ned, men kartleggingen fortsetter",
-        "about.caption7797": "Bak meg er det turkise smeltevannet fra Nigardsbreen. Selv om brearmen gjemmer seg langt bak i dalen etter mye smelting, er dette fortsatt et vakkert sted",
+        "about.caption8394": "En vinterdag på fjelltur med utsikt over snøkledde fjell",
         "about.caption2172": "\u00c5 krype gjennom trange marmorganger p\u00e5 tur gjennom de ber\u00f8mte Dumdalsgrottene",
         "about.caption6585": "Hva er vel en manns kraft mot en kjempe som har sovet under isen i tusen \u00e5r?",
-        "about.img7797.alt": "Vetle foran Nigardsbreen",
+        "about.img8394.alt": "Vetle på fjelltur om vinteren",
         "about.img2172.alt": "Dumdalsgrottene",
         "about.img6585.alt": "Feltarbeid p\u00e5 bre",
         "about.background.intro": "Jeg har jobbet som vaktsoldat ved Akershus festning og hatt to sommerjobber i ConocoPhillips, hvor jeg har jobbet med oljerelatert geologi og geofysikk.",
@@ -1450,10 +1469,10 @@
         "about.img.alt": "Vetle Øyvind Larsen Lunde",
         "about.background.text": "In 2023, I started the three-year bachelor\u2019s degree in Geology and Geo-Hazards at the Western Norway University of Applied Sciences in Sogndal. The programme has given me great knowledge and rewarding experiences through both theoretical teaching and fieldwork/excursions. I am now building on the knowledge I have acquired by writing a bachelor\u2019s thesis as the conclusion of my studies.",
         "about.caption": "The sun sets, but the mapping continues",
-        "about.caption7797": "Behind me is the turquoise meltwater from Nigardsbreen. Even though the glacier arm hides far back in the valley after much melting, this is still a beautiful place",
+        "about.caption8394": "A winter day hiking with a view over snow-covered mountains",
         "about.caption2172": "Crawling through narrow marble passages on a trip through the famous Dumdals Caves",
         "about.caption6585": "What is a man\u2019s strength against a giant that has slept under the ice for a thousand years?",
-        "about.img7797.alt": "Vetle in front of Nigardsbreen",
+        "about.img8394.alt": "Vetle on a winter mountain hike",
         "about.img2172.alt": "Dumdals Caves",
         "about.img6585.alt": "Fieldwork on glacier",
         "about.background.intro": "I have worked as a guard soldier at Akershus Fortress and had two summer jobs at ConocoPhillips, where I worked with oil-related geology and geophysics.",
