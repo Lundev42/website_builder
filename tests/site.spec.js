@@ -70,11 +70,10 @@ test.describe("Hero section", () => {
     await expect(caption).toHaveText("På vei opp Galdhøgpiggen får man en fin utsikt over Visdalen, hvor fjellet Hellstuguhøe (2072 moh) markerer seg i midten av bildet.");
   });
 
-  test("hero caption has border styling consistent with other captions", async ({ page }) => {
+  test("hero caption has no border radius", async ({ page }) => {
     const caption = page.locator("#hjem .hero-caption");
-    const border = await caption.evaluate((el) => getComputedStyle(el).border);
-    expect(border).toContain("3px");
-    expect(border).toContain("solid");
+    const borderRadius = await caption.evaluate((el) => getComputedStyle(el).borderRadius);
+    expect(borderRadius).toBe("0px");
   });
 });
 
@@ -155,7 +154,7 @@ test.describe("About section – content", () => {
 
   test("displays job history entries in Bakgrunn section", async ({ page }) => {
     const titles = page.locator('#bakgrunn h4.job-title');
-    await expect(titles).toHaveCount(3);
+    await expect(titles).toHaveCount(4);
     const job1Text = page.locator('#bakgrunn [data-i18n="about.job1.text"]');
     await expect(job1Text).toBeVisible();
     await expect(job1Text).toContainText("biostratigrafisk database");
@@ -166,33 +165,36 @@ test.describe("About section – content", () => {
 
   test("displays ConocoPhillips text titles beside job entries", async ({ page }) => {
     const titles = page.locator('#bakgrunn h4.job-title');
-    await expect(titles).toHaveCount(3);
+    await expect(titles).toHaveCount(4);
     await expect(titles.nth(0)).toHaveText("ConocoPhillips");
     await expect(titles.nth(1)).toHaveText("ConocoPhillips");
     await expect(titles.nth(2)).toHaveText("Vaktsoldat – Akershus Festning");
+    await expect(titles.nth(3)).toHaveText("Renovasjonen IKS");
   });
 
   test("timeline container is visible in Bakgrunn section", async ({ page }) => {
     const timeline = page.locator('#bakgrunn .timeline');
     await expect(timeline).toBeVisible();
     const entries = page.locator('#bakgrunn .timeline-entry');
-    await expect(entries).toHaveCount(3);
+    await expect(entries).toHaveCount(4);
   });
 
   test("timeline displays year range labels on the left", async ({ page }) => {
     const dates = page.locator('#bakgrunn .timeline-date');
-    await expect(dates).toHaveCount(3);
-    await expect(dates.nth(0)).toHaveText("2024–2025");
-    await expect(dates.nth(1)).toHaveText("2023–2024");
+    await expect(dates).toHaveCount(4);
+    await expect(dates.nth(0)).toHaveText("2025");
+    await expect(dates.nth(1)).toHaveText("2024");
     await expect(dates.nth(2)).toHaveText("2022–2023");
+    await expect(dates.nth(3)).toHaveText("2021–2022");
   });
 
   test("timeline markers are visible", async ({ page }) => {
     const markers = page.locator('#bakgrunn .timeline-marker');
-    await expect(markers).toHaveCount(3);
+    await expect(markers).toHaveCount(4);
     await expect(markers.nth(0)).toBeVisible();
     await expect(markers.nth(1)).toBeVisible();
     await expect(markers.nth(2)).toBeVisible();
+    await expect(markers.nth(3)).toBeVisible();
   });
 
   test("job history switches to English", async ({ page }) => {
@@ -213,14 +215,14 @@ test.describe("About section – content", () => {
   test("job0 text contains Akershus Festning description", async ({ page }) => {
     const job0Text = page.locator('#bakgrunn [data-i18n="about.job0.text"]');
     await expect(job0Text).toContainText("Akershus festning");
-    await expect(job0Text).toContainText("Kongens Garde");
+    await expect(job0Text).toContainText("vaktsoldat");
   });
 
   test("job0 switches to English", async ({ page }) => {
     await page.click(".lang-toggle");
     const job0Text = page.locator('#bakgrunn [data-i18n="about.job0.text"]');
     await expect(job0Text).toContainText("Akershus Fortress");
-    await expect(job0Text).toContainText("King\u2019s Guard");
+    await expect(job0Text).toContainText("guard soldier");
   });
 });
 
@@ -656,9 +658,9 @@ test.describe("Accessibility improvements", () => {
 
   test("below-the-fold images have loading=lazy on index", async ({ page }) => {
     await page.goto(PAGE_URL);
-    const aboutImg = page.locator('#om-meg img[src*="ccdr"]');
+    const aboutImg = page.locator('#om-meg img[src="IMG_7797.JPG"]');
     await expect(aboutImg).toHaveAttribute("loading", "lazy");
-    const studyImg = page.locator('img[src="standard_hvl.jpg"]');
+    const studyImg = page.locator('img[src*="FalkeblikkAS"]');
     await expect(studyImg).toHaveAttribute("loading", "lazy");
   });
 
@@ -671,9 +673,9 @@ test.describe("Accessibility improvements", () => {
 
   test("images have width and height attributes on index", async ({ page }) => {
     await page.goto(PAGE_URL);
-    const aboutImg = page.locator('#om-meg img[src*="ccdr"]');
-    await expect(aboutImg).toHaveAttribute("width");
-    await expect(aboutImg).toHaveAttribute("height");
+    const hvlImg = page.locator('img[src*="FalkeblikkAS"]');
+    await expect(hvlImg).toHaveAttribute("width");
+    await expect(hvlImg).toHaveAttribute("height");
   });
 
   test("images have width and height attributes on bacheloroppgave", async ({ page }) => {

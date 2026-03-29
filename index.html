@@ -383,6 +383,10 @@
     }
 
     /* ── About ── */
+    #om-meg {
+      flex-direction: column;
+    }
+
     #om-meg .section-inner {
       align-items: flex-start;
     }
@@ -1029,9 +1033,27 @@
         scroll-behavior: auto !important;
       }
     }
+    /* Suppress transitions during initial page load to prevent glitchy flashes */
+    .no-transition,
+    .no-transition *,
+    .no-transition *::before,
+    .no-transition *::after {
+      transition: none !important;
+    }
   </style>
+  <script>
+    /* Apply saved theme before first paint to avoid a flash of wrong theme */
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
 </head>
-<body>
+<body class="no-transition">
 
   <a href="#hovedinnhold" class="skip-link" data-i18n="skip.link">Hopp til hovedinnhold</a>
 
@@ -1581,6 +1603,11 @@
         applyTheme("dark");
       }
     })();
+
+    /* ── Remove no-transition class after theme is applied ── */
+    requestAnimationFrame(function () {
+      document.body.classList.remove('no-transition');
+    });
 
     /* ── Hero fade-in ── */
     (function () {
