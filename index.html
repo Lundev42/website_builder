@@ -402,7 +402,7 @@
     }
 
     #om-meg .section-inner {
-      align-items: start;
+      align-items: center;
       padding: 40px;
       border-radius: 16px;
       background: var(--card-bg);
@@ -435,7 +435,9 @@
       margin: 0;
       border-radius: 0;
       overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+      border: 3px solid #000;
+      border-image: linear-gradient(135deg, #000 25%, #333 50%, #000 75%) 1;
+      box-shadow: 4px 4px 0 #000, 0 4px 24px rgba(0, 0, 0, 0.25);
     }
 
     #om-meg .media-col img {
@@ -460,52 +462,82 @@
     }
 
     .about-bilder-slider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 24px;
-      position: relative;
+      margin-top: 18px;
       max-width: 1200px;
       width: 100%;
       margin-left: auto;
       margin-right: auto;
-      padding: 0 40px;
+      padding: 0 0;
     }
 
-    .bilder-label {
-      font-size: 1.1rem;
+    .about-bilder-slider details {
+      border: 1px solid var(--accent-border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color var(--duration-state) var(--ease-out-quart);
+    }
+
+    .about-bilder-slider summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      font-size: 1.05rem;
       font-weight: 600;
       color: var(--text-heading);
-      transition: color var(--duration-state) var(--ease-out-quart);
+      background: var(--accent-bg);
+      cursor: pointer;
+      list-style: none;
+      transition: background var(--duration-state) var(--ease-out-quart), color var(--duration-state) var(--ease-out-quart);
     }
 
-    .about-bilder-slider .reveal-slider-panel {
-      position: relative;
-      left: auto;
-      top: auto;
-      transform: none;
+    .about-bilder-slider summary::-webkit-details-marker {
+      display: none;
     }
 
-    .about-bilder-slider .reveal-slider-panel.open {
-      width: 100%;
-      max-width: 700px;
+    .about-bilder-slider summary::after {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      transform: rotate(45deg);
+      transition: transform var(--duration-layout) var(--ease-out-expo);
+      flex-shrink: 0;
+    }
+
+    .about-bilder-slider details[open] summary::after {
+      transform: rotate(-135deg);
+    }
+
+    .about-bilder-slider summary:hover,
+    .about-bilder-slider summary:focus-visible {
+      background: var(--accent-hover);
+    }
+
+    .about-bilder-slider .bilder-panel {
+      display: flex;
       gap: 16px;
+      padding: 16px 20px;
+      background: var(--card-bg);
+      transition: background-color var(--duration-state) var(--ease-out-quart);
     }
 
-    .about-bilder-slider .reveal-slider-panel figure {
+    .about-bilder-slider .bilder-panel figure {
       margin: 0;
       min-width: 0;
       flex: 1;
     }
 
-    .about-bilder-slider .reveal-slider-panel img {
+    .about-bilder-slider .bilder-panel img {
       width: 100%;
       height: auto;
       display: block;
       border-radius: 4px;
     }
 
-    .about-bilder-slider .reveal-slider-panel figcaption {
+    .about-bilder-slider .bilder-panel figcaption {
       text-align: center;
       font-size: 0.85rem;
       color: var(--text-muted);
@@ -827,7 +859,7 @@
         padding: 24px;
       }
       .about-bilder-slider {
-        padding: 0 24px;
+        padding: 0;
       }
 
     }
@@ -1215,20 +1247,19 @@
         </div>
       </div>
       <div class="about-bilder-slider">
-        <span class="bilder-label" data-i18n="about.bilder.label">Bilder</span>
-        <button class="reveal-slider-tab" id="sliderTabBilder" aria-label="Vis bilder" data-i18n-aria-label="about.bilder.aria" onclick="this.classList.toggle('open');document.getElementById('sliderPanelBilder').classList.toggle('open')">
-          <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-        </button>
-        <div class="reveal-slider-panel" id="sliderPanelBilder">
-          <figure>
-            <img src="IMG_2172.jpeg" alt="Dumdalsgrottene" data-i18n-alt="about.img2172.alt" loading="lazy"/>
-            <figcaption data-i18n="about.caption2172">Å krype gjennom trange marmorganger på tur gjennom de berømte Dumdalsgrottene</figcaption>
-          </figure>
-          <figure>
-            <img src="IMG_6585.jpeg" alt="Feltarbeid på bre" data-i18n-alt="about.img6585.alt" loading="lazy"/>
-            <figcaption data-i18n="about.caption6585">Hva er vel en manns kraft mot en kjempe som har sovet under isen i tusen år?</figcaption>
-          </figure>
-        </div>
+        <details>
+          <summary data-i18n="about.bilder.label">Mer</summary>
+          <div class="bilder-panel">
+            <figure>
+              <img src="IMG_2172.jpeg" alt="Dumdalsgrottene" data-i18n-alt="about.img2172.alt" loading="lazy"/>
+              <figcaption data-i18n="about.caption2172">Å krype gjennom trange marmorganger på tur gjennom de berømte Dumdalsgrottene</figcaption>
+            </figure>
+            <figure>
+              <img src="IMG_6585.jpeg" alt="Feltarbeid på bre" data-i18n-alt="about.img6585.alt" loading="lazy"/>
+              <figcaption data-i18n="about.caption6585">Hva er vel en manns kraft mot en kjempe som har sovet under isen i tusen år?</figcaption>
+            </figure>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -1496,8 +1527,7 @@
         "about.img8394.alt": "Vetle på fjelltur om vinteren",
         "about.img2172.alt": "Dumdalsgrottene",
         "about.img6585.alt": "Feltarbeid p\u00e5 bre",
-        "about.bilder.label": "Bilder",
-        "about.bilder.aria": "Vis bilder",
+        "about.bilder.label": "Mer",
         "about.background.intro": "Jeg har jobbet som vaktsoldat ved Akershus festning og hatt to sommerjobber i ConocoPhillips, hvor jeg har jobbet med oljerelatert geologi og geofysikk.",
         "about.job1.title": "ConocoPhillips",
         "about.job1.text": "Arbeidet mitt besto av \u00e5 hjelpe reservoarkarakteriserings teamet med \u00e5 lage en brukbar biostratigrafisk database. Dette arbeidet st\u00f8tter den geologiske tolkningen etter borekampanjen p\u00e5 gasskondensatfeltet Tommeliten A, og bidro til den fullstendige modelloppdateringen for 2024/2025. Arbeidsflyten bestod av databehandling i Excel etterfulgt av analysearbeid i Spotfire.",
@@ -1561,8 +1591,7 @@
         "about.img8394.alt": "Vetle on a winter mountain hike",
         "about.img2172.alt": "Dumdals Caves",
         "about.img6585.alt": "Fieldwork on glacier",
-        "about.bilder.label": "Photos",
-        "about.bilder.aria": "Show photos",
+        "about.bilder.label": "More",
         "about.background.intro": "I have worked as a guard soldier at Akershus Fortress and had two summer jobs at ConocoPhillips, where I worked with oil-related geology and geophysics.",
         "about.job1.title": "ConocoPhillips",
         "about.job1.text": "My work consisted of helping the reservoir characterisation team to create a usable biostratigraphic database. This work supports the geological interpretation following the drilling campaign on the Tommeliten A gas condensate field, and contributed to the complete model update for 2024/2025. The workflow consisted of data processing in Excel followed by analysis work in Spotfire.",
