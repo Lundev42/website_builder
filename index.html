@@ -447,88 +447,112 @@
       transition: background-color var(--duration-state) var(--ease-out-quart), color var(--duration-state) var(--ease-out-quart);
     }
 
-    .about-bilder-slider {
-      margin-top: 18px;
-      max-width: 1200px;
-      width: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 0;
-    }
-
-    .about-bilder-slider details {
-      border-radius: 12px;
-      overflow: hidden;
-      width: fit-content;
-    }
-
-    .about-bilder-slider summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 20px;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-heading);
-      background: var(--accent-bg);
-      cursor: pointer;
-      list-style: none;
-      transition: background var(--duration-state) var(--ease-out-quart), color var(--duration-state) var(--ease-out-quart);
-    }
-
-    .about-bilder-slider summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .about-bilder-slider summary::after {
-      content: '';
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-right: 2px solid var(--accent);
-      border-bottom: 2px solid var(--accent);
-      transform: rotate(45deg);
-      transition: transform var(--duration-layout) var(--ease-out-expo);
-      flex-shrink: 0;
-    }
-
-    .about-bilder-slider details[open] summary::after {
-      transform: rotate(-135deg);
-    }
-
-    .about-bilder-slider summary:hover,
-    .about-bilder-slider summary:focus-visible {
-      background: var(--accent-hover);
-    }
-
-    .about-bilder-slider .bilder-panel {
+    /* ── About Sub-Gallery ── */
+    .about-sub-gallery {
       display: flex;
       gap: 16px;
-      padding: 16px 20px;
-      background: var(--card-bg);
-      transition: background-color var(--duration-state) var(--ease-out-quart);
+      justify-content: center;
+      max-width: 1200px;
+      width: 100%;
+      margin: 24px auto 0;
+      padding: 0 40px;
     }
 
-    .about-bilder-slider .bilder-panel figure {
+    .about-sub-gallery .gallery-thumb {
+      position: relative;
       margin: 0;
-      min-width: 0;
-      flex: 1;
+      flex: 0 1 280px;
+      cursor: pointer;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      transition: transform var(--duration-state) var(--ease-out-quart), box-shadow var(--duration-state) var(--ease-out-quart);
     }
 
-    .about-bilder-slider .bilder-panel img {
+    .about-sub-gallery .gallery-thumb:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .about-sub-gallery .gallery-thumb img {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 4px;
     }
 
-    .about-bilder-slider .bilder-panel figcaption {
+    .about-sub-gallery .gallery-thumb figcaption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 12px;
+      font-size: 0.8rem;
+      color: #fff;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
       text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      padding: 8px 10px;
-      transition: color var(--duration-state) var(--ease-out-quart);
+      transition: opacity var(--duration-state) var(--ease-out-quart);
+    }
+
+    /* ── Lightbox ── */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.88);
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      z-index: 10000;
+      line-height: 1;
+      padding: 4px 12px;
+      transition: opacity var(--duration-state) var(--ease-out-quart);
+    }
+
+    .lightbox-close:hover {
+      opacity: 0.7;
+    }
+
+    .lightbox-content {
+      margin: 0;
+      max-width: 90vw;
+      max-height: 85vh;
+      text-align: center;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      display: block;
+      margin: 0 auto;
+      border-radius: 6px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-content figcaption {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+      padding: 14px 20px;
+      text-align: center;
     }
 
     /* ── Study ── */
@@ -844,8 +868,8 @@
       #om-meg .section-inner {
         padding: 24px;
       }
-      .about-bilder-slider {
-        padding: 0;
+      .about-sub-gallery {
+        padding: 0 24px;
       }
 
     }
@@ -1232,20 +1256,15 @@
           </figure>
         </div>
       </div>
-      <div class="about-bilder-slider">
-        <details>
-          <summary data-i18n="about.bilder.label">Mer</summary>
-          <div class="bilder-panel">
-            <figure>
-              <img src="IMG_2172.jpeg" alt="Dumdalsgrottene" data-i18n-alt="about.img2172.alt" loading="lazy"/>
-              <figcaption data-i18n="about.caption2172">Å krype gjennom trange marmorganger på tur gjennom de berømte Dumdalsgrottene</figcaption>
-            </figure>
-            <figure>
-              <img src="IMG_6585.jpeg" alt="Feltarbeid på bre" data-i18n-alt="about.img6585.alt" loading="lazy"/>
-              <figcaption data-i18n="about.caption6585">Hva er vel en manns kraft mot en kjempe som har sovet under isen i tusen år?</figcaption>
-            </figure>
-          </div>
-        </details>
+      <div class="about-sub-gallery">
+        <figure class="gallery-thumb" onclick="openLightbox(this)">
+          <img src="IMG_2172.jpeg" alt="Dumdalsgrottene" data-i18n-alt="about.img2172.alt" loading="lazy"/>
+          <figcaption data-i18n="about.caption2172">Å krype gjennom trange marmorganger på tur gjennom de berømte Dumdalsgrottene</figcaption>
+        </figure>
+        <figure class="gallery-thumb" onclick="openLightbox(this)">
+          <img src="IMG_6585.jpeg" alt="Feltarbeid på bre" data-i18n-alt="about.img6585.alt" loading="lazy"/>
+          <figcaption data-i18n="about.caption6585">Hva er vel en manns kraft mot en kjempe som har sovet under isen i tusen år?</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -1807,7 +1826,43 @@
         }
       });
     })();
+
+    function openLightbox(thumbEl) {
+      var img = thumbEl.querySelector('img');
+      var caption = thumbEl.querySelector('figcaption');
+      var overlay = document.getElementById('lightbox');
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-img').alt = img.alt;
+      document.getElementById('lightbox-caption').textContent = caption.textContent;
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close')) {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var overlay = document.getElementById('lightbox');
+        if (overlay.classList.contains('active')) {
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+    });
   </script>
+
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">&times;</button>
+    <figure class="lightbox-content">
+      <img id="lightbox-img" src="" alt="" />
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+  </div>
 
 </body>
 </html>

@@ -746,9 +746,9 @@ test.describe('Motion design (impeccable skill)', function () {
     expect(easeOutExpo).toBe('cubic-bezier(0.16, 1, 0.3, 1)');
   });
 
-  test('about bilder slider contains two figures', async function ({ page }) {
+  test('about sub-gallery contains two clickable figures', async function ({ page }) {
     await page.goto(PAGE_URL);
-    var figures = page.locator('.about-bilder-slider .bilder-panel figure');
+    var figures = page.locator('.about-sub-gallery .gallery-thumb');
     var count = await figures.count();
     expect(count).toBe(2);
   });
