@@ -399,6 +399,11 @@
       flex: 0 0 100%;
     }
 
+    #om-meg .media-col {
+      flex: 0 1 40%;
+      max-width: 400px;
+    }
+
     #om-meg .media-col figure {
       margin: 0;
       border-radius: 0;
@@ -426,7 +431,7 @@
     }
 
     .about-sub-gallery {
-      max-width: 1400px;
+      max-width: 900px;
       width: 100%;
       margin: 24px auto 0;
       padding: 0 60px;
@@ -1001,16 +1006,16 @@
 
     .reveal-slider-tab .arrow {
       display: block;
-      width: 16px;
-      height: 16px;
-      background-color: var(--accent);
-      -webkit-mask: url('138549-200.png') center / contain no-repeat;
-      mask: url('138549-200.png') center / contain no-repeat;
+      width: 10px;
+      height: 10px;
+      border-right: 2.5px solid var(--accent);
+      border-bottom: 2.5px solid var(--accent);
+      transform: rotate(-45deg);
       transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .reveal-slider-tab.open .arrow {
-      transform: rotate(180deg);
+      transform: rotate(135deg);
     }
 
     .reveal-slider-panel {
