@@ -732,3 +732,85 @@ test.describe("SEO improvements", () => {
     await expect(page.locator('meta[property="og:image"]')).toHaveCount(1);
   });
 });
+
+test.describe('Motion design (impeccable skill)', function () {
+  test('CSS motion tokens are defined in :root', async function ({ page }) {
+    await page.goto(PAGE_URL);
+    var easeOutQuart = await page.evaluate(function () {
+      return getComputedStyle(document.documentElement).getPropertyValue('--ease-out-quart').trim();
+    });
+    expect(easeOutQuart).toBe('cubic-bezier(0.25, 1, 0.5, 1)');
+    var easeOutExpo = await page.evaluate(function () {
+      return getComputedStyle(document.documentElement).getPropertyValue('--ease-out-expo').trim();
+    });
+    expect(easeOutExpo).toBe('cubic-bezier(0.16, 1, 0.3, 1)');
+  });
+
+  test('gallery figures have staggered reveal indices', async function ({ page }) {
+    await page.goto(PAGE_URL);
+    var figures = page.locator('.about-sub-gallery figure.reveal');
+    var count = await figures.count();
+    expect(count).toBe(2);
+    for (var i = 0; i < count; i++) {
+      var style = await figures.nth(i).getAttribute('style');
+      expect(style).toContain('--i: ' + i);
+    }
+  });
+
+  test('interactive elements have active pressed states', async function ({ page }) {
+    await page.goto(PAGE_URL);
+    var hasActiveRule = await page.evaluate(function () {
+      var sheets = document.styleSheets;
+      for (var s = 0; s < sheets.length; s++) {
+        try {
+          var rules = sheets[s].cssRules;
+          for (var r = 0; r < rules.length; r++) {
+            if (rules[r].selectorText && rules[r].selectorText.indexOf('.contact-link-btn:active') !== -1) {
+              return true;
+            }
+          }
+        } catch (e) {}
+      }
+      return false;
+    });
+    expect(hasActiveRule).toBe(true);
+  });
+
+  test('images have hover lift transform', async function ({ page }) {
+    await page.goto(PAGE_URL);
+    var hasHoverRule = await page.evaluate(function () {
+      var sheets = document.styleSheets;
+      for (var s = 0; s < sheets.length; s++) {
+        try {
+          var rules = sheets[s].cssRules;
+          for (var r = 0; r < rules.length; r++) {
+            if (rules[r].selectorText && rules[r].selectorText.indexOf('.media-col img:hover') !== -1) {
+              return true;
+            }
+          }
+        } catch (e) {}
+      }
+      return false;
+    });
+    expect(hasHoverRule).toBe(true);
+  });
+
+  test('prefers-reduced-motion is respected', async function ({ page }) {
+    await page.goto(PAGE_URL);
+    var hasReducedMotion = await page.evaluate(function () {
+      var sheets = document.styleSheets;
+      for (var s = 0; s < sheets.length; s++) {
+        try {
+          var rules = sheets[s].cssRules;
+          for (var r = 0; r < rules.length; r++) {
+            if (rules[r].conditionText && rules[r].conditionText.indexOf('prefers-reduced-motion') !== -1) {
+              return true;
+            }
+          }
+        } catch (e) {}
+      }
+      return false;
+    });
+    expect(hasReducedMotion).toBe(true);
+  });
+});
