@@ -101,6 +101,7 @@
       list-style: none;
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 8px;
       padding: 16px 20px;
     }
@@ -429,6 +430,11 @@
     nav a.nav-active {
       color: var(--accent);
       background: var(--accent-bg);
+    }
+
+    [data-theme="light"] nav a.nav-active {
+      color: var(--accent);
+      background: var(--accent-hover);
     }
 
     /* ── Alternating section backgrounds ── */

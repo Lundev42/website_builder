@@ -101,6 +101,7 @@
       list-style: none;
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 8px;
       padding: 16px 20px;
     }
@@ -423,6 +424,10 @@
       margin: 0;
       border-radius: 0;
       overflow: hidden;
+      box-shadow: 0 4px 24px rgba(255, 255, 255, 0.08);
+    }
+
+    [data-theme="light"] #om-meg .media-col figure {
       box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
     }
 
@@ -503,6 +508,13 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      opacity: 0;
+    }
+
+    .about-sub-gallery .gallery-thumb:hover figcaption,
+    .about-sub-gallery .gallery-thumb:focus figcaption,
+    .about-sub-gallery .gallery-thumb:focus-within figcaption {
+      opacity: 1;
     }
 
     /* ── Lightbox ── */
@@ -1101,6 +1113,11 @@
     nav a.nav-active {
       color: var(--accent);
       background: var(--accent-bg);
+    }
+
+    [data-theme="light"] nav a.nav-active {
+      color: var(--accent);
+      background: var(--accent-hover);
     }
 
     /* ── Alternating section backgrounds ── */

@@ -810,3 +810,104 @@ test.describe('Motion design (impeccable skill)', function () {
     expect(hasReducedMotion).toBe(true);
   });
 });
+
+/* ── CSS Fix Tests ── */
+
+test.describe("Profile image dark-mode shadow (Fix 1)", () => {
+  test("dark mode uses light shadow", async ({ page }) => {
+    await page.goto(PAGE_URL);
+    await page.evaluate(() => document.documentElement.setAttribute("data-theme", "dark"));
+    const figure = page.locator("#om-meg .media-col figure");
+    const shadow = await figure.evaluate(el => getComputedStyle(el).boxShadow);
+    // Dark mode default: light rgba(255,255,255,0.08) shadow
+    expect(shadow).toContain("255");
+  });
+
+  test("light mode uses dark shadow", async ({ page }) => {
+    await page.goto(PAGE_URL);
+    await page.evaluate(() => document.documentElement.setAttribute("data-theme", "light"));
+    const figure = page.locator("#om-meg .media-col figure");
+    const shadow = await figure.evaluate(el => getComputedStyle(el).boxShadow);
+    // Light mode: dark rgba(0,0,0,0.25) shadow
+    expect(shadow).not.toContain("255");
+  });
+});
+
+test.describe("Navigation active highlighting in light mode (Fix 2)", () => {
+  test("index.html has light-mode nav-active rule", async ({ page }) => {
+    await page.goto(PAGE_URL);
+    const hasRule = await page.evaluate(() => {
+      var sheets = document.styleSheets;
+      for (var s = 0; s < sheets.length; s++) {
+        try {
+          var rules = sheets[s].cssRules;
+          for (var r = 0; r < rules.length; r++) {
+            if (rules[r].selectorText &&
+                rules[r].selectorText.indexOf('[data-theme="light"] nav a.nav-active') !== -1) {
+              return true;
+            }
+          }
+        } catch (e) {}
+      }
+      return false;
+    });
+    expect(hasRule).toBe(true);
+  });
+
+  test("bacheloroppgave.html has light-mode nav-active rule", async ({ page }) => {
+    await page.goto(BACHELOR_URL);
+    const hasRule = await page.evaluate(() => {
+      var sheets = document.styleSheets;
+      for (var s = 0; s < sheets.length; s++) {
+        try {
+          var rules = sheets[s].cssRules;
+          for (var r = 0; r < rules.length; r++) {
+            if (rules[r].selectorText &&
+                rules[r].selectorText.indexOf('[data-theme="light"] nav a.nav-active') !== -1) {
+              return true;
+            }
+          }
+        } catch (e) {}
+      }
+      return false;
+    });
+    expect(hasRule).toBe(true);
+  });
+});
+
+test.describe("Navigation bar vertical centering (Fix 3)", () => {
+  test("index.html nav ul has align-items center", async ({ page }) => {
+    await page.goto(PAGE_URL);
+    const alignItems = await page.locator("nav ul").evaluate(el => getComputedStyle(el).alignItems);
+    expect(alignItems).toBe("center");
+  });
+
+  test("bacheloroppgave.html nav ul has align-items center", async ({ page }) => {
+    await page.goto(BACHELOR_URL);
+    const alignItems = await page.locator("nav ul").evaluate(el => getComputedStyle(el).alignItems);
+    expect(alignItems).toBe("center");
+  });
+
+  test("starsteer.html nav ul has align-items center", async ({ page }) => {
+    await page.goto(STARSTEER_URL);
+    const alignItems = await page.locator("nav ul").evaluate(el => getComputedStyle(el).alignItems);
+    expect(alignItems).toBe("center");
+  });
+});
+
+test.describe("Gallery caption fade on hover (Fix 4)", () => {
+  test("caption is hidden by default", async ({ page }) => {
+    await page.goto(PAGE_URL);
+    const caption = page.locator(".about-sub-gallery .gallery-thumb figcaption").first();
+    const opacity = await caption.evaluate(el => getComputedStyle(el).opacity);
+    expect(opacity).toBe("0");
+  });
+
+  test("caption becomes visible on hover", async ({ page }) => {
+    await page.goto(PAGE_URL);
+    const thumb = page.locator(".about-sub-gallery .gallery-thumb").first();
+    await thumb.hover();
+    const caption = thumb.locator("figcaption");
+    await expect(caption).toHaveCSS("opacity", "1");
+  });
+});
