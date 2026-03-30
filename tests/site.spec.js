@@ -883,15 +883,15 @@ test.describe("Navigation bar vertical centering (Fix 3)", () => {
   });
 });
 
-test.describe("Gallery caption fade on hover (Fix 4)", () => {
-  test("caption is hidden by default", async ({ page }) => {
+test.describe("Gallery captions always visible (Fix 4)", () => {
+  test("caption is visible by default", async ({ page }) => {
     await page.goto(PAGE_URL);
     const caption = page.locator(".about-sub-gallery .gallery-thumb figcaption").first();
     const opacity = await caption.evaluate(el => getComputedStyle(el).opacity);
-    expect(opacity).toBe("0");
+    expect(opacity).toBe("1");
   });
 
-  test("caption becomes visible on hover", async ({ page }) => {
+  test("caption remains visible on hover", async ({ page }) => {
     await page.goto(PAGE_URL);
     const thumb = page.locator(".about-sub-gallery .gallery-thumb").first();
     await thumb.hover();
