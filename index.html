@@ -500,6 +500,9 @@
       background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
       text-align: center;
       transition: opacity var(--duration-state) var(--ease-out-quart);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* ── Lightbox ── */
@@ -1268,7 +1271,11 @@
       <div class="about-sub-gallery">
         <figure class="gallery-thumb" tabindex="0" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox(this);}">
           <img src="IMG_2172.jpeg" alt="Dumdalsgrottene" data-i18n-alt="about.img2172.alt" loading="lazy"/>
-          <figcaption data-i18n="about.caption2172">Å krype gjennom trange marmorganger på tur gjennom de berømte Dumdalsgrottene</figcaption>
+          <figcaption data-i18n="about.caption2172">Det er ikke uvanlig å måtte krype gjennom trange marmorganger i Dumdalsgrottene</figcaption>
+        </figure>
+        <figure class="gallery-thumb" tabindex="0" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox(this);}">
+          <img src="IMG_7212.JPG" alt="Brurastakken" data-i18n-alt="about.img7212.alt" loading="lazy"/>
+          <figcaption data-i18n="about.caption7212">På toppen av Brurastakken kan man se øyene Alden til venstre og Tvibyrge til høyre - to geologiske perler som startet sin reise som oseanisk skorpe i Iapetushavet.</figcaption>
         </figure>
         <figure class="gallery-thumb" tabindex="0" onclick="openLightbox(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox(this);}">
           <img src="IMG_6585.jpeg" alt="Feltarbeid på bre" data-i18n-alt="about.img6585.alt" loading="lazy"/>
@@ -1536,11 +1543,13 @@
         "about.background.text": "I 2023 startet jeg på den treårige bachelorgraden Geologi og Geofare ved Høgskulen på Vestlandet i Sogndal. Studiet har gitt meg stor kunnskap og lærerike opplevelser gjennom både teoretisk undervisning og feltarbeid/ekskursjoner. Nå bygger jeg videre på kunnskapen jeg har opparbeidet meg ved å skrive en bacheloroppgave som avslutning på studiet.",
         "about.caption": "Solen g\u00e5r ned, men kartleggingen fortsetter",
         "about.caption8394": "En vinterdag på fjelltur med utsikt over snøkledde fjell",
-        "about.caption2172": "\u00c5 krype gjennom trange marmorganger p\u00e5 tur gjennom de ber\u00f8mte Dumdalsgrottene",
+        "about.caption2172": "Det er ikke uvanlig \u00e5 m\u00e5tte krype gjennom trange marmorganger i Dumdalsgrottene",
+        "about.caption7212": "P\u00e5 toppen av Brurastakken kan man se \u00f8yene Alden til venstre og Tvibyrge til h\u00f8yre - to geologiske perler som startet sin reise som oseanisk skorpe i Iapetushavet.",
         "about.caption6585": "Hva er vel en manns kraft mot en kjempe som har sovet under isen i tusen \u00e5r?",
         "about.img8394.alt": "Vetle på fjelltur om vinteren",
         "about.img2172.alt": "Dumdalsgrottene",
         "about.img6585.alt": "Feltarbeid p\u00e5 bre",
+        "about.img7212.alt": "Brurastakken",
         "about.bilder.label": "Mer",
         "about.background.intro": "Jeg har jobbet som vaktsoldat ved Akershus festning og hatt to sommerjobber i ConocoPhillips, hvor jeg har jobbet med oljerelatert geologi og geofysikk.",
         "about.job1.title": "ConocoPhillips",
@@ -1600,11 +1609,13 @@
         "about.background.text": "In 2023, I started the three-year bachelor\u2019s degree in Geology and Geo-Hazards at the Western Norway University of Applied Sciences in Sogndal. The programme has given me great knowledge and rewarding experiences through both theoretical teaching and fieldwork/excursions. I am now building on the knowledge I have acquired by writing a bachelor\u2019s thesis as the conclusion of my studies.",
         "about.caption": "The sun sets, but the mapping continues",
         "about.caption8394": "A winter day hiking with a view over snow-covered mountains",
-        "about.caption2172": "Crawling through narrow marble passages on a trip through the famous Dumdals Caves",
+        "about.caption2172": "It is not uncommon to have to crawl through narrow marble passages in the Dumdals Caves",
+        "about.caption7212": "From the top of Brurastakken you can see the islands Alden to the left and Tvibyrge to the right \u2013 two geological gems that began their journey as oceanic crust in the Iapetus Ocean.",
         "about.caption6585": "What is a man\u2019s strength against a giant that has slept under the ice for a thousand years?",
         "about.img8394.alt": "Vetle on a winter mountain hike",
         "about.img2172.alt": "Dumdals Caves",
         "about.img6585.alt": "Fieldwork on glacier",
+        "about.img7212.alt": "Brurastakken",
         "about.bilder.label": "More",
         "about.background.intro": "I have worked as a guard soldier at Akershus Fortress and had two summer jobs at ConocoPhillips, where I worked with oil-related geology and geophysics.",
         "about.job1.title": "ConocoPhillips",

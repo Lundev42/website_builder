@@ -746,11 +746,11 @@ test.describe('Motion design (impeccable skill)', function () {
     expect(easeOutExpo).toBe('cubic-bezier(0.16, 1, 0.3, 1)');
   });
 
-  test('about sub-gallery contains two clickable figures', async function ({ page }) {
+  test('about sub-gallery contains three clickable figures', async function ({ page }) {
     await page.goto(PAGE_URL);
     var figures = page.locator('.about-sub-gallery .gallery-thumb');
     var count = await figures.count();
-    expect(count).toBe(2);
+    expect(count).toBe(3);
   });
 
   test('interactive elements have active pressed states', async function ({ page }) {
