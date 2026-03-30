@@ -4,6 +4,8 @@ const { test, expect } = require("@playwright/test");
 const PAGE_URL = "file://" + require("path").resolve(__dirname, "../index.html");
 const BACHELOR_URL = "file://" + require("path").resolve(__dirname, "../bacheloroppgave.html");
 const STARSTEER_URL = "file://" + require("path").resolve(__dirname, "../starsteer.html");
+const COP2025_URL = "file://" + require("path").resolve(__dirname, "../conocophillips-2025.html");
+const COP2024_URL = "file://" + require("path").resolve(__dirname, "../conocophillips-2024.html");
 
 test.describe("Bacheloroppgave section", () => {
   test.beforeEach(async ({ page }) => {
@@ -185,7 +187,7 @@ test.describe("About section – content", () => {
     await expect(dates.nth(0)).toHaveText("2025");
     await expect(dates.nth(1)).toHaveText("2024");
     await expect(dates.nth(2)).toHaveText("2022–2023");
-    await expect(dates.nth(3)).toHaveText("2021–2022");
+    await expect(dates.nth(3)).toHaveText("2020–2022");
   });
 
   test("timeline markers are visible", async ({ page }) => {
@@ -565,27 +567,26 @@ test.describe("StarSteer link", () => {
     await page.goto(PAGE_URL);
   });
 
-  test("StarSteer text is a link to starsteer.html", async ({ page }) => {
-    const link = page.locator('#bakgrunn [data-i18n-html="about.job2.text"] a[href="starsteer.html"]');
+  test("StarSteer text is a link to rogii.com", async ({ page }) => {
+    const link = page.locator('#bakgrunn [data-i18n-html="about.job2.text"] a[href="https://www.rogii.com/products/starsteer"]');
     await expect(link).toBeVisible();
     await expect(link).toHaveText("StarSteer");
   });
 
-  test("StarSteer link opens in same tab (no target=_blank)", async ({ page }) => {
-    const link = page.locator('#bakgrunn [data-i18n-html="about.job2.text"] a[href="starsteer.html"]');
-    await expect(link).not.toHaveAttribute("target", "_blank");
-    const target = await link.getAttribute("target");
-    expect(target).toBeNull();
+  test("StarSteer link opens in new tab", async ({ page }) => {
+    const link = page.locator('#bakgrunn [data-i18n-html="about.job2.text"] a[href="https://www.rogii.com/products/starsteer"]');
+    await expect(link).toHaveAttribute("target", "_blank");
+    await expect(link).toHaveAttribute("rel", /noopener/);
   });
 
   test("StarSteer link has no underline", async ({ page }) => {
-    const link = page.locator('#bakgrunn [data-i18n-html="about.job2.text"] a[href="starsteer.html"]');
+    const link = page.locator('#bakgrunn [data-i18n-html="about.job2.text"] a[href="https://www.rogii.com/products/starsteer"]');
     const textDecoration = await link.evaluate(el => getComputedStyle(el).textDecorationLine);
     expect(textDecoration).toBe("none");
   });
 
   test("StarSteer link visited colour matches accent colour", async ({ page }) => {
-    const link = page.locator('#bakgrunn [data-i18n-html="about.job2.text"] a[href="starsteer.html"]');
+    const link = page.locator('#bakgrunn [data-i18n-html="about.job2.text"] a[href="https://www.rogii.com/products/starsteer"]');
     // Verify the link color matches --accent (the :visited rule re-applies the accent colour)
     const { linkColor, accentColor } = await link.evaluate(el => {
       const accent = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
@@ -602,15 +603,15 @@ test.describe("StarSteer link", () => {
 
   test("StarSteer link is also present in English", async ({ page }) => {
     await page.click(".lang-toggle");
-    const link = page.locator('#bakgrunn [data-i18n-html="about.job2.text"] a[href="starsteer.html"]');
+    const link = page.locator('#bakgrunn [data-i18n-html="about.job2.text"] a[href="https://www.rogii.com/products/starsteer"]');
     await expect(link).toBeVisible();
     await expect(link).toHaveText("StarSteer");
   });
 
-  test("StarSteer link in English has no target=_blank", async ({ page }) => {
+  test("StarSteer link in English opens in new tab", async ({ page }) => {
     await page.click(".lang-toggle");
-    const link = page.locator('#bakgrunn [data-i18n-html="about.job2.text"] a[href="starsteer.html"]');
-    await expect(link).not.toHaveAttribute("target", "_blank");
+    const link = page.locator('#bakgrunn [data-i18n-html="about.job2.text"] a[href="https://www.rogii.com/products/starsteer"]');
+    await expect(link).toHaveAttribute("target", "_blank");
   });
 });
 
@@ -631,6 +632,54 @@ test.describe("StarSteer page", () => {
   test("contains StarSteer content", async ({ page }) => {
     const body = page.locator("body");
     await expect(body).toContainText("StarSteer");
+  });
+});
+
+test.describe("ConocoPhillips 2025 page", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(COP2025_URL);
+  });
+
+  test("has a footer with '© 2026 Vetle Lunde'", async ({ page }) => {
+    const footer = page.locator("footer");
+    await expect(footer).toContainText("2026 Vetle Lunde");
+  });
+
+  test("has nav links back to index.html", async ({ page }) => {
+    await expect(page.locator('nav a[data-i18n="nav.home"]')).toHaveAttribute("href", "index.html#hjem");
+  });
+
+  test("contains ConocoPhillips 2025 content", async ({ page }) => {
+    const body = page.locator("body");
+    await expect(body).toContainText("ConocoPhillips 2025");
+  });
+
+  test("has an h1 element", async ({ page }) => {
+    await expect(page.locator("h1")).toHaveCount(1);
+  });
+});
+
+test.describe("ConocoPhillips 2024 page", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(COP2024_URL);
+  });
+
+  test("has a footer with '© 2026 Vetle Lunde'", async ({ page }) => {
+    const footer = page.locator("footer");
+    await expect(footer).toContainText("2026 Vetle Lunde");
+  });
+
+  test("has nav links back to index.html", async ({ page }) => {
+    await expect(page.locator('nav a[data-i18n="nav.home"]')).toHaveAttribute("href", "index.html#hjem");
+  });
+
+  test("contains ConocoPhillips 2024 content", async ({ page }) => {
+    const body = page.locator("body");
+    await expect(body).toContainText("ConocoPhillips 2024");
+  });
+
+  test("has an h1 element", async ({ page }) => {
+    await expect(page.locator("h1")).toHaveCount(1);
   });
 });
 
