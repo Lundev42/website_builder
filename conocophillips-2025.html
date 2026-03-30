@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ConocoPhillips 2025 – Vetle Lunde sin arbeidserfaring hos ConocoPhillips i 2025.">
+  <meta property="og:title" content="ConocoPhillips 2025 – Vetle Lunde">
+  <meta property="og:description" content="ConocoPhillips 2025 – Vetle Lunde sin arbeidserfaring hos ConocoPhillips i 2025.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://Lundev42.github.io/vetle-lunde-site/conocophillips-2025.html">
+  <meta property="og:image" content="https://Lundev42.github.io/vetle-lunde-site/logo.webp">
+  <meta property="og:locale" content="nb_NO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="theme-color" content="#0f1117">
+  <link rel="canonical" href="https://Lundev42.github.io/vetle-lunde-site/conocophillips-2025.html">
+  <title>ConocoPhillips 2025 – Vetle Lunde</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🪨</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    :root {
+      --bg-primary: #0f1117;
+      --bg-secondary: #181a20;
+      --text-primary: #c0c8d8;
+      --text-secondary: #a0a8c0;
+      --text-muted: #9ca3b8;
+      --text-heading: #e8ecf4;
+      --accent: #6384ff;
+      --accent-hover: rgba(99, 132, 255, 0.25);
+      --accent-bg: rgba(99, 132, 255, 0.15);
+      --accent-border: rgba(99, 132, 255, 0.3);
+      --nav-bg: rgba(26, 26, 26, 0.85);
+      --nav-border: rgba(255, 255, 255, 0.06);
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --overlay-bg: rgba(0, 0, 0, 0.6);
+      --input-bg: rgba(255, 255, 255, 0.05);
+      --input-border: rgba(255, 255, 255, 0.12);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #eef0f6;
+      --bg-secondary: #e1e4ec;
+      --text-primary: #23272f;
+      --text-secondary: #4a5060;
+      --text-muted: #6b7280;
+      --text-heading: #1a1d24;
+      --accent: #4a63cc;
+      --accent-hover: rgba(74, 99, 204, 0.18);
+      --accent-bg: rgba(74, 99, 204, 0.10);
+      --accent-border: rgba(74, 99, 204, 0.3);
+      --nav-bg: rgba(238, 240, 246, 0.92);
+      --nav-border: rgba(0, 0, 0, 0.08);
+      --card-bg: rgba(0, 0, 0, 0.03);
+      --overlay-bg: rgba(0, 0, 0, 0.4);
+      --input-bg: rgba(0, 0, 0, 0.04);
+      --input-border: rgba(0, 0, 0, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', Arial, Helvetica, sans-serif;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--nav-border);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 24px;
+      transition: color 0.3s, background 0.3s;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      color: #fff;
+      background: var(--accent-bg);
+    }
+
+    /* ── Sections (shared) ── */
+    section {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      padding: 120px 60px 80px;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      gap: 60px;
+    }
+
+    .text-col {
+      flex: 1 1 55%;
+      max-width: 750px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-border);
+      border-radius: 20px;
+      padding: 4px 14px;
+      margin-bottom: 16px;
+    }
+
+    .text-col h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .text-col p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .text-col p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Contact / Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.75rem;
+      color: #7a82a0;
+      border-top: 1px solid var(--nav-border);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      section {
+        padding: 100px 24px 60px;
+      }
+
+      .section-inner {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .text-col h2 {
+        font-size: 1.8rem;
+      }
+
+      nav ul {
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+      }
+    }
+
+    /* ── Language toggle ── */
+    .lang-toggle {
+      background: var(--accent-bg);
+      color: var(--text-secondary);
+      border: 2px solid var(--accent-border);
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 6px 14px;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: color 0.3s, background 0.3s, border-color 0.3s;
+    }
+
+    .lang-toggle:hover,
+    .lang-toggle:focus-visible {
+      color: #fff;
+      background: var(--accent-hover);
+      border-color: #fff;
+    }
+
+    /* ── Theme toggle ── */
+    .theme-toggle {
+      background: var(--accent-bg);
+      color: var(--text-secondary);
+      border: 2px solid var(--accent-border);
+      font-family: inherit;
+      font-size: 0.75rem;
+      padding: 6px 10px;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: color 0.3s, background 0.3s, border-color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .theme-toggle:hover,
+    .theme-toggle:focus-visible {
+      color: #fff;
+      background: var(--accent-hover);
+      border-color: #fff;
+    }
+
+    .theme-toggle svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    [data-theme="light"] .theme-icon-moon { display: none; }
+    [data-theme="light"] .theme-icon-sun { display: inline !important; }
+
+    [data-theme="light"] .theme-toggle .theme-icon-sun {
+      stroke: #f59e0b;
+      fill: #f59e0b;
+    }
+
+    .theme-toggle .theme-icon-moon {
+      fill: #c0c8d8;
+      stroke: #c0c8d8;
+    }
+
+    [data-theme="light"] nav a:hover,
+    [data-theme="light"] nav a:focus-visible {
+      color: var(--accent);
+      background: var(--accent-hover);
+    }
+
+    [data-theme="light"] .theme-toggle:hover,
+    [data-theme="light"] .theme-toggle:focus-visible {
+      color: var(--accent);
+      border-color: #000;
+    }
+
+    [data-theme="light"] .lang-toggle:hover,
+    [data-theme="light"] .lang-toggle:focus-visible {
+      color: var(--accent);
+      border-color: #000;
+    }
+
+    /* ── Skip-to-content (a11y) ── */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 200;
+      background: #6384ff;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 0 0 8px 0;
+    }
+
+    .skip-link:focus {
+      left: 0;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ── Scroll reveal animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Active navigation state ── */
+    nav a.nav-active {
+      color: var(--accent);
+      background: var(--accent-bg);
+    }
+
+    /* ── Alternating section backgrounds ── */
+    section:nth-of-type(even) {
+      background: var(--bg-secondary);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#hovedinnhold" class="skip-link" data-i18n="skip.link">Hopp til hovedinnhold</a>
+
+  <!-- Navigation -->
+  <nav aria-label="Hovednavigasjon" data-i18n-aria-label="nav.aria.label">
+    <ul>
+      <li><a href="index.html#hjem" data-i18n="nav.home">Hjem</a></li>
+      <li><a href="index.html#om-meg" data-i18n="nav.about">Om meg</a></li>
+      <li><a href="index.html#bakgrunn" data-i18n="nav.background">Bakgrunn</a></li>
+      <li><a href="bacheloroppgave.html" data-i18n="nav.bachelor">Bacheloroppgave</a></li>
+      <li><a href="index.html#kontakt" data-i18n="nav.contact">Kontakt</a></li>
+      <li><button class="lang-toggle" data-i18n="lang.switch" aria-label="Switch language">EN</button></li>
+      <li><button class="theme-toggle" id="theme-toggle" data-i18n-aria-label="theme.toggle.dark" aria-label="Bytt til lyst tema">
+        <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button></li>
+    </ul>
+  </nav>
+
+  <main id="hovedinnhold">
+
+    <!-- ConocoPhillips 2025 intro -->
+    <section id="conocophillips-2025-intro">
+      <div class="section-inner reveal">
+        <h1 class="sr-only" data-i18n="page.title">ConocoPhillips 2025 – Vetle Lunde</h1>
+        <div class="text-col">
+          <span class="section-label" data-i18n="cop2025.label">Arbeidserfaring</span>
+          <h2 data-i18n="cop2025.title">ConocoPhillips 2025</h2>
+          <p data-i18n="cop2025.intro">Innhold kommer snart.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Vetle Lunde
+  </footer>
+
+  <script>
+    var translations = {
+      nb: {
+        "nav.home": "Hjem",
+        "nav.about": "Om meg",
+        "nav.background": "Bakgrunn",
+        "nav.bachelor": "Bacheloroppgave",
+        "nav.contact": "Kontakt",
+        "nav.aria.label": "Hovednavigasjon",
+        "cop2025.label": "Arbeidserfaring",
+        "cop2025.title": "ConocoPhillips 2025",
+        "cop2025.intro": "Innhold kommer snart.",
+        "footer.text": "Geologi og Geofare",
+        "page.title": "ConocoPhillips 2025 \u2013 Vetle Lunde",
+        "meta.description": "ConocoPhillips 2025 \u2013 Vetle Lunde sin arbeidserfaring hos ConocoPhillips i 2025.",
+        "skip.link": "Hopp til hovedinnhold",
+        "lang.switch": "EN",
+        "theme.toggle.dark": "Bytt til lyst tema",
+        "theme.toggle.light": "Bytt til m\u00f8rkt tema"
+      },
+      en: {
+        "nav.home": "Home",
+        "nav.about": "About me",
+        "nav.background": "Background",
+        "nav.bachelor": "Bachelor Thesis",
+        "nav.contact": "Contact",
+        "nav.aria.label": "Main navigation",
+        "cop2025.label": "Work Experience",
+        "cop2025.title": "ConocoPhillips 2025",
+        "cop2025.intro": "Content coming soon.",
+        "footer.text": "Geology and Geo-Hazards",
+        "page.title": "ConocoPhillips 2025 \u2013 Vetle Lunde",
+        "meta.description": "ConocoPhillips 2025 \u2013 Vetle Lunde's work experience at ConocoPhillips in 2025.",
+        "skip.link": "Skip to main content",
+        "lang.switch": "NO",
+        "theme.toggle.dark": "Switch to light mode",
+        "theme.toggle.light": "Switch to dark mode"
+      }
+    };
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      try { localStorage.setItem("lang", lang); } catch (e) { /* ignore */ }
+
+      var dict = translations[lang];
+      if (!dict) return;
+
+      document.title = dict["page.title"] || document.title;
+
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && dict["meta.description"]) metaDesc.setAttribute("content", dict["meta.description"]);
+
+      var ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute("content", dict["page.title"] || "");
+
+      var ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc && dict["meta.description"]) ogDesc.setAttribute("content", dict["meta.description"]);
+
+      var ogLocale = document.querySelector('meta[property="og:locale"]');
+      if (ogLocale) ogLocale.setAttribute("content", lang === "en" ? "en_US" : "nb_NO");
+
+      var ogLocaleAlt = document.querySelector('meta[property="og:locale:alternate"]');
+      if (ogLocaleAlt) ogLocaleAlt.setAttribute("content", lang === "en" ? "nb_NO" : "en_US");
+
+      document.querySelectorAll("[data-i18n]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n");
+        if (dict[key] != null) el.textContent = dict[key];
+      });
+
+      document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n-html");
+        if (dict[key] != null) el.innerHTML = dict[key];
+      });
+
+      document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n-alt");
+        if (dict[key] != null) el.alt = dict[key];
+      });
+
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key] != null) el.placeholder = dict[key];
+      });
+
+      document.querySelectorAll("[data-i18n-aria-label]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n-aria-label");
+        if (dict[key] != null) el.setAttribute("aria-label", dict[key]);
+      });
+    }
+
+    document.querySelector(".lang-toggle").addEventListener("click", function () {
+      var current = document.documentElement.lang === "en" ? "nb" : "en";
+      setLanguage(current);
+    });
+
+    (function () {
+      var saved;
+      try { saved = localStorage.getItem("lang"); } catch (e) { /* ignore */ }
+      if (saved && translations[saved]) {
+        setLanguage(saved);
+      }
+    })();
+
+    /* ── Theme toggle logic ── */
+    (function () {
+      var toggle = document.getElementById("theme-toggle");
+      var htmlEl = document.documentElement;
+      var moonIcon = toggle.querySelector(".theme-icon-moon");
+      var sunIcon = toggle.querySelector(".theme-icon-sun");
+
+      function applyTheme(theme) {
+        htmlEl.setAttribute("data-theme", theme);
+        try { localStorage.setItem("theme", theme); } catch (e) { /* ignore */ }
+
+        var ariaKey;
+        if (theme === "light") {
+          moonIcon.style.display = "none";
+          sunIcon.style.display = "inline";
+          ariaKey = "theme.toggle.light";
+        } else {
+          moonIcon.style.display = "inline";
+          sunIcon.style.display = "none";
+          ariaKey = "theme.toggle.dark";
+        }
+        toggle.setAttribute("data-i18n-aria-label", ariaKey);
+        var dict = translations[htmlEl.lang] || translations["nb"];
+        if (dict[ariaKey] != null) toggle.setAttribute("aria-label", dict[ariaKey]);
+      }
+
+      toggle.addEventListener("click", function () {
+        var current = htmlEl.getAttribute("data-theme") === "light" ? "dark" : "light";
+        applyTheme(current);
+      });
+
+      var saved;
+      try { saved = localStorage.getItem("theme"); } catch (e) { /* ignore */ }
+      if (saved === "light" || saved === "dark") {
+        applyTheme(saved);
+      } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+        applyTheme("light");
+      } else {
+        applyTheme("dark");
+      }
+    })();
+
+    /* ── Scroll reveal ── */
+    (function () {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        reveals.forEach(function (el) { obs.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('visible'); });
+      }
+    })();
+  </script>
+
+</body>
+</html>
