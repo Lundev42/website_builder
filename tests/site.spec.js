@@ -820,7 +820,7 @@ test.describe("Profile image dark-mode shadow (Fix 1)", () => {
     const figure = page.locator("#om-meg .media-col figure");
     const shadow = await figure.evaluate(el => getComputedStyle(el).boxShadow);
     // Dark mode default: light rgba(255,255,255,0.08) shadow
-    expect(shadow).toContain("255");
+    expect(shadow).toMatch(/rgba?\(255,\s*255,\s*255/);
   });
 
   test("light mode uses dark shadow", async ({ page }) => {
@@ -829,7 +829,7 @@ test.describe("Profile image dark-mode shadow (Fix 1)", () => {
     const figure = page.locator("#om-meg .media-col figure");
     const shadow = await figure.evaluate(el => getComputedStyle(el).boxShadow);
     // Light mode: dark rgba(0,0,0,0.25) shadow
-    expect(shadow).not.toContain("255");
+    expect(shadow).toMatch(/rgba?\(0,\s*0,\s*0/);
   });
 });
 
