@@ -1132,6 +1132,18 @@
       background: var(--bg-secondary);
     }
 
+    .timeline-entry-with-slider {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      position: relative;
+    }
+
+    .timeline-entry-with-slider .timeline-content {
+      flex: 1;
+      min-width: 0;
+    }
+
     /* ── Horizontal Reveal Slider ── */
     .reveal-slider-tab {
       flex-shrink: 0;
@@ -1145,7 +1157,7 @@
       align-items: center;
       justify-content: center;
       transition: background var(--duration-state) var(--ease-out-quart), border-color var(--duration-state) var(--ease-out-quart);
-      margin-top: 12px;
+      margin-left: 12px;
       padding: 0;
       text-decoration: none;
     }
@@ -1406,24 +1418,28 @@
                 <div class="timeline-entry">
                   <span class="timeline-date">2025</span>
                   <div class="timeline-marker"></div>
-                  <div class="timeline-content">
+                  <div class="timeline-entry-with-slider">
+                    <div class="timeline-content">
                       <h4 class="job-title" data-i18n="about.job2.title">ConocoPhillips</h4>
                       <p data-i18n-html="about.job2.text">Som en del av Well Delivery-teamet arbeidet jeg med å utvikle et omfattende bibliotek av re-styrte brønner på Ekofiskfeltet. Arbeidet ble utført i programvaren <a href="https://www.rogii.com/products/starsteer" target="_blank" rel="noopener noreferrer">StarSteer</a> ved å integrere biostratigrafi, bildeloggtolkninger og geofysiske logger (CPI). Formålet var å forbedre treffsikkerheten for fremtidige brønner og støtte implementeringen av sanntidsoperasjoner i 2025. Prosjektet innebar avansert korrelasjon og analyse av tetthet og resistivitetslogger, samt bruk av utdata til å identifisere avvik i strukturelle geomodeller (Petrel) for målrettet modellforbedring på Ekofisk og Eldfisk-feltene.</p>
-                      <a href="conocophillips-2025.html" class="reveal-slider-tab" aria-label="Les mer">
-                        <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-                      </a>
                     </div>
+                    <a href="conocophillips-2025.html" class="reveal-slider-tab" aria-label="Les mer">
+                      <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+                    </a>
+                  </div>
                 </div>
                 <div class="timeline-entry">
                   <span class="timeline-date">2024</span>
                   <div class="timeline-marker"></div>
-                  <div class="timeline-content">
+                  <div class="timeline-entry-with-slider">
+                    <div class="timeline-content">
                       <h4 class="job-title" data-i18n="about.job1.title">ConocoPhillips</h4>
                       <p data-i18n="about.job1.text">Arbeidet mitt besto av å hjelpe reservoarkarakteriserings teamet med å lage en brukbar biostratigrafisk database. Dette arbeidet støtter den geologiske tolkningen etter borekampanjen på gasskondensatfeltet Tommeliten A, og bidro til den fullstendige modelloppdateringen for 2024/2025. Arbeidsflyten bestod av databehandling i Excel etterfulgt av analysearbeid i Spotfire.</p>
-                      <a href="conocophillips-2024.html" class="reveal-slider-tab" aria-label="Les mer">
-                        <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-                      </a>
                     </div>
+                    <a href="conocophillips-2024.html" class="reveal-slider-tab" aria-label="Les mer">
+                      <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+                    </a>
+                  </div>
                 </div>
                 <div class="timeline-entry">
                   <span class="timeline-date">2022–2023</span>
