@@ -834,43 +834,31 @@ test.describe("Profile image dark-mode shadow (Fix 1)", () => {
 });
 
 test.describe("Navigation active highlighting in light mode (Fix 2)", () => {
+  function hasLightNavActiveRule() {
+    var sheets = document.styleSheets;
+    for (var s = 0; s < sheets.length; s++) {
+      try {
+        var rules = sheets[s].cssRules;
+        for (var r = 0; r < rules.length; r++) {
+          if (rules[r].selectorText &&
+              rules[r].selectorText.indexOf('[data-theme="light"] nav a.nav-active') !== -1) {
+            return true;
+          }
+        }
+      } catch (e) {}
+    }
+    return false;
+  }
+
   test("index.html has light-mode nav-active rule", async ({ page }) => {
     await page.goto(PAGE_URL);
-    const hasRule = await page.evaluate(() => {
-      var sheets = document.styleSheets;
-      for (var s = 0; s < sheets.length; s++) {
-        try {
-          var rules = sheets[s].cssRules;
-          for (var r = 0; r < rules.length; r++) {
-            if (rules[r].selectorText &&
-                rules[r].selectorText.indexOf('[data-theme="light"] nav a.nav-active') !== -1) {
-              return true;
-            }
-          }
-        } catch (e) {}
-      }
-      return false;
-    });
+    const hasRule = await page.evaluate(hasLightNavActiveRule);
     expect(hasRule).toBe(true);
   });
 
   test("bacheloroppgave.html has light-mode nav-active rule", async ({ page }) => {
     await page.goto(BACHELOR_URL);
-    const hasRule = await page.evaluate(() => {
-      var sheets = document.styleSheets;
-      for (var s = 0; s < sheets.length; s++) {
-        try {
-          var rules = sheets[s].cssRules;
-          for (var r = 0; r < rules.length; r++) {
-            if (rules[r].selectorText &&
-                rules[r].selectorText.indexOf('[data-theme="light"] nav a.nav-active') !== -1) {
-              return true;
-            }
-          }
-        } catch (e) {}
-      }
-      return false;
-    });
+    const hasRule = await page.evaluate(hasLightNavActiveRule);
     expect(hasRule).toBe(true);
   });
 });
