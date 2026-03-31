@@ -371,12 +371,12 @@
       color: rgba(255, 255, 255, 0.7);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      animation: scroll-bounce 2.4s var(--ease-in-out-smooth) infinite;
+      animation: scroll-bounce 2.4s linear infinite;
     }
 
     @keyframes scroll-bounce {
-      0%, 100% { opacity: 0.6; transform: translateY(0); }
-      50% { opacity: 0.85; transform: translateY(2px); }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(2px); }
     }
 
     /* ── Hero caption ── */
